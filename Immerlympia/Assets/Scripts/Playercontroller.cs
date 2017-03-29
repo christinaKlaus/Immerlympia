@@ -32,10 +32,10 @@ public class Playercontroller : MonoBehaviour {
 
     private void punch() {
         if(Input.GetButtonDown("Fire1")) {
-            Debug.DrawRay(transform.position, transform.forward, Color.magenta, 1, false);
+            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
 
             RaycastHit hit;
-            if(Physics.CapsuleCast(transform.position + (Vector3.up * 0.5f), transform.position - (Vector3.up * 0.5f), 0.5f, transform.forward, out hit, 1)) {
+            if(Physics.CapsuleCast(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 0.5f, transform.forward, out hit, 1.5f)) {
                 Dummy dummy = hit.collider.GetComponent<Dummy>();
                 if (dummy == null)
                     return;
