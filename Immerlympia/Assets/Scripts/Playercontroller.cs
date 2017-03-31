@@ -74,11 +74,13 @@ public class Playercontroller : MonoBehaviour {
             isJumping = true;
         }
 
-         body.velocity = velocity;
-         velocity.Scale(new Vector3(1, 0, 1));
+        Debug.Log(isJumping);
 
-         if (velocity != Vector3.zero)
-            transform.LookAt(transform.position + velocity);
+        body.velocity = velocity;
+        velocity.Scale(new Vector3(1, 0, 1));
+
+        if (velocity != Vector3.zero)
+           transform.LookAt(transform.position + velocity);
         
     }
 
@@ -91,7 +93,7 @@ public class Playercontroller : MonoBehaviour {
         } else {
             isJumping = true;
         }
-        Debug.Log(isJumping);
+        
     }
 
 
