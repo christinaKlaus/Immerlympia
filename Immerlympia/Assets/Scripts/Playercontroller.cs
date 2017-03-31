@@ -8,6 +8,7 @@ public class Playercontroller : MonoBehaviour {
     Rigidbody body;
     public float walkSpeed;
     public float jumpSpeed;
+    bool isJumping = true;
 
 	// Use this for initialization
 	void Start () {
@@ -59,16 +60,39 @@ public class Playercontroller : MonoBehaviour {
         right.Normalize();
         velocity += right * Input.GetAxis("Horizontal") * walkSpeed;
 
-        RaycastHit hit;
-        if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, -transform.up, out hit, 1.1f))
+        CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
+
+        if (playerCollider == null)
+            return;
+
+        //RaycastHit hitGround;
+        //if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, -transform.up, out hitGround, 1.1f))
+        //   velocity.y = jumpSpeed;
+
+        if (Input.GetButtonDown("Jump") && !isJumping) {
             velocity.y = jumpSpeed;
+            isJumping = true;
+        }
 
-        body.velocity = velocity;
-        velocity.Scale(new Vector3(1, 0, 1));
+         body.velocity = velocity;
+         velocity.Scale(new Vector3(1, 0, 1));
 
-        if (velocity != Vector3.zero)
+         if (velocity != Vector3.zero)
             transform.LookAt(transform.position + velocity);
         
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        Debug.Log("I'm in...");
+        //Collison with ground
+        if (collision.gameObject.tag == "Ground") {
+            isJumping = false;
+            
+        } else {
+            isJumping = true;
+        }
+        Debug.Log(isJumping);
+    }
+
 
 }
