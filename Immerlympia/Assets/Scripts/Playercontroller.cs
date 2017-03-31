@@ -89,6 +89,7 @@ public class Playercontroller : MonoBehaviour {
         //Collison with ground
         if (collision.gameObject.tag == "Ground") {
             isJumping = false;
+            Debug.Log("Collision");
             
         } else {
             isJumping = true;
