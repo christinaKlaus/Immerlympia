@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Playercontroller : MonoBehaviour {
 
+    GameObject player;
     Camera cam;
     Rigidbody body;
     public float walkSpeed;
@@ -12,9 +13,10 @@ public class Playercontroller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("ich starte");
+        player = GameObject.Find("Player");
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
+        Debug.Log(player);
     }
 	
 	// Update is called once per frame
@@ -27,20 +29,22 @@ public class Playercontroller : MonoBehaviour {
         if (cam == null)
             return;
 
+        CharacterDeath();
         movement();
         punch();
     }
 
+    //for hitting hittable things (with Dummy script attached to them)
     private void punch() {
         if(Input.GetButtonDown("Fire1")) {
             Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
 
             RaycastHit hit;
             if(Physics.CapsuleCast(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 0.5f, transform.forward, out hit, 1.5f)) {
-                Dummy dummy = hit.collider.GetComponent<Dummy>();
+                Dummy dummy = hit.collider.GetComponent<Dummy>(); //making sure the object can be hit
                 if (dummy == null)
                     return;
-                dummy.damage(gameObject);
+                dummy.damage(gameObject); //let the object hit itself
             }
 
         }
@@ -85,11 +89,9 @@ public class Playercontroller : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        Debug.Log("I'm in...");
         //Collison with ground
         if (collision.gameObject.tag == "Ground") {
             isJumping = false;
-            //Debug.Log("Collision");
             
         } else {
             isJumping = true;
@@ -97,5 +99,12 @@ public class Playercontroller : MonoBehaviour {
         
     }
 
+    public void CharacterDeath() {
 
+        if (body.transform.position.y < 0) {
+            Debug.Log("Death");
+            player.transform.position = new Vector3(5,5,5); 
+
+        }
+    }
 }
