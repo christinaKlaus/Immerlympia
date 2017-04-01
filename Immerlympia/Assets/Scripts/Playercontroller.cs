@@ -16,7 +16,6 @@ public class Playercontroller : MonoBehaviour {
         player = GameObject.Find("Player");
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
-        Debug.Log(player);
     }
 	
 	// Update is called once per frame
@@ -78,8 +77,6 @@ public class Playercontroller : MonoBehaviour {
             isJumping = true;
         }
 
-        Debug.Log(isJumping);
-
         body.velocity = velocity;
         velocity.Scale(new Vector3(1, 0, 1));
 
@@ -103,7 +100,7 @@ public class Playercontroller : MonoBehaviour {
 
         if (body.transform.position.y < 0) {
             Debug.Log("Death");
-            player.transform.position = new Vector3(5,5,5); 
+            player.transform.position = new Vector3(0, 10, 0); 
 
         }
     }
