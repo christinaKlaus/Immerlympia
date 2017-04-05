@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if(player == null)
-            player = GameObject.FindGameObjectWithTag("Respawn").transform;
+            player = GameObject.FindGameObjectWithTag("Spawn").transform;
         
     }
 
