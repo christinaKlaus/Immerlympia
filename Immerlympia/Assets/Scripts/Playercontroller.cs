@@ -9,11 +9,12 @@ public class Playercontroller : MonoBehaviour {
     Rigidbody body;
     public float walkSpeed;
     public float jumpSpeed;
+    public float gravity;
     bool isJumping = true;
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player1");
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
     }
@@ -73,8 +74,12 @@ public class Playercontroller : MonoBehaviour {
         //   velocity.y = jumpSpeed;
 
         if (Input.GetButtonDown("Jump") && !isJumping) {
-            velocity.y = jumpSpeed;
+            velocity += (new Vector3(0,1,0)) * jumpSpeed;
             isJumping = true;
+        }
+
+        if (isJumping) {
+            velocity.y -= gravity * Time.deltaTime;
         }
 
         body.velocity = velocity;
