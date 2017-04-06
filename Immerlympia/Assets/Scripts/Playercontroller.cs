@@ -18,6 +18,15 @@ public class Playercontroller : MonoBehaviour {
         player = gameObject;
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
+
+        switch (playerNumber) {
+            case 0:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+                break;
+            case 1:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.blue;
+                break;
+        }
     }
 	
 	// Update is called once per frame
