@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Playercontroller : MonoBehaviour {
 
+    public int playerNumber;
+
     GameObject player;
     Camera cam;
     Rigidbody body;
@@ -13,9 +15,24 @@ public class Playercontroller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.Find("Player");
+        player = gameObject;
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
+
+        switch (playerNumber) {
+            case 0:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+                break;
+            case 1:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            case 2:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.green;
+                break;
+            case 3:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+        }
     }
 	
 	// Update is called once per frame
@@ -35,14 +52,14 @@ public class Playercontroller : MonoBehaviour {
 
     //for hitting hittable things (with Dummy script attached to them)
     private void punch() {
-        if(Input.GetButtonDown("Fire1")) {
+        if(Input.GetButtonDown("Punch" + playerNumber)) {
             Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
 
-            RaycastHit hit;
-            if(Physics.CapsuleCast(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 0.5f, transform.forward, out hit, 1.5f)) {
-                Dummy dummy = hit.collider.GetComponent<Dummy>(); //making sure the object can be hit
-                if (dummy == null)
-                    return;
+            RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
+            foreach(RaycastHit h in hit){ 
+                Dummy dummy = h.collider.GetComponent<Dummy>(); //making sure the object can be hit
+                if (dummy == null || h.collider.gameObject == gameObject)
+                    continue;
                 dummy.damage(gameObject); //let the object hit itself
             }
 
@@ -53,30 +70,34 @@ public class Playercontroller : MonoBehaviour {
         Vector3 velocity = body.velocity;
         velocity.Scale(new Vector3(0, 1, 0));
 
-        Vector3 forward = cam.transform.forward;
+        Vector3 forward = transform.position - cam.transform.position;
         forward.Scale(new Vector3(1, 0, 1));
         forward.Normalize();
-        velocity += forward * Input.GetAxis("Vertical") * walkSpeed;
+        velocity += forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed;
 
-        Vector3 right = cam.transform.right;
+        Vector3 right = new Vector3(forward.z, 0, -forward.x);
         right.Scale(new Vector3(1, 0, 1));
         right.Normalize();
-        velocity += right * Input.GetAxis("Horizontal") * walkSpeed;
+        velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
 
         CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
 
         if (playerCollider == null)
             return;
 
-        //RaycastHit hitGround;
-        //if (Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, -transform.up, out hitGround, 1.1f))
-        //   velocity.y = jumpSpeed;
-
-        if (Input.GetButtonDown("Jump") && !isJumping) {
-            velocity.y = jumpSpeed;
+        //*
+        RaycastHit hitGround;
+        if (Input.GetButtonDown("Jump" + playerNumber) && Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f))
+           velocity.y = jumpSpeed;
+        Debug.DrawRay(transform.position,- transform.up);
+        /*/
+        if (Input.GetButtonDown("Jump" + playerNumber) && !isJumping) {
+            velocity += (new Vector3(0,1,0)) * jumpSpeed;
             isJumping = true;
+            Debug.Log(playerNumber);
         }
-
+        //*/
+        
         body.velocity = velocity;
         velocity.Scale(new Vector3(1, 0, 1));
 
@@ -85,16 +106,14 @@ public class Playercontroller : MonoBehaviour {
         
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        //Collison with ground
-        if (collision.gameObject.tag == "Ground") {
-            isJumping = false;
+    //private void OnCollisionEnter(Collision collision) {
+    //    Collison with ground
+    //    if (collision.gameObject.tag == "Ground") {
+    //        isJumping = false;
             
-        } else {
-            isJumping = true;
-        }
+    //    }
         
-    }
+    //}
 
     public void CharacterDeath() {
 
