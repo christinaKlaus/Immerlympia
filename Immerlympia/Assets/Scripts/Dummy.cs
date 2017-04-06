@@ -27,7 +27,7 @@ public class Dummy : MonoBehaviour {
         if (rigid == null)
             return;
         Debug.Log("Au!" + gameObject.name + " | " + stunned);
-        Vector3 hitDir = transform.position - enemy.transform.position;
+        //Vector3 hitDir = transform.position - enemy.transform.position;
         if (stunned < -5) //5 Sek unverwundbar
         stunned = 2;
 

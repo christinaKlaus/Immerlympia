@@ -26,6 +26,12 @@ public class Playercontroller : MonoBehaviour {
             case 1:
                 transform.GetChild(0).GetComponent<Renderer>().material.color = Color.blue;
                 break;
+            case 2:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.green;
+                break;
+            case 3:
+                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.yellow;
+                break;
         }
     }
 	
