@@ -58,7 +58,8 @@ public class Playercontroller : MonoBehaviour {
             Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
 
             RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
-            foreach(RaycastHit h in hit){ 
+            anim.SetTrigger("punching");
+            foreach (RaycastHit h in hit){ 
                 Dummy dummy = h.collider.GetComponent<Dummy>(); //making sure the object can be hit
                 if (dummy == null || h.collider.gameObject == gameObject)
                     continue;
