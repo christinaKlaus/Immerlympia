@@ -6,6 +6,7 @@ public class Playercontroller : MonoBehaviour {
 
     public int playerNumber;
 
+    Animator anim;
     GameObject player;
     Camera cam;
     Rigidbody body;
@@ -18,6 +19,7 @@ public class Playercontroller : MonoBehaviour {
         player = gameObject;
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
+        anim = GetComponent<Animator>();
 
         switch (playerNumber) {
             case 0:
