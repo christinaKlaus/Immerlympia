@@ -18,16 +18,17 @@ public class Dummy : MonoBehaviour {
             return;
         stunned -= Time.deltaTime;
         rigid.isKinematic = stunned > 0; 
-            
+        
+
 	}
 
     public void damage(GameObject enemy) {
-        Debug.Log("Au!");
+        
         if (rigid == null)
             return;
-        Vector3 hitDir = transform.position - enemy.transform.position;
-        rigid.velocity = hitDir.normalized*100;
-        if (stunned > -5) //5 Sek unverwundbar
+        Debug.Log("Au!" + gameObject.name + " | " + stunned);
+        //Vector3 hitDir = transform.position - enemy.transform.position;
+        if (stunned < -5) //5 Sek unverwundbar
         stunned = 2;
 
     }
