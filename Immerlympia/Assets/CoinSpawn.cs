@@ -16,6 +16,10 @@ public class CoinSpawn : MonoBehaviour {
 		SpawnCoin();
 	}
 
+	void OnCollisionEnter(){
+
+	}
+	
 	void SpawnCoin(){
 		float t = 2 * Mathf.PI * Random.value;
 		float u = Random.value + Random.value;
