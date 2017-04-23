@@ -11,7 +11,9 @@ public class CoinPickup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(transform.position.y < -50) {
+            Die();
+        }
 	}
 
     void OnCollisionEnter(Collision collision) {
@@ -20,13 +22,17 @@ public class CoinPickup : MonoBehaviour {
 
         if(pc != null) {
             pc.CoinCountUp();
-            Destroy(gameObject);
-
-            GameObject spawn = GameObject.Find("Spawn");
-            if (spawn == null)
-                Debug.Log("Spawn not found");
-            spawn.GetComponent<CoinSpawn>().SpawnCoin();
+            Die();
         }
 
+    }
+
+    void Die () {
+        Destroy(gameObject);
+
+        GameObject spawn = GameObject.Find("Spawn");
+        if (spawn == null)
+            Debug.Log("Spawn not found");
+        spawn.GetComponent<CoinSpawn>().SpawnCoin();
     }
 }

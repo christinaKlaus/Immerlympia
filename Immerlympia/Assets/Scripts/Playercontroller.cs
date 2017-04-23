@@ -10,7 +10,9 @@ public class Playercontroller : MonoBehaviour {
     public int playerNumber;
     public float walkSpeed;
     public float jumpSpeed;
-    
+    public int maxJumps;
+
+    private int jumps;
 
     Animator anim;
     GameObject player;
@@ -96,14 +98,25 @@ public class Playercontroller : MonoBehaviour {
 
         if (playerCollider == null)
             return;
-
+        
 
         // <---- Jumping ---->
         
         //*
         RaycastHit hitGround;
-        if (Input.GetButtonDown("Jump" + playerNumber) && Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f))
-           velocity.y = jumpSpeed;
+        bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
+
+        if (body.velocity.y <= 0 && hitBool) {
+            jumps = maxJumps;
+        }
+
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0) {
+            velocity.y = jumpSpeed;
+            jumps--;
+        }
+
+       
+        anim.SetBool("isJumping", !hitBool);
         // Debug.DrawRay(transform.position,- transform.up);
        
         /*/
@@ -118,6 +131,8 @@ public class Playercontroller : MonoBehaviour {
         body.velocity = velocity;
         velocity.Scale(new Vector3(1, 0, 1));
 
+        anim.SetFloat("speed", velocity.magnitude);
+
         if (velocity != Vector3.zero)
            transform.LookAt(transform.position + velocity);
         
@@ -130,10 +145,10 @@ public class Playercontroller : MonoBehaviour {
    
     public void CharacterDeath() {
 
-        if (body.transform.position.y < -80) {
+        if (body.transform.position.y < -50) {
             Debug.Log("Death of Player" + playerNumber);
-            player.transform.position = new Vector3(0, 10, 0); 
-
+            player.transform.position = new Vector3(0, 10, 0);
+            body.velocity = Vector3.zero;
         }
     }
 }
