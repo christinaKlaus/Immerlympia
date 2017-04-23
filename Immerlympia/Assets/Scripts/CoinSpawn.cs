@@ -8,19 +8,15 @@ public class CoinSpawn : MonoBehaviour {
 	public float radius;
 	// Use this for initialization
 	void Start () {
-		
-	}
+        SpawnCoin();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		SpawnCoin();
-	}
+       
+    }
 
-	void OnCollisionEnter(){
-
-	}
-	
-	void SpawnCoin(){
+	public void SpawnCoin(){
 		float t = 2 * Mathf.PI * Random.value;
 		float u = Random.value + Random.value;
 		float r = ((u>1) ? 2-u : u) * radius;
