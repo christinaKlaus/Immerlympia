@@ -4,20 +4,30 @@ using UnityEngine;
 
 public class Playercontroller : MonoBehaviour {
 
-    public int playerNumber;
+    
+    [System.NonSerialized] public int score = 0;
 
+    public int playerNumber;
+    public float walkSpeed;
+    public float jumpSpeed;
+    public int maxJumps;
+
+    private int jumps;
+
+    Animator anim;
     GameObject player;
     Camera cam;
     Rigidbody body;
-    public float walkSpeed;
-    public float jumpSpeed;
-    bool isJumping = true;
+
+    
+    // bool isJumping = true;
 
 	// Use this for initialization
 	void Start () {
         player = gameObject;
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
+        anim = GetComponent<Animator>();
 
         switch (playerNumber) {
             case 0:
@@ -37,7 +47,7 @@ public class Playercontroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //body.velocity = new Vector3(Input.GetAxis("Horizontal")*walkSpeed, body.velocity.y, Input.GetAxis("Vertical")*walkSpeed);
+        // body.velocity = new Vector3(Input.GetAxis("Horizontal")*walkSpeed, body.velocity.y, Input.GetAxis("Vertical")*walkSpeed);
         
         if (cam == null)
             cam = Camera.current;
@@ -50,17 +60,20 @@ public class Playercontroller : MonoBehaviour {
         punch();
     }
 
-    //for hitting hittable things (with Dummy script attached to them)
+    // Hitting hittable things (with Dummy script attached to them)
     private void punch() {
         if(Input.GetButtonDown("Punch" + playerNumber)) {
             Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
-
+            
             RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
-            foreach(RaycastHit h in hit){ 
-                Dummy dummy = h.collider.GetComponent<Dummy>(); //making sure the object can be hit
-                if (dummy == null || h.collider.gameObject == gameObject)
-                    continue;
-                dummy.damage(gameObject); //let the object hit itself
+            anim.SetTrigger("punching");
+
+            foreach (RaycastHit h in hit){ 
+                Dummy dummy = h.collider.GetComponent<Dummy>(); // Making sure the object can be hit
+
+                if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
+
+                dummy.damage(gameObject); // Let the object hit itself
             }
 
         }
@@ -70,6 +83,7 @@ public class Playercontroller : MonoBehaviour {
         Vector3 velocity = body.velocity;
         velocity.Scale(new Vector3(0, 1, 0));
 
+        // <--- Basic movement --->
         Vector3 forward = transform.position - cam.transform.position;
         forward.Scale(new Vector3(1, 0, 1));
         forward.Normalize();
@@ -84,12 +98,27 @@ public class Playercontroller : MonoBehaviour {
 
         if (playerCollider == null)
             return;
+        
 
+        // <---- Jumping ---->
+        
         //*
         RaycastHit hitGround;
-        if (Input.GetButtonDown("Jump" + playerNumber) && Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f))
-           velocity.y = jumpSpeed;
-        Debug.DrawRay(transform.position,- transform.up);
+        bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
+
+        if (body.velocity.y <= 0 && hitBool) {
+            jumps = maxJumps;
+        }
+
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0) {
+            velocity.y = jumpSpeed;
+            jumps--;
+        }
+
+       
+        anim.SetBool("isJumping", !hitBool);
+        // Debug.DrawRay(transform.position,- transform.up);
+       
         /*/
         if (Input.GetButtonDown("Jump" + playerNumber) && !isJumping) {
             velocity += (new Vector3(0,1,0)) * jumpSpeed;
@@ -98,29 +127,28 @@ public class Playercontroller : MonoBehaviour {
         }
         //*/
         
+        // <--- Setting velocity -->
         body.velocity = velocity;
         velocity.Scale(new Vector3(1, 0, 1));
+
+        anim.SetFloat("speed", velocity.magnitude);
 
         if (velocity != Vector3.zero)
            transform.LookAt(transform.position + velocity);
         
     }
 
-    //private void OnCollisionEnter(Collision collision) {
-    //    Collison with ground
-    //    if (collision.gameObject.tag == "Ground") {
-    //        isJumping = false;
-            
-    //    }
-        
-    //}
-
+    public void CoinCountUp() {
+        score++;
+        Debug.Log("Score Player" + playerNumber + " =     " + score);
+    }
+   
     public void CharacterDeath() {
 
-        if (body.transform.position.y < 0) {
-            Debug.Log("Death");
-            player.transform.position = new Vector3(0, 10, 0); 
-
+        if (body.transform.position.y < -50) {
+            Debug.Log("Death of Player" + playerNumber);
+            player.transform.position = new Vector3(0, 10, 0);
+            body.velocity = Vector3.zero;
         }
     }
 }
