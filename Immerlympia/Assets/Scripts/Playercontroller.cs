@@ -86,12 +86,12 @@ public class Playercontroller : MonoBehaviour {
         // <--- Basic movement --->
         Vector3 forward = transform.position - cam.transform.position;
         forward.Scale(new Vector3(1, 0, 1));
-        forward.Normalize();
+        //forward.Normalize();
         velocity += forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed;
 
         Vector3 right = new Vector3(forward.z, 0, -forward.x);
         right.Scale(new Vector3(1, 0, 1));
-        right.Normalize();
+        //right.Normalize();
         velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
 
         CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
