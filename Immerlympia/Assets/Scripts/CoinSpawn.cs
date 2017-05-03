@@ -39,7 +39,7 @@ public class CoinSpawn : MonoBehaviour {
             if (goodPos && r > minRadius)
                 break;
             goodPos = false;
-            Debug.Log("Pos: " + pos + " | goodPos: " + goodPos);
+            //Debug.Log("Pos: " + pos + " | goodPos: " + goodPos);
         }
 
         if (goodPos) {

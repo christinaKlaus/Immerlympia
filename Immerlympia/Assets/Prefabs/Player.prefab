@@ -2693,7 +2693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
-  walkSpeed: 11
+  walkSpeed: 0.5
   jumpSpeed: 9.5
   maxJumps: 0
 --- !u!136 &136235605069072416
