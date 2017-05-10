@@ -876,7 +876,7 @@ MonoBehaviour:
   walkSpeed: 0.5
   jumpSpeed: 17
   maxJumps: 2
-  smooth: 2
+  smooth: 2000
 --- !u!114 &114902503161932230
 MonoBehaviour:
   m_ObjectHideFlags: 1

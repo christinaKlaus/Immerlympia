@@ -18,7 +18,7 @@ public class PlayerCollision : MonoBehaviour {
         Vector3 direction = new Vector3(forward.x, yVelocity, forward.y) * Time.fixedDeltaTime;
 		RaycastHit hit;
 		bool hitBool = Physics.CapsuleCast(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 0.4f, direction, out hit, 1f);
-		Debug.Log(direction);
+//		Debug.Log(direction);
 		if(!hitBool){
 			rigid.MovePosition(rigid.position + direction);
 			

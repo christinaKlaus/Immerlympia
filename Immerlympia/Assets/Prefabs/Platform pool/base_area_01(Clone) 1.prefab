@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d8953de3a6e2c45b17cb8f2d373608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetimeRange: {x: 5, y: 15}
+  lifetimeRange: {x: 15, y: 30}
   fallSpeed: 11
   warning: 5
   shakiness: 20

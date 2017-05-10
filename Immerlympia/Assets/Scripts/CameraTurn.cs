@@ -22,7 +22,7 @@ public class CameraTurn : MonoBehaviour {
         //Debug.Log(timer);
         if (timer < journeyTime) {
             float angle = Mathf.LerpAngle(start, end, timer / journeyTime);
-            Debug.Log(angle);
+//            Debug.Log(angle);
             transform.rotation = Quaternion.Euler(0, angle, 0);
         }
 
