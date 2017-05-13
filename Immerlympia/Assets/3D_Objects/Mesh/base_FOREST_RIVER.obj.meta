@@ -1,0 +1,236 @@
+fileFormatVersion: 2
+guid: 82e3ddfa9076cfa4ebcc2796e9424d3d
+timeCreated: 1494714335
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: all_grass
+    100002: all_grass_MeshPart0
+    100004: all_grass_MeshPart1
+    100006: all_grass_MeshPart2
+    100008: all_grass_MeshPart3
+    100010: all_grass_MeshPart4
+    100012: //RootNode
+    100014: FOREST_RIVER
+    100016: GeoSphere015
+    100018: GeoSphere016
+    100020: GeoSphere017
+    100022: GeoSphere018
+    100024: GeoSphere019
+    100026: GeoSphere020
+    100028: GeoSphere021
+    100030: GeoSphere022
+    100032: GeoSphere023
+    100034: GeoSphere024
+    100036: GeoSphere025
+    100038: GeoSphere026
+    100040: river_mesh001
+    100042: stones01
+    100044: stones02
+    100046: stones03
+    100048: stones04
+    100050: stones05
+    100052: stones06
+    100054: stones07
+    100056: stones08
+    100058: stones09
+    100060: stones10
+    100062: stones11
+    100064: tree
+    400000: all_grass
+    400002: all_grass_MeshPart0
+    400004: all_grass_MeshPart1
+    400006: all_grass_MeshPart2
+    400008: all_grass_MeshPart3
+    400010: all_grass_MeshPart4
+    400012: //RootNode
+    400014: FOREST_RIVER
+    400016: GeoSphere015
+    400018: GeoSphere016
+    400020: GeoSphere017
+    400022: GeoSphere018
+    400024: GeoSphere019
+    400026: GeoSphere020
+    400028: GeoSphere021
+    400030: GeoSphere022
+    400032: GeoSphere023
+    400034: GeoSphere024
+    400036: GeoSphere025
+    400038: GeoSphere026
+    400040: river_mesh001
+    400042: stones01
+    400044: stones02
+    400046: stones03
+    400048: stones04
+    400050: stones05
+    400052: stones06
+    400054: stones07
+    400056: stones08
+    400058: stones09
+    400060: stones10
+    400062: stones11
+    400064: tree
+    2300000: all_grass_MeshPart0
+    2300002: all_grass_MeshPart1
+    2300004: all_grass_MeshPart2
+    2300006: all_grass_MeshPart3
+    2300008: all_grass_MeshPart4
+    2300010: FOREST_RIVER
+    2300012: GeoSphere015
+    2300014: GeoSphere016
+    2300016: GeoSphere017
+    2300018: GeoSphere018
+    2300020: GeoSphere019
+    2300022: GeoSphere020
+    2300024: GeoSphere021
+    2300026: GeoSphere022
+    2300028: GeoSphere023
+    2300030: GeoSphere024
+    2300032: GeoSphere025
+    2300034: GeoSphere026
+    2300036: river_mesh001
+    2300038: stones01
+    2300040: stones02
+    2300042: stones03
+    2300044: stones04
+    2300046: stones05
+    2300048: stones06
+    2300050: stones07
+    2300052: stones08
+    2300054: stones09
+    2300056: stones10
+    2300058: stones11
+    2300060: tree
+    3300000: all_grass_MeshPart0
+    3300002: all_grass_MeshPart1
+    3300004: all_grass_MeshPart2
+    3300006: all_grass_MeshPart3
+    3300008: all_grass_MeshPart4
+    3300010: FOREST_RIVER
+    3300012: GeoSphere015
+    3300014: GeoSphere016
+    3300016: GeoSphere017
+    3300018: GeoSphere018
+    3300020: GeoSphere019
+    3300022: GeoSphere020
+    3300024: GeoSphere021
+    3300026: GeoSphere022
+    3300028: GeoSphere023
+    3300030: GeoSphere024
+    3300032: GeoSphere025
+    3300034: GeoSphere026
+    3300036: river_mesh001
+    3300038: stones01
+    3300040: stones02
+    3300042: stones03
+    3300044: stones04
+    3300046: stones05
+    3300048: stones06
+    3300050: stones07
+    3300052: stones08
+    3300054: stones09
+    3300056: stones10
+    3300058: stones11
+    3300060: tree
+    4300000: all_grass_MeshPart0
+    4300002: all_grass_MeshPart1
+    4300004: all_grass_MeshPart2
+    4300006: all_grass_MeshPart3
+    4300008: all_grass_MeshPart4
+    4300010: FOREST_RIVER
+    4300012: GeoSphere015
+    4300014: GeoSphere016
+    4300016: GeoSphere017
+    4300018: GeoSphere018
+    4300020: GeoSphere019
+    4300022: GeoSphere020
+    4300024: GeoSphere021
+    4300026: GeoSphere022
+    4300028: GeoSphere023
+    4300030: GeoSphere024
+    4300032: GeoSphere025
+    4300034: GeoSphere026
+    4300036: river_mesh001
+    4300038: stones01
+    4300040: stones02
+    4300042: stones03
+    4300044: stones04
+    4300046: stones05
+    4300048: stones06
+    4300050: stones07
+    4300052: stones08
+    4300054: stones09
+    4300056: stones10
+    4300058: stones11
+    4300060: tree
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
