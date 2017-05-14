@@ -15,7 +15,8 @@ public class Playercontroller : MonoBehaviour {
 
     private int jumps;
     private float smoothUp;
-    //private float airborne = 0;
+    private float airborne = 0;
+
     Animator anim;
     GameObject player;
     Camera cam;
@@ -117,13 +118,16 @@ public class Playercontroller : MonoBehaviour {
         bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
 
 
-        if (body.velocity.y <= 0 && hitBool) {
+        if (playerCollision.yVelocity <= 0 && hitBool) {
             jumps = maxJumps;
         }
 
-        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0) {
-            playerCollision.yVelocity += jumpSpeed;
+        airborne += Time.deltaTime;
+
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f) {
+            playerCollision.yVelocity = Mathf.Max(playerCollision.yVelocity, 0) + jumpSpeed;
             jumps--;
+            airborne = 0;
         }
 
        

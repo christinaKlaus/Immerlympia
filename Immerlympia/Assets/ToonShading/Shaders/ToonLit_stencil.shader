@@ -1,4 +1,4 @@
-Shader "Toon/Lit" {
+Shader "Toon/Lit_stencil" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
@@ -9,6 +9,15 @@ Shader "Toon/Lit" {
 		Tags { "RenderType" = "Opaque" } // wann wird es gerendert? opaque -> zuerst 
 		LOD 200
 		
+		Stencil
+		{
+			Ref 1
+			Comp Always
+			Pass Replace
+			ZFail Keep
+		}
+
+
 		CGPROGRAM
 			#pragma surface surf ToonRamp
 

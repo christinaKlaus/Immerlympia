@@ -1,14 +1,21 @@
-Shader "Toon/Lit" {
+Shader "Toon/Lit_replacable" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
+		_EdgeColor("XRay Edge Color", Color) = (0,0,0,0)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
 	}
 
 	SubShader {
-		Tags { "RenderType" = "Opaque" } // wann wird es gerendert? opaque -> zuerst 
+		Tags {	"Queue" = "Geometry-1"
+				"RenderType" = "Opaque"
+				"XRay" = "ColoredOutline" 
+		} // wann wird es gerendert? opaque -> zuerst 
+		
 		LOD 200
 		
+
+
 		CGPROGRAM
 			#pragma surface surf ToonRamp
 
