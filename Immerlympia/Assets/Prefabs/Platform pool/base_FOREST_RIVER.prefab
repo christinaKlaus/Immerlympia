@@ -2582,7 +2582,7 @@ MonoBehaviour:
   lifetimeRange: {x: 15, y: 30}
   fallSpeed: 11
   warning: 5
-  shakiness: 0.5
+  shakiness: 0.1
   appearTime: 3
 --- !u!114 &114169404018487782
 MonoBehaviour:

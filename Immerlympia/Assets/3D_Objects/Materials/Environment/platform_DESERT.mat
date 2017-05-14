@@ -131,3 +131,6 @@ Material:
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _ScrollDir
+      second: {r: 0, g: 0, b: 0, a: 0}

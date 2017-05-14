@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: platform_FOREST
+  m_Name: platform_FOREST_water
   m_Shader: {fileID: 4800000, guid: dd5254c3e4a03ea499321d551fe78220, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 8fa73e774aa51f849b3ea4bf06ce32bc, type: 3}
+        m_Texture: {fileID: 2800000, guid: c3de672962e4aa543beeb70645962c8c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -133,4 +133,4 @@ Material:
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _ScrollDir
-      second: {r: 0, g: 0, b: 0, a: 0}
+      second: {r: 0, g: -0.1, b: 0, a: 0}
