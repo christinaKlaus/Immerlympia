@@ -11,14 +11,16 @@ public class Playercontroller : MonoBehaviour {
     public float walkSpeed;
     public float jumpSpeed;
     public int maxJumps;
+    public float smooth; // 0-1 Range, wenn 1 -> 1 Sek bis max Geschwindigkeit
 
     private int jumps;
-
+    private float smoothUp;
+    //private float airborne = 0;
     Animator anim;
     GameObject player;
     Camera cam;
     Rigidbody body;
-
+    PlayerCollision playerCollision;
     
     // bool isJumping = true;
 
@@ -28,19 +30,19 @@ public class Playercontroller : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         cam = Camera.current;
         anim = GetComponent<Animator>();
-
+        playerCollision = GetComponent<PlayerCollision>();
         switch (playerNumber) {
             case 0:
-                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.red;
                 break;
             case 1:
-                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.blue;
+                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.blue;
                 break;
             case 2:
-                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.green;
+                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.green;
                 break;
-            case 3:
-                transform.GetChild(0).GetComponent<Renderer>().material.color = Color.yellow;
+           case 3:
+                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.yellow;
                 break;
         }
     }
@@ -48,7 +50,14 @@ public class Playercontroller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // body.velocity = new Vector3(Input.GetAxis("Horizontal")*walkSpeed, body.velocity.y, Input.GetAxis("Vertical")*walkSpeed);
-        
+        if(smoothUp < 1 && (Input.GetAxis("Vertical" + playerNumber) != 0 || Input.GetAxis("Horizontal" + playerNumber) != 0)){
+            smoothUp += smooth * Time.deltaTime; 
+        }else{
+            if(smoothUp > 0)
+                smoothUp -= smooth * Time.deltaTime;
+        }
+
+
         if (cam == null)
             cam = Camera.current;
 
@@ -80,19 +89,20 @@ public class Playercontroller : MonoBehaviour {
     }
 
     private void movement() {
-        Vector3 velocity = body.velocity;
-        velocity.Scale(new Vector3(0, 1, 0));
 
+        
+        Vector3 velocity = Vector3.zero;
+        
         // <--- Basic movement --->
         Vector3 forward = transform.position - cam.transform.position;
         forward.Scale(new Vector3(1, 0, 1));
         forward.Normalize();
-        velocity += forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed;
+        velocity = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed * smoothUp;
 
         Vector3 right = new Vector3(forward.z, 0, -forward.x);
         right.Scale(new Vector3(1, 0, 1));
         right.Normalize();
-        velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
+        velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed * smoothUp;
 
         CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
 
@@ -106,12 +116,13 @@ public class Playercontroller : MonoBehaviour {
         RaycastHit hitGround;
         bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
 
+
         if (body.velocity.y <= 0 && hitBool) {
             jumps = maxJumps;
         }
 
         if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0) {
-            velocity.y = jumpSpeed;
+            playerCollision.yVelocity += jumpSpeed;
             jumps--;
         }
 
@@ -128,7 +139,9 @@ public class Playercontroller : MonoBehaviour {
         //*/
         
         // <--- Setting velocity -->
-        body.velocity = velocity;
+        playerCollision.forward.x = velocity.x;
+        playerCollision.forward.y = velocity.z;
+
         velocity.Scale(new Vector3(1, 0, 1));
 
         anim.SetFloat("speed", velocity.magnitude);
