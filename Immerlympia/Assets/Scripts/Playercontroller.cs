@@ -15,7 +15,7 @@ public class Playercontroller : MonoBehaviour {
 
     private int jumps;
     private float smoothUp;
-    private float airborn = 0;
+    //private float airborne = 0;
     Animator anim;
     GameObject player;
     Camera cam;
@@ -91,18 +91,17 @@ public class Playercontroller : MonoBehaviour {
     private void movement() {
 
         
-        Vector3 velocity = body.velocity;
-        velocity.Scale(new Vector3(0, 1, 0));
-
+        Vector3 velocity = Vector3.zero;
+        
         // <--- Basic movement --->
         Vector3 forward = transform.position - cam.transform.position;
         forward.Scale(new Vector3(1, 0, 1));
-        //forward.Normalize();
-        velocity += forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed * smoothUp;
+        forward.Normalize();
+        velocity = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed * smoothUp;
 
         Vector3 right = new Vector3(forward.z, 0, -forward.x);
         right.Scale(new Vector3(1, 0, 1));
-        //right.Normalize();
+        right.Normalize();
         velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed * smoothUp;
 
         CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
