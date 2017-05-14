@@ -34,16 +34,16 @@ public class Playercontroller : MonoBehaviour {
         playerCollision = GetComponent<PlayerCollision>();
         switch (playerNumber) {
             case 0:
-                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.red;
+                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
                 break;
             case 1:
-                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.blue;
+                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
                 break;
             case 2:
-                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.green;
+                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
                 break;
            case 3:
-                transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().material.color = Color.yellow;
+                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
                 break;
         }
     }
