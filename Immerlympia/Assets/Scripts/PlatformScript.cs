@@ -28,7 +28,8 @@ public class PlatformScript : MonoBehaviour {
         //Debug.Log(timer);
 
         if (timer < warning) {
-            transform.GetChild(0).localPosition = new Vector3(Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness));
+            for (int i = 0; i < transform.childCount; i++)
+                transform.GetChild(i).localPosition = new Vector3(Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness));
         }
 
         if(timer > 0) {
