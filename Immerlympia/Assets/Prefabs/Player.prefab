@@ -873,10 +873,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
-  walkSpeed: 0.5
+  walkSpeed: 11
   jumpSpeed: 17
   maxJumps: 2
-  smooth: 2000
+  smooth: 1
 --- !u!114 &114902503161932230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -916,7 +916,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1635aecfc86b3e0438dc91f98fb3846c, type: 2}
+  - {fileID: 2100000, guid: 1b5cbb2973042144cacd4a47b142cf38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
