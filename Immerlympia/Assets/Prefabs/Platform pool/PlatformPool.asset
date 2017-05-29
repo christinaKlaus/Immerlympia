@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: PlatformPool
   m_EditorClassIdentifier: 
   platformPool:
-  - {fileID: 1253848716987062, guid: 9bb536470dc1d154189e921ade57e085, type: 2}
-  - {fileID: 1328971587098262, guid: 6431a66dbb98e5040a41106c8d96f18c, type: 2}
-  - {fileID: 1793962402865666, guid: 4ef792fdc33639243aea89cf8076d9ce, type: 2}
+  - {fileID: 1580457316693142, guid: 4ef792fdc33639243aea89cf8076d9ce, type: 2}
+  - {fileID: 1879211291933598, guid: 54f93fda7bf18f045952da4a72933eac, type: 2}
+  - {fileID: 1693630188887354, guid: 9bb536470dc1d154189e921ade57e085, type: 2}

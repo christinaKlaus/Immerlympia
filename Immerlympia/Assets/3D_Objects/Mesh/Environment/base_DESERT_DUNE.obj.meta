@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a66056e7490bc3a41ad3d84ee42f7355
-timeCreated: 1494767826
+guid: ff2a12a331599a34f8767a4531e7e4a7
+timeCreated: 1496060811
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -15,16 +15,20 @@ ModelImporter:
     100014: formation_002
     100016: formation_003
     100018: formation_004
-    100020: formation_01
-    100022: rod_01
-    100024: rod_02
-    100026: rod_03
-    100028: ruin_01
-    100030: ruin_02
-    100032: ruin_03
-    100034: ruin_04
-    100036: tent00
-    100038: tent01
+    100020: formation_005
+    100022: formation_006
+    100024: formation_007
+    100026: formation_01
+    100028: rod_004
+    100030: rod_005
+    100032: rod_006
+    100034: rod_007
+    100036: rod_008
+    100038: rod_01
+    100040: rod_02
+    100042: rod_03
+    100044: tent00
+    100046: tent01
     400000: //RootNode
     400002: cactus_01
     400004: cactus_02
@@ -35,16 +39,20 @@ ModelImporter:
     400014: formation_002
     400016: formation_003
     400018: formation_004
-    400020: formation_01
-    400022: rod_01
-    400024: rod_02
-    400026: rod_03
-    400028: ruin_01
-    400030: ruin_02
-    400032: ruin_03
-    400034: ruin_04
-    400036: tent00
-    400038: tent01
+    400020: formation_005
+    400022: formation_006
+    400024: formation_007
+    400026: formation_01
+    400028: rod_004
+    400030: rod_005
+    400032: rod_006
+    400034: rod_007
+    400036: rod_008
+    400038: rod_01
+    400040: rod_02
+    400042: rod_03
+    400044: tent00
+    400046: tent01
     2300000: cactus_01
     2300002: cactus_02
     2300004: cactus_03
@@ -54,16 +62,20 @@ ModelImporter:
     2300012: formation_002
     2300014: formation_003
     2300016: formation_004
-    2300018: formation_01
-    2300020: rod_01
-    2300022: rod_02
-    2300024: rod_03
-    2300026: ruin_01
-    2300028: ruin_02
-    2300030: ruin_03
-    2300032: ruin_04
-    2300034: tent00
-    2300036: tent01
+    2300018: formation_005
+    2300020: formation_006
+    2300022: formation_007
+    2300024: formation_01
+    2300026: rod_004
+    2300028: rod_005
+    2300030: rod_006
+    2300032: rod_007
+    2300034: rod_008
+    2300036: rod_01
+    2300038: rod_02
+    2300040: rod_03
+    2300042: tent00
+    2300044: tent01
     3300000: cactus_01
     3300002: cactus_02
     3300004: cactus_03
@@ -73,16 +85,20 @@ ModelImporter:
     3300012: formation_002
     3300014: formation_003
     3300016: formation_004
-    3300018: formation_01
-    3300020: rod_01
-    3300022: rod_02
-    3300024: rod_03
-    3300026: ruin_01
-    3300028: ruin_02
-    3300030: ruin_03
-    3300032: ruin_04
-    3300034: tent00
-    3300036: tent01
+    3300018: formation_005
+    3300020: formation_006
+    3300022: formation_007
+    3300024: formation_01
+    3300026: rod_004
+    3300028: rod_005
+    3300030: rod_006
+    3300032: rod_007
+    3300034: rod_008
+    3300036: rod_01
+    3300038: rod_02
+    3300040: rod_03
+    3300042: tent00
+    3300044: tent01
     4300000: cactus_01
     4300002: cactus_02
     4300004: cactus_03
@@ -92,16 +108,20 @@ ModelImporter:
     4300012: formation_002
     4300014: formation_003
     4300016: formation_004
-    4300018: formation_01
-    4300020: rod_01
-    4300022: rod_02
-    4300024: rod_03
-    4300026: ruin_01
-    4300028: ruin_02
-    4300030: ruin_03
-    4300032: ruin_04
-    4300034: tent00
-    4300036: tent01
+    4300018: formation_005
+    4300020: formation_006
+    4300022: formation_007
+    4300024: formation_01
+    4300026: rod_004
+    4300028: rod_005
+    4300030: rod_006
+    4300032: rod_007
+    4300034: rod_008
+    4300036: rod_01
+    4300038: rod_02
+    4300040: rod_03
+    4300042: tent00
+    4300044: tent01
   materials:
     importMaterials: 1
     materialName: 0
@@ -112,6 +132,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 

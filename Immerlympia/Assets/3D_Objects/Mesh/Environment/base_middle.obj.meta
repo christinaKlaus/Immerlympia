@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 956c40690ef28be4c9f6a7908d48019e
-timeCreated: 1492605697
+guid: 545591a4cebe59f4fa5530bea74e42f8
+timeCreated: 1496060809
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Fabi_Object
+    100002: Cylinder005
     400000: //RootNode
-    400002: Fabi_Object
-    2300000: Fabi_Object
-    3300000: Fabi_Object
-    4300000: Fabi_Object
+    400002: Cylinder005
+    2300000: Cylinder005
+    3300000: Cylinder005
+    4300000: Cylinder005
   materials:
     importMaterials: 1
     materialName: 0
@@ -22,6 +22,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
