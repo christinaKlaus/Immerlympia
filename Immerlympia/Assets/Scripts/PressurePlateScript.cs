@@ -15,7 +15,7 @@ public class PressurePlateScript : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider collider) {
-        Transform plateTransform = transform.GetChild(0);
+        
         float angle = Mathf.Atan2(-transform.position.x, -transform.position.z) * Mathf.Rad2Deg;
         angle = Mathf.Round((angle - 30) / 120) * 120 + 30;
         GameObject cam = GameObject.Find("CameraTurn");
