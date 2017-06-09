@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: be71ca6d2868a6d4090c09798ae6c111
-timeCreated: 1496061662
+guid: 813f0bfabadcc3e4a9774e7273c45dc0
+timeCreated: 1497025571
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -20,19 +20,18 @@ ModelImporter:
     100024: GeoSphere025
     100026: GeoSphere026
     100028: river_mesh001
-    100030: scatterobject
-    100032: stones01
-    100034: stones02
-    100036: stones03
-    100038: stones04
-    100040: stones05
-    100042: stones06
-    100044: stones07
-    100046: stones08
-    100048: stones09
-    100050: stones10
-    100052: stones11
-    100054: tree
+    100030: stones01
+    100032: stones02
+    100034: stones03
+    100036: stones04
+    100038: stones05
+    100040: stones06
+    100042: stones07
+    100044: stones08
+    100046: stones09
+    100048: stones10
+    100050: stones11
+    100052: tree
     400000: //RootNode
     400002: FOREST_RIVER
     400004: GeoSphere015
@@ -48,19 +47,18 @@ ModelImporter:
     400024: GeoSphere025
     400026: GeoSphere026
     400028: river_mesh001
-    400030: scatterobject
-    400032: stones01
-    400034: stones02
-    400036: stones03
-    400038: stones04
-    400040: stones05
-    400042: stones06
-    400044: stones07
-    400046: stones08
-    400048: stones09
-    400050: stones10
-    400052: stones11
-    400054: tree
+    400030: stones01
+    400032: stones02
+    400034: stones03
+    400036: stones04
+    400038: stones05
+    400040: stones06
+    400042: stones07
+    400044: stones08
+    400046: stones09
+    400048: stones10
+    400050: stones11
+    400052: tree
     2300000: FOREST_RIVER
     2300002: GeoSphere015
     2300004: GeoSphere016
@@ -75,19 +73,18 @@ ModelImporter:
     2300022: GeoSphere025
     2300024: GeoSphere026
     2300026: river_mesh001
-    2300028: scatterobject
-    2300030: stones01
-    2300032: stones02
-    2300034: stones03
-    2300036: stones04
-    2300038: stones05
-    2300040: stones06
-    2300042: stones07
-    2300044: stones08
-    2300046: stones09
-    2300048: stones10
-    2300050: stones11
-    2300052: tree
+    2300028: stones01
+    2300030: stones02
+    2300032: stones03
+    2300034: stones04
+    2300036: stones05
+    2300038: stones06
+    2300040: stones07
+    2300042: stones08
+    2300044: stones09
+    2300046: stones10
+    2300048: stones11
+    2300050: tree
     3300000: FOREST_RIVER
     3300002: GeoSphere015
     3300004: GeoSphere016
@@ -102,19 +99,18 @@ ModelImporter:
     3300022: GeoSphere025
     3300024: GeoSphere026
     3300026: river_mesh001
-    3300028: scatterobject
-    3300030: stones01
-    3300032: stones02
-    3300034: stones03
-    3300036: stones04
-    3300038: stones05
-    3300040: stones06
-    3300042: stones07
-    3300044: stones08
-    3300046: stones09
-    3300048: stones10
-    3300050: stones11
-    3300052: tree
+    3300028: stones01
+    3300030: stones02
+    3300032: stones03
+    3300034: stones04
+    3300036: stones05
+    3300038: stones06
+    3300040: stones07
+    3300042: stones08
+    3300044: stones09
+    3300046: stones10
+    3300048: stones11
+    3300050: tree
     4300000: FOREST_RIVER
     4300002: GeoSphere015
     4300004: GeoSphere016
@@ -129,19 +125,18 @@ ModelImporter:
     4300022: GeoSphere025
     4300024: GeoSphere026
     4300026: river_mesh001
-    4300028: scatterobject
-    4300030: stones01
-    4300032: stones02
-    4300034: stones03
-    4300036: stones04
-    4300038: stones05
-    4300040: stones06
-    4300042: stones07
-    4300044: stones08
-    4300046: stones09
-    4300048: stones10
-    4300050: stones11
-    4300052: tree
+    4300028: stones01
+    4300030: stones02
+    4300032: stones03
+    4300034: stones04
+    4300036: stones05
+    4300038: stones06
+    4300040: stones07
+    4300042: stones08
+    4300044: stones09
+    4300046: stones10
+    4300048: stones11
+    4300050: tree
   materials:
     importMaterials: 1
     materialName: 0

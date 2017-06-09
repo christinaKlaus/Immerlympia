@@ -1,87 +1,52 @@
 fileFormatVersion: 2
-guid: cb7184ab9e760e74097ab7ee734ad18c
-timeCreated: 1496061663
+guid: 254520d8e6724bd4ca9cc5039f513e16
+timeCreated: 1497025568
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
     100002: CITY_RUINS004
-    100004: debris_large002
-    100006: fallen_wall002
-    100008: rusted_pipe004
-    100010: rusted_pipe005
+    100004: fallen_wall002
+    100006: rusted_pipe005
+    100008: rusted_pipe006
+    100010: rusted_pipe007
     100012: small_wall007
-    100014: small_wall008
-    100016: small_wall009
-    100018: small_wall010
-    100020: small_wall011
-    100022: small_wall012
-    100024: wall_high003
-    100026: wall_high004
-    100028: rusted_pipe006
-    100030: rusted_pipe007
+    100014: wall_high003
+    100016: wall_high004
     400000: //RootNode
     400002: CITY_RUINS004
-    400004: debris_large002
-    400006: fallen_wall002
-    400008: rusted_pipe004
-    400010: rusted_pipe005
+    400004: fallen_wall002
+    400006: rusted_pipe005
+    400008: rusted_pipe006
+    400010: rusted_pipe007
     400012: small_wall007
-    400014: small_wall008
-    400016: small_wall009
-    400018: small_wall010
-    400020: small_wall011
-    400022: small_wall012
-    400024: wall_high003
-    400026: wall_high004
-    400028: rusted_pipe006
-    400030: rusted_pipe007
+    400014: wall_high003
+    400016: wall_high004
     2300000: CITY_RUINS004
-    2300002: debris_large002
-    2300004: fallen_wall002
-    2300006: rusted_pipe004
-    2300008: rusted_pipe005
+    2300002: fallen_wall002
+    2300004: rusted_pipe005
+    2300006: rusted_pipe006
+    2300008: rusted_pipe007
     2300010: small_wall007
-    2300012: small_wall008
-    2300014: small_wall009
-    2300016: small_wall010
-    2300018: small_wall011
-    2300020: small_wall012
-    2300022: wall_high003
-    2300024: wall_high004
-    2300026: rusted_pipe006
-    2300028: rusted_pipe007
+    2300012: wall_high003
+    2300014: wall_high004
     3300000: CITY_RUINS004
-    3300002: debris_large002
-    3300004: fallen_wall002
-    3300006: rusted_pipe004
-    3300008: rusted_pipe005
+    3300002: fallen_wall002
+    3300004: rusted_pipe005
+    3300006: rusted_pipe006
+    3300008: rusted_pipe007
     3300010: small_wall007
-    3300012: small_wall008
-    3300014: small_wall009
-    3300016: small_wall010
-    3300018: small_wall011
-    3300020: small_wall012
-    3300022: wall_high003
-    3300024: wall_high004
-    3300026: rusted_pipe006
-    3300028: rusted_pipe007
+    3300012: wall_high003
+    3300014: wall_high004
     4300000: CITY_RUINS004
-    4300002: debris_large002
-    4300004: fallen_wall002
-    4300006: rusted_pipe004
-    4300008: rusted_pipe005
+    4300002: fallen_wall002
+    4300004: rusted_pipe005
+    4300006: rusted_pipe006
+    4300008: rusted_pipe007
     4300010: small_wall007
-    4300012: small_wall008
-    4300014: small_wall009
-    4300016: small_wall010
-    4300018: small_wall011
-    4300020: small_wall012
-    4300022: wall_high003
-    4300024: wall_high004
-    4300026: rusted_pipe006
-    4300028: rusted_pipe007
+    4300012: wall_high003
+    4300014: wall_high004
   materials:
     importMaterials: 1
     materialName: 0

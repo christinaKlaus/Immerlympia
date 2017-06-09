@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ff2a12a331599a34f8767a4531e7e4a7
-timeCreated: 1496060811
+guid: 0b38d103291785e4f859a83dff2aab79
+timeCreated: 1497025567
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -23,12 +23,10 @@ ModelImporter:
     100030: rod_005
     100032: rod_006
     100034: rod_007
-    100036: rod_008
-    100038: rod_01
-    100040: rod_02
-    100042: rod_03
-    100044: tent00
-    100046: tent01
+    100036: rod_02
+    100038: rod_03
+    100040: tent00
+    100042: tent01
     400000: //RootNode
     400002: cactus_01
     400004: cactus_02
@@ -47,12 +45,10 @@ ModelImporter:
     400030: rod_005
     400032: rod_006
     400034: rod_007
-    400036: rod_008
-    400038: rod_01
-    400040: rod_02
-    400042: rod_03
-    400044: tent00
-    400046: tent01
+    400036: rod_02
+    400038: rod_03
+    400040: tent00
+    400042: tent01
     2300000: cactus_01
     2300002: cactus_02
     2300004: cactus_03
@@ -70,12 +66,10 @@ ModelImporter:
     2300028: rod_005
     2300030: rod_006
     2300032: rod_007
-    2300034: rod_008
-    2300036: rod_01
-    2300038: rod_02
-    2300040: rod_03
-    2300042: tent00
-    2300044: tent01
+    2300034: rod_02
+    2300036: rod_03
+    2300038: tent00
+    2300040: tent01
     3300000: cactus_01
     3300002: cactus_02
     3300004: cactus_03
@@ -93,12 +87,10 @@ ModelImporter:
     3300028: rod_005
     3300030: rod_006
     3300032: rod_007
-    3300034: rod_008
-    3300036: rod_01
-    3300038: rod_02
-    3300040: rod_03
-    3300042: tent00
-    3300044: tent01
+    3300034: rod_02
+    3300036: rod_03
+    3300038: tent00
+    3300040: tent01
     4300000: cactus_01
     4300002: cactus_02
     4300004: cactus_03
@@ -116,12 +108,10 @@ ModelImporter:
     4300028: rod_005
     4300030: rod_006
     4300032: rod_007
-    4300034: rod_008
-    4300036: rod_01
-    4300038: rod_02
-    4300040: rod_03
-    4300042: tent00
-    4300044: tent01
+    4300034: rod_02
+    4300036: rod_03
+    4300038: tent00
+    4300040: tent01
   materials:
     importMaterials: 1
     materialName: 0
