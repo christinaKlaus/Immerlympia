@@ -14,6 +14,7 @@ public class Playercontroller : MonoBehaviour {
     public float smooth; // 0-1 Range, wenn 1 -> 1 Sek bis max Geschwindigkeit
 
     private int jumps;
+    private int timesJumped;
     private float smoothUp;
     private float airborne = 0;
 
@@ -32,6 +33,8 @@ public class Playercontroller : MonoBehaviour {
         cam = Camera.current;
         anim = GetComponent<Animator>();
         playerCollision = GetComponent<PlayerCollision>();
+        
+        /*
         switch (playerNumber) {
             case 0:
                 transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
@@ -45,7 +48,7 @@ public class Playercontroller : MonoBehaviour {
            case 3:
                 transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
                 break;
-        }
+        } */
     }
 	
 	// Update is called once per frame
@@ -73,7 +76,7 @@ public class Playercontroller : MonoBehaviour {
     // Hitting hittable things (with Dummy script attached to them)
     private void punch() {
         if(Input.GetButtonDown("Punch" + playerNumber)) {
-            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
+            //Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
             
             RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
             anim.SetTrigger("punching");
@@ -120,6 +123,7 @@ public class Playercontroller : MonoBehaviour {
 
         if (playerCollision.yVelocity <= 0 && hitBool) {
             jumps = maxJumps;
+            timesJumped = 0;
         }
 
         airborne += Time.deltaTime;
@@ -127,9 +131,14 @@ public class Playercontroller : MonoBehaviour {
         if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f) {
             playerCollision.yVelocity = Mathf.Max(playerCollision.yVelocity, 0) + jumpSpeed;
             jumps--;
+            timesJumped++;
             airborne = 0;
         }
-
+        
+        if(timesJumped > 1) {
+            anim.SetTrigger("doubleJump");
+            Debug.Log("doubleJump " + timesJumped);
+        }
        
         anim.SetBool("isJumping", !hitBool);
         // Debug.DrawRay(transform.position,- transform.up);
