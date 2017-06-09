@@ -19,6 +19,8 @@ ModelImporter:
     100022: small_wall012
     100024: wall_high003
     100026: wall_high004
+    100028: rusted_pipe006
+    100030: rusted_pipe007
     400000: //RootNode
     400002: CITY_RUINS004
     400004: debris_large002
@@ -33,6 +35,8 @@ ModelImporter:
     400022: small_wall012
     400024: wall_high003
     400026: wall_high004
+    400028: rusted_pipe006
+    400030: rusted_pipe007
     2300000: CITY_RUINS004
     2300002: debris_large002
     2300004: fallen_wall002
@@ -46,6 +50,8 @@ ModelImporter:
     2300020: small_wall012
     2300022: wall_high003
     2300024: wall_high004
+    2300026: rusted_pipe006
+    2300028: rusted_pipe007
     3300000: CITY_RUINS004
     3300002: debris_large002
     3300004: fallen_wall002
@@ -59,6 +65,8 @@ ModelImporter:
     3300020: small_wall012
     3300022: wall_high003
     3300024: wall_high004
+    3300026: rusted_pipe006
+    3300028: rusted_pipe007
     4300000: CITY_RUINS004
     4300002: debris_large002
     4300004: fallen_wall002
@@ -72,6 +80,8 @@ ModelImporter:
     4300020: small_wall012
     4300022: wall_high003
     4300024: wall_high004
+    4300026: rusted_pipe006
+    4300028: rusted_pipe007
   materials:
     importMaterials: 1
     materialName: 0
