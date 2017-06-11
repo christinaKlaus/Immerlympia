@@ -11,13 +11,13 @@ public class ScoreUpdate : MonoBehaviour {
     private void Start() {
         TextComponent = GetComponent<Text>();
         TextComponent.text = player.ToString() + ": ";
-        TextComponent.text += "" + player.GetComponent<Playercontroller>().score;
+        TextComponent.text += "" + player.GetComponent<PlayerController>().score;
     }
 
     // Update is called once per frame
     void Update () {
 
         TextComponent.text = player.ToString() + ": ";
-        TextComponent.text += "" + player.GetComponent<Playercontroller>().score;
+        TextComponent.text += "" + player.GetComponent<PlayerController>().score;
     }
 }

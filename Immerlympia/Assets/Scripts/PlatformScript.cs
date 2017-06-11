@@ -14,6 +14,8 @@ public class PlatformScript : MonoBehaviour {
     private float timer = 8;
     private float duration;
 
+    private Vector3[] basePos;
+
     // Use this for initialization
     void Start () {
         timer = Random.Range(lifetimeRange.x, lifetimeRange.y);
@@ -28,8 +30,16 @@ public class PlatformScript : MonoBehaviour {
         //Debug.Log(timer);
 
         if (timer < warning) {
+            if(basePos == null) {
+                basePos = new Vector3[transform.childCount];
+                for (int i = 0; i < transform.childCount; i++)
+                    basePos[i] = transform.GetChild(i).localPosition;
+            }
+
+            Vector3 offset = new Vector3(Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness));
+
             for (int i = 0; i < transform.childCount; i++)
-                transform.GetChild(i).localPosition = new Vector3(Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness));
+                transform.GetChild(i).localPosition = basePos[i] + offset;
         }
 
         if(timer > 0) {

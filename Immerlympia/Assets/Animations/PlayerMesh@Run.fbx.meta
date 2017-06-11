@@ -55,7 +55,7 @@ ModelImporter:
     400044: Root
     400046: Spine1
     400048: Spine2
-    7400000: Take 001
+    7400000: Run
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -79,7 +79,85 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 15
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/Hips_Main
+        weight: 1
+      - path: Root/Hips_Main/L_Hip
+        weight: 1
+      - path: Root/Hips_Main/L_Hip/L_Knee
+        weight: 1
+      - path: Root/Hips_Main/L_Hip/L_Knee/L_Foot
+        weight: 1
+      - path: Root/Hips_Main/L_Hip/L_Knee/L_Foot/L_Toe
+        weight: 1
+      - path: Root/Hips_Main/R_Hip
+        weight: 1
+      - path: Root/Hips_Main/R_Hip/R_Knee
+        weight: 1
+      - path: Root/Hips_Main/R_Hip/R_Knee/R_Foot
+        weight: 1
+      - path: Root/Hips_Main/R_Hip/R_Knee/R_Foot/R_Toe
+        weight: 1
+      - path: Root/Spine1
+        weight: 1
+      - path: Root/Spine1/Spine2
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/L_Collar
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/L_Collar/L_Shoulder
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/L_Collar/L_Shoulder/L_Elbow/L_Hand
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/Neck
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/Neck/Head
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/Neck/Head/Headdress
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/R_Collar
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/R_Collar/R_Shoulder
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Root/Spine1/Spine2/Chest/R_Collar/R_Shoulder/R_Elbow/R_Hand
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

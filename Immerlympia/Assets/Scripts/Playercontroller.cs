@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Playercontroller : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     
     [System.NonSerialized] public int score = 0;
@@ -29,7 +29,7 @@ public class Playercontroller : MonoBehaviour {
 	void Start () {
         player = gameObject;
         rigid = GetComponent<Rigidbody>();
-        cam = Camera.current;
+        cam = Camera.main;
         anim = GetComponent<Animator>();
                 
         /*
@@ -61,7 +61,7 @@ public class Playercontroller : MonoBehaviour {
 
 
         if (cam == null)
-            cam = Camera.current;
+            cam = Camera.main;
 
         if (cam == null)
             return;
