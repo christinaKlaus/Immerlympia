@@ -21,19 +21,17 @@ public class Playercontroller : MonoBehaviour {
     Animator anim;
     GameObject player;
     Camera cam;
-    Rigidbody body;
-    PlayerCollision playerCollision;
-    
+    Rigidbody rigid;
+       
     // bool isJumping = true;
 
 	// Use this for initialization
 	void Start () {
         player = gameObject;
-        body = GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();
         cam = Camera.current;
         anim = GetComponent<Animator>();
-        playerCollision = GetComponent<PlayerCollision>();
-        
+                
         /*
         switch (playerNumber) {
             case 0:
@@ -94,7 +92,6 @@ public class Playercontroller : MonoBehaviour {
 
     private void movement() {
 
-        
         Vector3 velocity = Vector3.zero;
         
         // <--- Basic movement --->
@@ -121,15 +118,17 @@ public class Playercontroller : MonoBehaviour {
         bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
 
 
-        if (playerCollision.yVelocity <= 0 && hitBool) {
+        if (rigid.velocity.y <= 0 && hitBool) {
             jumps = maxJumps;
             timesJumped = 0;
         }
 
         airborne += Time.deltaTime;
 
+        float yVelocity = rigid.velocity.y;
+
         if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f) {
-            playerCollision.yVelocity = Mathf.Max(playerCollision.yVelocity, 0) + jumpSpeed;
+            yVelocity = (Mathf.Max(rigid.velocity.y, 0) + jumpSpeed);
             jumps--;
             timesJumped++;
             airborne = 0;
@@ -152,10 +151,11 @@ public class Playercontroller : MonoBehaviour {
         //*/
         
         // <--- Setting velocity -->
-        playerCollision.forward.x = velocity.x;
-        playerCollision.forward.y = velocity.z;
-
+        
         velocity.Scale(new Vector3(1, 0, 1));
+        
+        Vector3 direction = new Vector3(velocity.x, yVelocity, velocity.z);
+        rigid.velocity = direction;
 
         anim.SetFloat("speed", velocity.magnitude);
 
@@ -171,10 +171,10 @@ public class Playercontroller : MonoBehaviour {
    
     public void CharacterDeath() {
 
-        if (body.transform.position.y < -50) {
+        if (rigid.transform.position.y < -50) {
             Debug.Log("Death of Player" + playerNumber);
             player.transform.position = new Vector3(0, 10, 0);
-            body.velocity = Vector3.zero;
+            rigid.velocity = Vector3.zero;
         }
     }
 }
