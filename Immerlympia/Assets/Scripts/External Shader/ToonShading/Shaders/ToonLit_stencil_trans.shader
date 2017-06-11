@@ -19,17 +19,17 @@ Shader "Toon/Lit_stencil_transparent" {
 			ColorMask 0
 		}
 		
-		/*Stencil
+		Stencil
 		{
 			Ref 1
 			Comp Always
 			Pass Replace
 			ZFail Keep
-		}*/
+		}
 
 
 		CGPROGRAM
-			#pragma surface surf Lambert alpha
+			#pragma surface surf Lambert //alpha
 
 			sampler2D _Ramp;
 			

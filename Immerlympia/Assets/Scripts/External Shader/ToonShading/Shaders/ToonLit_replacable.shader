@@ -56,7 +56,7 @@ Shader "Toon/Lit_replacable" {
 				half4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 				o.Albedo = c.rgb;
 				o.Alpha = c.a;
-				o.Emission = tex2D(_EmissionTex, IN.uv_MainTex) * _Color;
+				//o.Emission = tex2D(_EmissionTex, IN.uv_MainTex) * _Color;
 			}
 
 		ENDCG
