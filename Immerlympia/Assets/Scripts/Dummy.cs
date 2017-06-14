@@ -22,15 +22,24 @@ public class Dummy : MonoBehaviour {
 
 	}
 
-    public void damage(GameObject enemy) {
-        
-        if (rigid == null)
+    public void Damage(GameObject enemy) {
+
+
+
+        Rigidbody rigid = gameObject.GetComponent<Rigidbody>();
+        if (rigid == null) {
+            Debug.Log("No Rigidbody found");
             return;
+        }
         Debug.Log("Au!" + gameObject.name);
-        //Debug.Log("Au!" + gameObject.name + " | " + stunned);
-        //Vector3 hitDir = transform.position - enemy.transform.position;
+        //Debug.Log((gameObject.transform.position - enemy.transform.position).normalized);
+        Vector3 velocity = ((gameObject.transform.position - enemy.transform.position).normalized) * 100;
+        Debug.Log(velocity);
+        rigid.velocity = velocity;
+
         if (stunned < -5) //5 Sek unverwundbar
         stunned = 2;
+
 
     }
 }

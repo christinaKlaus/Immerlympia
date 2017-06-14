@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 
                 if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
 
-                dummy.damage(gameObject); // Let the object hit itself
+                dummy.Damage(gameObject); // Let the object hit itself
             }
 
         }
