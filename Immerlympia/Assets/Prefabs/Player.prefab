@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 95964280373542822}
   - component: {fileID: 114086650645494410}
   - component: {fileID: 114682687573988798}
+  - component: {fileID: 114770332860860084}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -582,7 +583,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582146413347442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.18, y: 1.5, z: -0.54}
+  m_LocalPosition: {x: -1.93, y: 1.5, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4932421326272350}
@@ -811,7 +812,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -860,6 +861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5b665f387edfa4caf2915d754fa288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockback: 20
+  stunTime: 1
+  cooldown: 1
 --- !u!114 &114682687573988798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,11 +875,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e605437834adf45b81199a8322f260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
+  canMove: 1
+  velocityReal: {x: 0, y: 0, z: 0}
+  playerNumber: 2
   walkSpeed: 6
+  acceleration: 45
   jumpSpeed: 14
   maxJumps: 2
-  smooth: 1
+--- !u!114 &114770332860860084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582146413347442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc812a3a2d134c4c9bb730feb881193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136235605069072416
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -902,7 +919,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c9d4d473bd72eb440b17586f77280eb4, type: 2}
+  - {fileID: 2100000, guid: b22a0fff40ccc5a4d9138e38ed563b57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

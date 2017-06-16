@@ -4,42 +4,43 @@ using UnityEngine;
 
 public class Dummy : MonoBehaviour {
 
-    float stunned = 0;
+    public float knockback;
+    public float stunTime;
+    public float cooldown;
 
-    Rigidbody rigid;
+    float stunned = 0;
+    PlayerController controller;
+    
 	// Use this for initialization
 	void Start () {
-        rigid = GetComponent<Rigidbody>();
+        controller = GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (rigid == null)
+        if (controller == null)
             return;
         stunned -= Time.deltaTime;
-        rigid.isKinematic = stunned > 0; 
+        controller.canMove = stunned < 0; 
         
 
 	}
 
     public void Damage(GameObject enemy) {
 
+        if (stunned > -cooldown)
+            return;
 
-
-        Rigidbody rigid = gameObject.GetComponent<Rigidbody>();
-        if (rigid == null) {
-            Debug.Log("No Rigidbody found");
+        if (controller == null) {
+            Debug.Log("No Controller found");
             return;
         }
         Debug.Log("Au!" + gameObject.name);
-        //Debug.Log((gameObject.transform.position - enemy.transform.position).normalized);
-        Vector3 velocity = ((gameObject.transform.position - enemy.transform.position).normalized) * 100;
+        
+        Vector3 velocity = ((gameObject.transform.position - enemy.transform.position).normalized) * knockback;
         Debug.Log(velocity);
-        rigid.velocity = velocity;
+        controller.velocityReal = velocity;
 
-        if (stunned < -5) //5 Sek unverwundbar
-        stunned = 2;
-
-
+        stunned = stunTime;
     }
 }

@@ -6,17 +6,20 @@ public class PlayerController : MonoBehaviour {
 
     
     [System.NonSerialized] public int score = 0;
+    public bool canMove = true;
+    public Vector3 velocityReal = Vector3.zero;
 
     public int playerNumber;
     public float walkSpeed;
+    public float acceleration;
     public float jumpSpeed;
     public int maxJumps;
-    public float smooth; // 0-1 Range, wenn 1 -> 1 Sek bis max Geschwindigkeit
+    
 
     private int jumps;
     private int timesJumped;
-    private float smoothUp;
     private float airborne = 0;
+    
 
     Animator anim;
     GameObject player;
@@ -37,15 +40,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // body.velocity = new Vector3(Input.GetAxis("Horizontal")*walkSpeed, body.velocity.y, Input.GetAxis("Vertical")*walkSpeed);
-        if(smoothUp < 1 && (Input.GetAxis("Vertical" + playerNumber) != 0 || Input.GetAxis("Horizontal" + playerNumber) != 0)){
-            smoothUp += smooth * Time.deltaTime; 
-        }else{
-            if(smoothUp > 0)
-                smoothUp -= smooth * Time.deltaTime;
-        }
-
-
+        
         if (cam == null)
             cam = Camera.main;
 
@@ -78,24 +73,43 @@ public class PlayerController : MonoBehaviour {
 
     private void movement() {
 
-        Vector3 velocity = Vector3.zero;
+
+        Vector3 velocityGoal = Vector3.zero;
         
+        velocityReal.Scale(new Vector3(1, 0, 1));
+
         // <--- Basic movement --->
-        Vector3 forward = transform.position - cam.transform.position;
-        forward.Scale(new Vector3(1, 0, 1));
-        forward.Normalize();
-        velocity = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed * smoothUp;
 
-        Vector3 right = new Vector3(forward.z, 0, -forward.x);
-        right.Scale(new Vector3(1, 0, 1));
-        right.Normalize();
-        velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed * smoothUp;
+        if (canMove) {
+            Vector3 forward = transform.position - cam.transform.position;
+            forward.Scale(new Vector3(1, 0, 1));
+            forward.Normalize();
+            velocityGoal = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed;
 
-        CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
+            Vector3 right = new Vector3(forward.z, 0, -forward.x);
+            right.Scale(new Vector3(1, 0, 1));
+            right.Normalize();
+            velocityGoal += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
 
-        if (playerCollider == null)
-            return;
+        } else {
+
+            velocityGoal = Vector3.zero;
+        }
+
+        Debug.Log(velocityGoal);
+
+        Vector3 velocityDiff = velocityGoal - velocityReal;
         
+        if(velocityDiff.magnitude > acceleration * Time.deltaTime) {
+            velocityReal += velocityDiff.normalized * acceleration * Time.deltaTime;
+        } else {
+            velocityReal = velocityGoal;
+        }
+        
+        
+
+        if (velocityReal != Vector3.zero)
+            transform.LookAt(transform.position + velocityReal);
 
         // <---- Jumping ---->
         RaycastHit hitGround;
@@ -109,10 +123,10 @@ public class PlayerController : MonoBehaviour {
 
         airborne += Time.deltaTime;
 
-        float yVelocity = rigid.velocity.y;
+        velocityReal.y = rigid.velocity.y;
 
         if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f) {
-            yVelocity = (Mathf.Max(rigid.velocity.y, 0) + jumpSpeed);
+            velocityReal.y = (Mathf.Max(rigid.velocity.y, 0) + jumpSpeed);
             jumps--;
             timesJumped++;
             airborne = 0;
@@ -124,18 +138,14 @@ public class PlayerController : MonoBehaviour {
         }
        
         anim.SetBool("isJumping", !hitBool);
-        
-        
+
+
         // <--- Setting velocity -->
-        velocity.Scale(new Vector3(1, 0, 1));
-        
-        Vector3 direction = new Vector3(velocity.x, yVelocity, velocity.z);
-        rigid.velocity = direction;
 
-        anim.SetFloat("speed", velocity.magnitude);
+        rigid.velocity = velocityReal;
 
-        if (velocity != Vector3.zero)
-           transform.LookAt(transform.position + velocity);
+        anim.SetFloat("speed", rigid.velocity.magnitude);
+
         
     }
 
