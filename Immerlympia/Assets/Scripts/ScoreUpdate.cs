@@ -5,23 +5,18 @@ using UnityEngine.UI;
 
 public class ScoreUpdate : MonoBehaviour {
 
-    Text textComponent;
-    GameObject canvas;
-    Text[] children;
-
+    private int index;
+    Text text;
 
     private void Start() {
-        canvas = GameObject.FindGameObjectWithTag("UI");
-        children = canvas.GetComponentsInChildren<Text>();
-        for(int i = 0; i < children.Length; i++) {
-            Debug.Log(children[i]);
-            textComponent = children[i].GetComponent<Text>();
-            textComponent.text = "Player " + i + ": " + 0;
-        }
-        
+
+        index = transform.GetSiblingIndex();
+        text = GetComponent<Text>();
+        PlayerManager.current.players[index].addScore.AddListener(UpdateScore);
+        UpdateScore();
     }
 
-    public void updateScore(int score, int playerNumber){
-        textComponent.text = "Player " + playerNumber + ": " + score;
+    void UpdateScore() {
+        text.text = "Player " + (index + 1) + ": " + PlayerManager.current.players[index].score;
     }
 }

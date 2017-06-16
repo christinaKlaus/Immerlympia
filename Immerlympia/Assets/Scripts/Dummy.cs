@@ -35,10 +35,8 @@ public class Dummy : MonoBehaviour {
             Debug.Log("No Controller found");
             return;
         }
-        Debug.Log("Au!" + gameObject.name);
         
         Vector3 velocity = ((gameObject.transform.position - enemy.transform.position).normalized) * knockback;
-        Debug.Log(velocity);
         controller.velocityReal = velocity;
 
         stunned = stunTime;

@@ -19,7 +19,6 @@ public class PressurePlateScript : MonoBehaviour {
         float angle = Mathf.Atan2(-transform.position.x, -transform.position.z) * Mathf.Rad2Deg;
         angle = Mathf.Round((angle - 30) / 120) * 120 + 30;
         GameObject cam = GameObject.Find("CameraTurn");
-        Debug.Log(cam);
         cam.GetComponent<CameraTurn>().StartRotation(angle);
 
     }

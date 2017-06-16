@@ -29,7 +29,7 @@ Shader "Toon/Lit_stencil_transparent" {
 
 
 		CGPROGRAM
-			#pragma surface surf Lambert //alpha
+			#pragma surface surf Lambert alpha
 
 			sampler2D _Ramp;
 			

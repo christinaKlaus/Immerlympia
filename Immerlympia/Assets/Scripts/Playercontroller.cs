@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour {
 
     
     [System.NonSerialized] public int score = 0;
-    public bool canMove = true;
-    public Vector3 velocityReal = Vector3.zero;
+    [System.NonSerialized] public bool canMove = true;
+    [System.NonSerialized] public Vector3 velocityReal = Vector3.zero;
+    [System.NonSerialized] public int playerNumber;
 
-    public int playerNumber;
     public float walkSpeed;
     public float acceleration;
     public float jumpSpeed;
@@ -26,8 +27,8 @@ public class PlayerController : MonoBehaviour {
     Camera cam;
     Rigidbody rigid;
     ScoreUpdate scoreUpdate;
-       
-    // bool isJumping = true;
+
+    public UnityEvent addScore;
 
 	// Use this for initialization
 	void Start () {
@@ -96,8 +97,6 @@ public class PlayerController : MonoBehaviour {
             velocityGoal = Vector3.zero;
         }
 
-        Debug.Log(velocityGoal);
-
         Vector3 velocityDiff = velocityGoal - velocityReal;
         
         if(velocityDiff.magnitude > acceleration * Time.deltaTime) {
@@ -106,16 +105,13 @@ public class PlayerController : MonoBehaviour {
             velocityReal = velocityGoal;
         }
         
-        
-
         if (velocityReal != Vector3.zero)
             transform.LookAt(transform.position + velocityReal);
 
         // <---- Jumping ---->
         RaycastHit hitGround;
         bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
-
-
+        
         if (rigid.velocity.y <= 0 && hitBool) {
             jumps = maxJumps;
             timesJumped = 0;
@@ -134,24 +130,22 @@ public class PlayerController : MonoBehaviour {
         
         if(timesJumped > 1) {
             anim.SetTrigger("doubleJump");
-            Debug.Log("doubleJump " + timesJumped);
         }
        
         anim.SetBool("isJumping", !hitBool);
 
 
         // <--- Setting velocity -->
-
         rigid.velocity = velocityReal;
+
 
         anim.SetFloat("speed", rigid.velocity.magnitude);
 
-        
     }
 
     public void CoinCountUp() {
         score++;
-        scoreUpdate.updateScore(score, playerNumber);
+        addScore.Invoke();
     }
    
     public void CharacterDeath() {
