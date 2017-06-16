@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour {
     GameObject player;
     Camera cam;
     Rigidbody rigid;
-    ScoreUpdate scoreUpdate;
 
     public UnityEvent addScore;
 
@@ -36,7 +35,6 @@ public class PlayerController : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
         cam = Camera.main;
         anim = GetComponent<Animator>();
-        scoreUpdate = player.GetComponent<ScoreUpdate>();
     }
 	
 	// Update is called once per frame
