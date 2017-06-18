@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
         if (cam == null)
             cam = Camera.main;
 
@@ -71,7 +70,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void movement() {
-
 
         Vector3 velocityGoal = Vector3.zero;
         

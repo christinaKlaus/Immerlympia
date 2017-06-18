@@ -22,7 +22,6 @@ public class Dummy : MonoBehaviour {
             return;
         stunned -= Time.deltaTime;
         controller.canMove = stunned < 0; 
-        
 
 	}
 
@@ -40,5 +39,8 @@ public class Dummy : MonoBehaviour {
         controller.velocityReal = velocity;
 
         stunned = stunTime;
+        
+        Animator anim = this.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("getHit");
     }
 }
