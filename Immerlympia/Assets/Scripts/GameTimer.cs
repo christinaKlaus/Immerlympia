@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameTimer : MonoBehaviour {
 
+    public static GameTimer current;
+    public UnityEvent gameEndEvent;
     public float playTime;
     private float currTime;
 
     // Use this for initialization
 	void Start () {
         currTime = 0;
+        
 	}
 	
 	// Update is called once per frame
@@ -25,7 +29,8 @@ public class GameTimer : MonoBehaviour {
 
     void GameEnd() {
         List<PlayerController> winner = new List<PlayerController>();
-
+        gameEndEvent.Invoke();
+        
         foreach (PlayerController p in PlayerManager.current.players) {
             if (winner.Count == 0 || p.score > winner[0].score) {
                 winner.Clear();
@@ -38,8 +43,7 @@ public class GameTimer : MonoBehaviour {
         foreach (PlayerController p in winner)
             Debug.Log("Player " + (p.playerNumber+1) + "\tScore: " + p.score);
 
-        GameOverUI.current.Invoke("endGame", 0);
 
-        Time.timeScale = 0;
+        
     }
 }

@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
     Camera cam;
     Rigidbody rigid;
 
-    public UnityEvent addScore;
+    public UnityEvent addScoreEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour {
 
     public void CoinCountUp() {
         score++;
-        addScore.Invoke();
+        addScoreEvent.Invoke();
     }
    
     public void CharacterDeath() {
