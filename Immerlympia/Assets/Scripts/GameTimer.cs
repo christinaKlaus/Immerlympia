@@ -38,6 +38,8 @@ public class GameTimer : MonoBehaviour {
         foreach (PlayerController p in winner)
             Debug.Log("Player " + (p.playerNumber+1) + "\tScore: " + p.score);
 
+        GameOverUI.current.Invoke("endGame", 0);
+
         Time.timeScale = 0;
     }
 }

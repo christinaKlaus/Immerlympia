@@ -9,6 +9,10 @@ public class UIController : MonoBehaviour {
 		SceneManager.LoadScene("Immerlympia_Game");
 	}
 
+	public void BackToMenu(){
+		SceneManager.LoadScene("Main_menu");
+	}
+	
 	public void ExitGame(){
 		Application.Quit();
 	}
