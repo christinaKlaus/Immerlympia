@@ -8,4 +8,8 @@ public class UIController : MonoBehaviour {
 	public void StartGame(){
 		SceneManager.LoadScene("Immerlympia_Game");
 	}
+
+	public void ExitGame(){
+		Application.Quit();
+	}
 }
