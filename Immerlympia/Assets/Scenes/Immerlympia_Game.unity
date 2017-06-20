@@ -331,7 +331,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  playTime: 1
+  playTime: 30
 --- !u!1 &481201029
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +548,7 @@ Prefab:
     - target: {fileID: 114511284791710332, guid: 0526fe4b60171314a89dfdb1d2175d43,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114704158040408530, guid: 0526fe4b60171314a89dfdb1d2175d43,
         type: 2}
