@@ -582,7 +582,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582146413347442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.47, y: 1.5, z: 0.94}
+  m_LocalPosition: {x: 0.22, y: 1.5, z: -0.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4932421326272350}
@@ -863,6 +863,7 @@ MonoBehaviour:
   knockback: 20
   stunTime: 1
   cooldown: 1
+  vertKnockup: 20
 --- !u!114 &114682687573988798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -876,9 +877,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 6
   acceleration: 45
+  deceleration: 20
   jumpSpeed: 14
   maxJumps: 2
-  addScore:
+  addScoreEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,

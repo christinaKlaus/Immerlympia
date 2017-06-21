@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour {
 
 	public void StartGame(){
 		SceneManager.LoadScene("Immerlympia_Game");
+		Time.timeScale = 1;
 	}
 
 	public void BackToMenu(){

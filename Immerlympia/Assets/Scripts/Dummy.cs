@@ -7,13 +7,16 @@ public class Dummy : MonoBehaviour {
     public float knockback;
     public float stunTime;
     public float cooldown;
+    public float vertKnockup;
 
+    private Rigidbody rigid;
     float stunned = 0;
     PlayerController controller;
     
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<PlayerController>();
+        rigid = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -37,6 +40,7 @@ public class Dummy : MonoBehaviour {
         
         Vector3 velocity = ((gameObject.transform.position - enemy.transform.position).normalized) * knockback;
         controller.velocityReal = velocity;
+        rigid.velocity += Vector3.up * vertKnockup; 
 
         stunned = stunTime;
         

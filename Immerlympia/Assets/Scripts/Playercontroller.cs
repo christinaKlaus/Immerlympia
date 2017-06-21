@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour {
 
     public float walkSpeed;
     public float acceleration;
+    
+    public float deceleration;
+
     public float jumpSpeed;
     public int maxJumps;
     
@@ -52,7 +55,7 @@ public class PlayerController : MonoBehaviour {
 
     // Hitting hittable things (with Dummy script attached to them)
     private void punch() {
-        if(Input.GetButtonDown("Punch" + playerNumber)) {
+        if(Input.GetButtonDown("Punch" + playerNumber) && canMove) {
             //Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
             
             RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
@@ -95,8 +98,11 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 velocityDiff = velocityGoal - velocityReal;
         
-        if(velocityDiff.magnitude > acceleration * Time.deltaTime) {
-            velocityReal += velocityDiff.normalized * acceleration * Time.deltaTime;
+        float acc = velocityGoal == Vector3.zero ? deceleration : acceleration;
+
+        if(velocityDiff.magnitude > acc * Time.deltaTime) {
+            
+            velocityReal += velocityDiff.normalized * acc * Time.deltaTime;
         } else {
             velocityReal = velocityGoal;
         }
@@ -117,16 +123,17 @@ public class PlayerController : MonoBehaviour {
 
         velocityReal.y = rigid.velocity.y;
 
-        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f) {
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f && canMove) {
             velocityReal.y = (Mathf.Max(rigid.velocity.y, 0) + jumpSpeed);
             jumps--;
             timesJumped++;
             airborne = 0;
+            if(timesJumped > 1) {
+               anim.SetTrigger("doubleJump");
+            }
         }
         
-        if(timesJumped > 1) {
-            anim.SetTrigger("doubleJump");
-        }
+       
        
         anim.SetBool("isJumping", !hitBool);
 

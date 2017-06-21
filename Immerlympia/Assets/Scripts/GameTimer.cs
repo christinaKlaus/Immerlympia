@@ -11,9 +11,9 @@ public class GameTimer : MonoBehaviour {
     private float currTime;
 
     // Use this for initialization
-	void Start () {
+	void Awake () {
         currTime = 0;
-        
+        current = this;
 	}
 	
 	// Update is called once per frame

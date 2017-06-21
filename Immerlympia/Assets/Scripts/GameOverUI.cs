@@ -8,25 +8,31 @@ public class GameOverUI : MonoBehaviour {
 
 	public static GameOverUI current;
 	
-	Text text;
-	Button back;
-
+	Graphic[] gameOverGraphics;
+	Selectable[] selectables;
 	void Awake(){
 		current = this;
-		back = GetComponent<Button>();
-		back.gameObject.SetActive(false);
+		gameOverGraphics = GetComponentsInChildren<Graphic>();
+		foreach (Graphic g in gameOverGraphics)
+			g.enabled = false;
+		
+		selectables = GetComponentsInChildren<Selectable>();
+		foreach (Selectable s in selectables)
+			s.enabled = false;
+		
 	}
 
 	// Use this for initialization
 	void Start () {
-		text = GetComponent<Text>();
 		GameTimer.current.gameEndEvent.AddListener(endGame);
 	}
 
 	public void endGame(){
+		foreach (Graphic g in gameOverGraphics)
+			g.enabled = true;
+		foreach (Selectable s in selectables)
+			s.enabled = true;
 		Debug.Log("Event ist angekommen");
-		text.text = "Game Over";
-		back.gameObject.SetActive(true);
 		Time.timeScale = 0;
 	}
 

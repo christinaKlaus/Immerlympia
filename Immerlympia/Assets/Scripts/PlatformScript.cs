@@ -17,7 +17,7 @@ public class PlatformScript : MonoBehaviour {
     private Vector3[] basePos;
 
     // Use this for initialization
-    void Start () {
+    void OnEnable () {
         timer = Random.Range(lifetimeRange.x, lifetimeRange.y);
         duration = timer;
 
@@ -57,6 +57,7 @@ public class PlatformScript : MonoBehaviour {
 
     void Remove () {
         transform.GetComponentInParent<PlatformSpawn>().newPlatform((int)transform.rotation.eulerAngles.y / 120);
-        Destroy(gameObject);
+        transform.position = new Vector3(0, -1000, 0);
+        gameObject.SetActive(false);
     }
 }
