@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 0b38d103291785e4f859a83dff2aab79
+timeCreated: 1497025567
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: cactus_01
+    100004: cactus_02
+    100006: cactus_03
+    100008: cactus_04
+    100010: cactus_05
+    100012: DESERT_DUNE
+    100014: formation_002
+    100016: formation_003
+    100018: formation_004
+    100020: formation_005
+    100022: formation_006
+    100024: formation_007
+    100026: formation_01
+    100028: rod_004
+    100030: rod_005
+    100032: rod_006
+    100034: rod_007
+    100036: rod_02
+    100038: rod_03
+    100040: tent00
+    100042: tent01
+    400000: //RootNode
+    400002: cactus_01
+    400004: cactus_02
+    400006: cactus_03
+    400008: cactus_04
+    400010: cactus_05
+    400012: DESERT_DUNE
+    400014: formation_002
+    400016: formation_003
+    400018: formation_004
+    400020: formation_005
+    400022: formation_006
+    400024: formation_007
+    400026: formation_01
+    400028: rod_004
+    400030: rod_005
+    400032: rod_006
+    400034: rod_007
+    400036: rod_02
+    400038: rod_03
+    400040: tent00
+    400042: tent01
+    2300000: cactus_01
+    2300002: cactus_02
+    2300004: cactus_03
+    2300006: cactus_04
+    2300008: cactus_05
+    2300010: DESERT_DUNE
+    2300012: formation_002
+    2300014: formation_003
+    2300016: formation_004
+    2300018: formation_005
+    2300020: formation_006
+    2300022: formation_007
+    2300024: formation_01
+    2300026: rod_004
+    2300028: rod_005
+    2300030: rod_006
+    2300032: rod_007
+    2300034: rod_02
+    2300036: rod_03
+    2300038: tent00
+    2300040: tent01
+    3300000: cactus_01
+    3300002: cactus_02
+    3300004: cactus_03
+    3300006: cactus_04
+    3300008: cactus_05
+    3300010: DESERT_DUNE
+    3300012: formation_002
+    3300014: formation_003
+    3300016: formation_004
+    3300018: formation_005
+    3300020: formation_006
+    3300022: formation_007
+    3300024: formation_01
+    3300026: rod_004
+    3300028: rod_005
+    3300030: rod_006
+    3300032: rod_007
+    3300034: rod_02
+    3300036: rod_03
+    3300038: tent00
+    3300040: tent01
+    4300000: cactus_01
+    4300002: cactus_02
+    4300004: cactus_03
+    4300006: cactus_04
+    4300008: cactus_05
+    4300010: DESERT_DUNE
+    4300012: formation_002
+    4300014: formation_003
+    4300016: formation_004
+    4300018: formation_005
+    4300020: formation_006
+    4300022: formation_007
+    4300024: formation_01
+    4300026: rod_004
+    4300028: rod_005
+    4300030: rod_006
+    4300032: rod_007
+    4300034: rod_02
+    4300036: rod_03
+    4300038: tent00
+    4300040: tent01
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,66 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Playercontroller : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     
     [System.NonSerialized] public int score = 0;
+    [System.NonSerialized] public bool canMove = true;
+    [System.NonSerialized] public Vector3 velocityReal = Vector3.zero;
+    [System.NonSerialized] public int playerNumber;
 
-    public int playerNumber;
     public float walkSpeed;
+    public float acceleration;
+    public float deceleration;
+
     public float jumpSpeed;
     public int maxJumps;
-    public float smooth; // 0-1 Range, wenn 1 -> 1 Sek bis max Geschwindigkeit
-
+    
     private int jumps;
-    private float smoothUp;
+    private int timesJumped;
+    
     private float airborne = 0;
+
 
     Animator anim;
     GameObject player;
     Camera cam;
-    Rigidbody body;
-    PlayerCollision playerCollision;
-    
-    // bool isJumping = true;
+    Rigidbody rigid;
+    SoundManager soundMan;
+
+    public UnityEvent increaseScoreEvent;
 
 	// Use this for initialization
 	void Start () {
         player = gameObject;
-        body = GetComponent<Rigidbody>();
-        cam = Camera.current;
+        rigid = GetComponent<Rigidbody>();
+        cam = Camera.main;
         anim = GetComponent<Animator>();
-        playerCollision = GetComponent<PlayerCollision>();
-        switch (playerNumber) {
-            case 0:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
-                break;
-            case 1:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
-                break;
-            case 2:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
-                break;
-           case 3:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
-                break;
-        }
+        soundMan = GetComponent<SoundManager>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        // body.velocity = new Vector3(Input.GetAxis("Horizontal")*walkSpeed, body.velocity.y, Input.GetAxis("Vertical")*walkSpeed);
-        if(smoothUp < 1 && (Input.GetAxis("Vertical" + playerNumber) != 0 || Input.GetAxis("Horizontal" + playerNumber) != 0)){
-            smoothUp += smooth * Time.deltaTime; 
-        }else{
-            if(smoothUp > 0)
-                smoothUp -= smooth * Time.deltaTime;
-        }
-
-
         if (cam == null)
-            cam = Camera.current;
+            cam = Camera.main;
 
         if (cam == null)
             return;
@@ -72,8 +56,8 @@ public class Playercontroller : MonoBehaviour {
 
     // Hitting hittable things (with Dummy script attached to them)
     private void punch() {
-        if(Input.GetButtonDown("Punch" + playerNumber)) {
-            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
+        if(Input.GetButtonDown("Punch" + playerNumber) && canMove) {
+            //Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
             
             RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
             anim.SetTrigger("punching");
@@ -83,7 +67,9 @@ public class Playercontroller : MonoBehaviour {
 
                 if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
 
-                dummy.damage(gameObject); // Let the object hit itself
+                dummy.Damage(gameObject); // Let the object hit itself
+                soundMan.playClip("character_HIT_05");
+                
             }
 
         }
@@ -91,81 +77,89 @@ public class Playercontroller : MonoBehaviour {
 
     private void movement() {
 
+        Vector3 velocityGoal = Vector3.zero;
         
-        Vector3 velocity = Vector3.zero;
-        
+        velocityReal.Scale(new Vector3(1, 0, 1));
+
         // <--- Basic movement --->
-        Vector3 forward = transform.position - cam.transform.position;
-        forward.Scale(new Vector3(1, 0, 1));
-        forward.Normalize();
-        velocity = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed * smoothUp;
 
-        Vector3 right = new Vector3(forward.z, 0, -forward.x);
-        right.Scale(new Vector3(1, 0, 1));
-        right.Normalize();
-        velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed * smoothUp;
+        if (canMove) {
+            Vector3 forward = transform.position - cam.transform.position;
+            forward.Scale(new Vector3(1, 0, 1));
+            forward.Normalize();
+            velocityGoal = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed;
 
-        CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
+            Vector3 right = new Vector3(forward.z, 0, -forward.x);
+            right.Scale(new Vector3(1, 0, 1));
+            right.Normalize();
+            velocityGoal += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
 
-        if (playerCollider == null)
-            return;
+        } else {
+
+            velocityGoal = Vector3.zero;
+        }
+
+        Vector3 velocityDiff = velocityGoal - velocityReal;
         
+        float acc = velocityGoal == Vector3.zero ? deceleration : acceleration;
+
+        if(velocityDiff.magnitude > acc * Time.deltaTime) {
+            
+            velocityReal += velocityDiff.normalized * acc * Time.deltaTime;
+        } else {
+            velocityReal = velocityGoal;
+        }
+        
+        if (velocityReal != Vector3.zero)
+            transform.LookAt(transform.position + velocityReal);
 
         // <---- Jumping ---->
-        
-        //*
         RaycastHit hitGround;
         bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
-
-
-        if (playerCollision.yVelocity <= 0 && hitBool) {
+        
+        if (rigid.velocity.y <= 0 && hitBool) {
             jumps = maxJumps;
+            timesJumped = 0;
         }
 
         airborne += Time.deltaTime;
 
-        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f) {
-            playerCollision.yVelocity = Mathf.Max(playerCollision.yVelocity, 0) + jumpSpeed;
-            jumps--;
-            airborne = 0;
-        }
+        velocityReal.y = rigid.velocity.y;
 
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f && canMove) {
+            velocityReal.y = (Mathf.Max(rigid.velocity.y, 0) + jumpSpeed);
+            jumps--;
+            timesJumped++;
+            airborne = 0;
+            if(timesJumped > 1) {
+               anim.SetTrigger("doubleJump");
+            }
+        }
+        
+       
        
         anim.SetBool("isJumping", !hitBool);
-        // Debug.DrawRay(transform.position,- transform.up);
-       
-        /*/
-        if (Input.GetButtonDown("Jump" + playerNumber) && !isJumping) {
-            velocity += (new Vector3(0,1,0)) * jumpSpeed;
-            isJumping = true;
-            Debug.Log(playerNumber);
-        }
-        //*/
-        
+
+
         // <--- Setting velocity -->
-        playerCollision.forward.x = velocity.x;
-        playerCollision.forward.y = velocity.z;
+        rigid.velocity = velocityReal;
 
-        velocity.Scale(new Vector3(1, 0, 1));
 
-        anim.SetFloat("speed", velocity.magnitude);
+        anim.SetFloat("speed", rigid.velocity.magnitude);
 
-        if (velocity != Vector3.zero)
-           transform.LookAt(transform.position + velocity);
-        
     }
 
     public void CoinCountUp() {
         score++;
-        Debug.Log("Score Player" + playerNumber + " =     " + score);
+        increaseScoreEvent.Invoke();
     }
    
     public void CharacterDeath() {
 
-        if (body.transform.position.y < -50) {
+        if (rigid.transform.position.y < -50) {
             Debug.Log("Death of Player" + playerNumber);
             player.transform.position = new Vector3(0, 10, 0);
-            body.velocity = Vector3.zero;
+            rigid.velocity = Vector3.zero;
         }
     }
 }

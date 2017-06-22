@@ -18,7 +18,7 @@ public class CoinPickup : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision) {
         GameObject obj = collision.gameObject;
-        Playercontroller pc = obj.GetComponent<Playercontroller>();
+        PlayerController pc = obj.GetComponent<PlayerController>();
 
         if(pc != null) {
             pc.CoinCountUp();
