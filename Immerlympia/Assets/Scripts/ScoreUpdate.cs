@@ -12,7 +12,7 @@ public class ScoreUpdate : MonoBehaviour {
 
         index = transform.GetSiblingIndex();
         text = GetComponent<Text>();
-        PlayerManager.current.players[index].addScoreEvent.AddListener(UpdateScore);
+        PlayerManager.current.players[index].increaseScoreEvent.AddListener(UpdateScore);
         UpdateScore();
     }
 

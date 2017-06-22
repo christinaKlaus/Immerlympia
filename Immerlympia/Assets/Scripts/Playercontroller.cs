@@ -13,24 +13,24 @@ public class PlayerController : MonoBehaviour {
 
     public float walkSpeed;
     public float acceleration;
-    
     public float deceleration;
 
     public float jumpSpeed;
     public int maxJumps;
     
-
     private int jumps;
     private int timesJumped;
-    private float airborne = 0;
     
+    private float airborne = 0;
+
 
     Animator anim;
     GameObject player;
     Camera cam;
     Rigidbody rigid;
+    SoundManager soundMan;
 
-    public UnityEvent addScoreEvent;
+    public UnityEvent increaseScoreEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
         cam = Camera.main;
         anim = GetComponent<Animator>();
+        soundMan = GetComponent<SoundManager>();
     }
 	
 	// Update is called once per frame
@@ -67,6 +68,8 @@ public class PlayerController : MonoBehaviour {
                 if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
 
                 dummy.Damage(gameObject); // Let the object hit itself
+                soundMan.playClip("character_HIT_05");
+                
             }
 
         }
@@ -148,7 +151,7 @@ public class PlayerController : MonoBehaviour {
 
     public void CoinCountUp() {
         score++;
-        addScoreEvent.Invoke();
+        increaseScoreEvent.Invoke();
     }
    
     public void CharacterDeath() {
