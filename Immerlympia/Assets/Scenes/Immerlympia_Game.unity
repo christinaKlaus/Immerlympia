@@ -252,6 +252,16 @@ Prefab:
       propertyPath: audioclips.Array.data[4]
       value: 
       objectReference: {fileID: 8300000, guid: 27adabac6e5a43643b57d3389db355d2, type: 3}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
   m_IsPrefabParent: 0
@@ -650,6 +660,21 @@ Prefab:
       propertyPath: m_Name
       value: Player3
       objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
   m_IsPrefabParent: 0
@@ -761,6 +786,21 @@ Prefab:
     - target: {fileID: 1582146413347442, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
       propertyPath: m_Name
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
@@ -997,6 +1037,21 @@ Prefab:
     - target: {fileID: 1582146413347442, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
       propertyPath: m_Name
       value: Player4
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
