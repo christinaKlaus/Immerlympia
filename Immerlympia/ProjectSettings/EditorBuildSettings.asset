@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main_menu.unity
+    guid: e83650f6fa0523a438d232843c1d4d07
+  - enabled: 1
+    path: Assets/Scenes/Immerlympia_Game.unity
+    guid: 13f29e9618d6c934c8324e35405f3c6b

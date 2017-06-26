@@ -8,7 +8,9 @@ public class CoinSpawn : MonoBehaviour {
 	public float radius;
     public float minRadius;
     public float spawnHeight;
+    public float startDistToLast;
 
+    private Vector3 prevPos;
     private float timer;
 	// Use this for initialization
 	void Start () {
@@ -36,14 +38,15 @@ public class CoinSpawn : MonoBehaviour {
             float r = ((u > 1) ? 2 - u : u) * radius;
             pos = new Vector3(r * Mathf.Cos(t), spawnHeight, r * Mathf.Sin(t));
             goodPos = Physics.Raycast(pos, Vector3.down, spawnHeight);
-            if (goodPos && r > minRadius)
+            if (goodPos && r > minRadius && Vector3.Distance(pos, prevPos) > startDistToLast * (1 - i/10))
                 break;
             goodPos = false;
-            Debug.Log("Pos: " + pos + " | goodPos: " + goodPos);
+            //Debug.Log("Pos: " + pos + " | goodPos: " + goodPos);
         }
 
         if (goodPos) {
             Instantiate(coin, pos, transform.rotation);
+            prevPos = pos;
         } else {
             timer = 1;
         }

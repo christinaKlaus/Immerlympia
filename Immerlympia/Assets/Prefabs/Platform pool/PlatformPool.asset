@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Name: PlatformPool
   m_EditorClassIdentifier: 
   platformPool:
-  - {fileID: 1825911518629726, guid: b83abdefd499c874c85aab39e8c2c876, type: 2}
-  - {fileID: 1856109081823006, guid: af8d36c24b8cf0749bd297eefdfd1e67, type: 2}
-  - {fileID: 1139897513957426, guid: badc57ccab62320458ea622da761ea91, type: 2}
+  - {fileID: 1580457316693142, guid: 4ef792fdc33639243aea89cf8076d9ce, type: 2}
+  - {fileID: 1879211291933598, guid: 54f93fda7bf18f045952da4a72933eac, type: 2}
+  - {fileID: 1693630188887354, guid: 9bb536470dc1d154189e921ade57e085, type: 2}
+  - {fileID: 1163844290333436, guid: 53f4f2e3c69360a41af7c2acc6736884, type: 2}
+  - {fileID: 1197849270101062, guid: 8a43ec3044488ad40948b77fe2a7e2f2, type: 2}
+  - {fileID: 1332225902909968, guid: a5e4ce16f50e56a4a890474fbed859aa, type: 2}
