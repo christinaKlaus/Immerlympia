@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour {
                 if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
 
                 dummy.Damage(gameObject); // Let the object hit itself
-                soundMan.playClip("character_HIT_05");
+                soundMan.playClip(SoundType.Hit);
                 
             }
 
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour {
             right.Scale(new Vector3(1, 0, 1));
             right.Normalize();
             velocityGoal += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
-
+            
         } else {
 
             velocityGoal = Vector3.zero;
@@ -133,6 +133,7 @@ public class PlayerController : MonoBehaviour {
             airborne = 0;
             if(timesJumped > 1) {
                anim.SetTrigger("doubleJump");
+               soundMan.playClip(SoundType.Jump);
             }
         }
         
@@ -146,7 +147,8 @@ public class PlayerController : MonoBehaviour {
 
 
         anim.SetFloat("speed", rigid.velocity.magnitude);
-
+        //if(anim.GetFloat("speed") != 0 && !GetComponent<AudioSource>().isPlaying)
+          //  soundMan.playClip(SoundType.Steps);
     }
 
     public void CoinCountUp() {

@@ -827,7 +827,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -872,7 +872,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -884,7 +884,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -896,7 +896,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &95597632328234720
 Animator:
   serializedVersion: 3
@@ -957,6 +957,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a6e9d88e5b0c24793cf310f7ee5c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit: {fileID: 8300000, guid: 92f0581d92fc27f4cba3b8457693000a, type: 3}
+  jump: {fileID: 8300000, guid: 27adabac6e5a43643b57d3389db355d2, type: 3}
+  punch: {fileID: 8300000, guid: 75ba44926716d5347982569df9b34720, type: 3}
+  steps: {fileID: 8300000, guid: c61484bdd030d294d8988e80f83ff328, type: 3}
 --- !u!114 &114682687573988798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -968,12 +972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e605437834adf45b81199a8322f260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 6
-  acceleration: 45
-  deceleration: 20
-  jumpSpeed: 14
+  walkSpeed: 11
+  acceleration: 26
+  deceleration: 30
+  jumpSpeed: 10
   maxJumps: 2
-  addScoreEvent:
+  increaseScoreEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
