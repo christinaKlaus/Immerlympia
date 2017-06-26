@@ -162,6 +162,8 @@ public class PlayerController : MonoBehaviour {
             Debug.Log("Death of Player" + playerNumber);
             player.transform.position = new Vector3(0, 10, 0);
             rigid.velocity = Vector3.zero;
+            score--;
+            increaseScoreEvent.Invoke();
         }
     }
 }
