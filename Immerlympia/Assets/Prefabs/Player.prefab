@@ -973,9 +973,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 11
-  acceleration: 26
-  deceleration: 32
-  jumpSpeed: 10
+  acceleration: 28
+  deceleration: 36
+  jumpSpeed: 12
   maxJumps: 2
   increaseScoreEvent:
     m_PersistentCalls:
