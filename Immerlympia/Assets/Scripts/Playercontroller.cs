@@ -144,7 +144,12 @@ public class PlayerController : MonoBehaviour {
 
         // <--- Setting velocity -->
         rigid.velocity = velocityReal;
+        velocityReal.Scale(new Vector3(1, 0, 1));
+        if(!soundMan.IsInvoking() && velocityReal.magnitude > 5 && hitBool)
+            soundMan.startFootsteps();
 
+        if(velocityReal.magnitude <= 1 || !hitBool)
+            soundMan.stopFootsteps();
 
         anim.SetFloat("speed", rigid.velocity.magnitude);
         //if(anim.GetFloat("speed") != 0 && !GetComponent<AudioSource>().isPlaying)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum SoundType{
 		Hit, Jump, Punch, Steps
-	}
+}
 public class SoundManager : MonoBehaviour {
 
 	private AudioSource source;
@@ -23,28 +23,40 @@ public class SoundManager : MonoBehaviour {
 		source.Play();
 	}
 
+	public void startFootsteps(){
+		InvokeRepeating("playFootsteps", 0.0f, 0.3f);
+	}
+
+	public void playFootsteps(){
+		source.PlayOneShot(steps, 0.5f);
+	}
+
+	public void stopFootsteps(){
+		CancelInvoke("playFootsteps");
+	}
+
 	public void playClip(SoundType type){
 		switch (type) {
 			case (SoundType.Hit) :
-				if(!source.isPlaying)
-					source.clip = hit;
+			//	if(!source.isPlaying)
+					source.PlayOneShot(hit);
 				break;
 			case SoundType.Jump:
-			if(!source.isPlaying)
-					source.clip = jump;
+			//if(!source.isPlaying)
+					source.PlayOneShot(jump);
 				break;
 			case SoundType.Punch:
-				if(!source.isPlaying)
-					source.clip = punch;
+			//	if(!source.isPlaying)
+					source.PlayOneShot( punch);
 				break;
 			case SoundType.Steps:
-				if(!source.isPlaying)
-					source.clip = steps;
+			//	if(!source.isPlaying)
+					source.PlayOneShot(steps);
 				break;
 			default:
 				return;
 
 		}
-		source.Play();
+		
 	}
 }

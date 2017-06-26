@@ -584,7 +584,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582146413347442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.22, y: 1.5, z: -0.54}
+  m_LocalPosition: {x: -2.18, y: 1.5, z: -0.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4932421326272350}
@@ -835,11 +835,11 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 1.14
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -866,7 +866,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -960,7 +960,7 @@ MonoBehaviour:
   hit: {fileID: 8300000, guid: 92f0581d92fc27f4cba3b8457693000a, type: 3}
   jump: {fileID: 8300000, guid: 27adabac6e5a43643b57d3389db355d2, type: 3}
   punch: {fileID: 8300000, guid: 75ba44926716d5347982569df9b34720, type: 3}
-  steps: {fileID: 8300000, guid: c61484bdd030d294d8988e80f83ff328, type: 3}
+  steps: {fileID: 8300000, guid: 8b51c3e8b2397b546a3db3cf5a75fca6, type: 3}
 --- !u!114 &114682687573988798
 MonoBehaviour:
   m_ObjectHideFlags: 1
