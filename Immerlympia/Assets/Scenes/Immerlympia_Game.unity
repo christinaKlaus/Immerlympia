@@ -152,56 +152,6 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: MaxDistance
-      value: 205.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
-      value: 0.0051495004
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
-      value: 0.29675293
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
-      value: 0.038632527
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
-      value: 0.038632527
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].value
-      value: 1.0039558
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].inSlope
-      value: -1.8576373
-      objectReference: {fileID: 0}
-    - target: {fileID: 82162862992703248, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].outSlope
-      value: -1.8576373
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
   m_IsPrefabParent: 0
@@ -1544,7 +1494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
