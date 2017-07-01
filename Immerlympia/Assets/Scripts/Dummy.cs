@@ -29,10 +29,14 @@ public class Dummy : MonoBehaviour {
 	}
 
     public void Damage(Vector3 enemyPos){
-         if (controller == null) {
+        
+        if (controller == null) {
             Debug.Log("No Controller found");
             return;
         }
+
+        if(!controller.canMove)
+            return;
 
         Vector3 velocity = (gameObject.transform.position - enemyPos.normalized) * knockback;
         controller.velocityReal = velocity;
