@@ -28,6 +28,22 @@ public class Dummy : MonoBehaviour {
 
 	}
 
+    public void Damage(Vector3 enemyPos){
+         if (controller == null) {
+            Debug.Log("No Controller found");
+            return;
+        }
+
+        Vector3 velocity = (gameObject.transform.position - enemyPos.normalized) * knockback;
+        controller.velocityReal = velocity;
+        rigid.velocity += Vector3.up * vertKnockup; 
+
+        stunned = stunTime;
+        
+        Animator anim = this.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("getHit");
+    }
+
     public void Damage(GameObject enemy) {
 
         if (stunned > -cooldown)
