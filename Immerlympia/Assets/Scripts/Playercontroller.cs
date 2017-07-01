@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour {
     SoundManager soundMan;
 
     public UnityEvent updateScoreEvent;
+    public UnityEvent startRespawnTimerEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -168,9 +169,11 @@ public class PlayerController : MonoBehaviour {
             score--;
             updateScoreEvent.Invoke();
             player.transform.position = new Vector3(0, 10, 0);
-            rigid.velocity = Vector3.zero;
-            PlayerRespawn.current.timers[playerNumber] = 0;
-            player.SetActive(false);     
+            velocityReal = Vector3.zero;
+            PlayerRespawn.current.timers[playerNumber] = PlayerRespawn.current.respawnTime;
+            startRespawnTimerEvent.Invoke();
+            player.SetActive(false);
+
         }        
     }
 }

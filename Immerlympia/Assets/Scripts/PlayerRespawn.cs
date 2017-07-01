@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerRespawn : MonoBehaviour {
 
 	public static PlayerRespawn current;
 	public float respawnTime;
 	public float[] timers;
-	Transform[] players;
+	[HideInInspector] public Transform[] players;
 	
+	public UnityEvent stopTimerEvent;
+
 	void Awake(){
 		current = this;
 	}
@@ -24,17 +27,17 @@ public class PlayerRespawn : MonoBehaviour {
 		timers = new float[transform.childCount];
 		
 		for(int j = 0; j < timers.Length; j++){
-			timers[j] = respawnTime + 0.1f;
+			timers[j] = 0;
 		}
 		
 	}
 
 	void Update () {
 		for(int k = 0; k < timers.Length; k++){
-			timers[k]+= Time.deltaTime;
-			if(!players[k].gameObject.activeSelf && timers[k] >= respawnTime){
+			timers[k]-= Time.deltaTime;
+			if(!players[k].gameObject.activeSelf && timers[k] <= 0){
 				players[k].gameObject.SetActive(true);
-				Debug.Log("Player Number" + players[k].GetComponent<PlayerController>().playerNumber + " = " + players[k].gameObject.activeSelf);
+				stopTimerEvent.Invoke();
 			}
 		}
 	}

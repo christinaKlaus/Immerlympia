@@ -9,7 +9,6 @@ public class ScoreUpdate : MonoBehaviour {
     Text text;
 
     private void Start() {
-
         index = transform.GetSiblingIndex();
         text = GetComponent<Text>();
         PlayerManager.current.players[index].updateScoreEvent.AddListener(UpdateScore);
