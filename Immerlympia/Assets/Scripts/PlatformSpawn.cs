@@ -18,7 +18,7 @@ public class PlatformSpawn : MonoBehaviour {
     void generatePool(){
         platforms = new GameObject[pool.platformPool.Length];
         for(int i = 0; i < platforms.Length; i++) {
-            platforms[i] = Instantiate(pool.platformPool[i], new Vector3(0, -1000, 0), Quaternion.identity, transform);
+            platforms[i] = Instantiate(pool.platformPool[i], new Vector3(0, -1000, 0), Quaternion.identity, transform.transform);
             platforms[i].SetActive(false);    
         }
     }
