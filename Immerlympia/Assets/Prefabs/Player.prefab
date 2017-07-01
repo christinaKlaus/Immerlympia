@@ -972,6 +972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e605437834adf45b81199a8322f260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  canMove: 1
+  velocityReal: {x: 0, y: 0, z: 0}
+  playerNumber: 0
+  hitBool: 0
+  respawnTime: 5
   walkSpeed: 11
   acceleration: 28
   deceleration: 36

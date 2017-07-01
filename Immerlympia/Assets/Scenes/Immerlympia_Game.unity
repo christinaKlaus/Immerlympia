@@ -1591,6 +1591,7 @@ GameObject:
   - component: {fileID: 2097942286}
   - component: {fileID: 2097942285}
   - component: {fileID: 2097942287}
+  - component: {fileID: 2097942288}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1643,6 +1644,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263d20d3013dafa4a98ad365ba60c629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2097942288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097942284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae9178e9865315a49a718b4362a1286c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnTime: 5
+  timers: []
 --- !u!1 &2141403901
 GameObject:
   m_ObjectHideFlags: 0

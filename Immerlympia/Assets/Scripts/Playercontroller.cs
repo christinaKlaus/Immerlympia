@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour {
 
     
-    [System.NonSerialized] public int score = 0;
-    [System.NonSerialized] public bool canMove = true;
-    [System.NonSerialized] public Vector3 velocityReal = Vector3.zero;
-    [System.NonSerialized] public int playerNumber;
+    [HideInInspector] public int score = 0;
+    [HideInInspector] public bool canMove = true;
+    [HideInInspector] public Vector3 velocityReal = Vector3.zero;
+    public int playerNumber;
+
+    [HideInInspector] public bool hitBool;
 
     public float walkSpeed;
     public float acceleration;
@@ -20,9 +22,7 @@ public class PlayerController : MonoBehaviour {
     
     private int jumps;
     private int timesJumped;
-    
     private float airborne = 0;
-
 
     Animator anim;
     GameObject player;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rigid;
     SoundManager soundMan;
 
-    public UnityEvent increaseScoreEvent;
+    public UnityEvent updateScoreEvent;
 
 	// Use this for initialization
 	void Start () {
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour {
 
         // <---- Jumping ---->
         RaycastHit hitGround;
-        bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
+        hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
         
         if (rigid.velocity.y <= 0 && hitBool) {
             jumps = maxJumps;
@@ -158,17 +158,19 @@ public class PlayerController : MonoBehaviour {
 
     public void CoinCountUp() {
         score++;
-        increaseScoreEvent.Invoke();
+        updateScoreEvent.Invoke();
     }
    
     public void CharacterDeath() {
 
         if (rigid.transform.position.y < -50) {
             Debug.Log("Death of Player" + playerNumber);
+            score--;
+            updateScoreEvent.Invoke();
             player.transform.position = new Vector3(0, 10, 0);
             rigid.velocity = Vector3.zero;
-            score--;
-            increaseScoreEvent.Invoke();
-        }
+            PlayerRespawn.current.timers[playerNumber] = 0;
+            player.SetActive(false);     
+        }        
     }
 }

@@ -35,8 +35,9 @@ public class Dummy : MonoBehaviour {
             return;
         }
 
-        if(!controller.canMove)
+        if(!controller.canMove || !gameObject.GetComponent<PlayerController>().hitBool)
             return;
+
 
         Vector3 velocity = (gameObject.transform.position - enemyPos.normalized) * knockback;
         controller.velocityReal = velocity;

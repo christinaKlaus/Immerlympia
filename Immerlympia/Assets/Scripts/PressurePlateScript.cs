@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class PressurePlateScript : MonoBehaviour {
 
+    public float cooldown;
+    float timer;
+
+    void Start(){
+        timer = cooldown;
+    }
+
+    void Update(){
+        timer += Time.deltaTime;
+    }
+
     private void OnTriggerEnter(Collider collider) {
+        
+        if(timer < cooldown)
+            return;
         
         Collider coll = collider;
 
@@ -22,6 +36,7 @@ public class PressurePlateScript : MonoBehaviour {
             }
         }
 
+        timer = 0;
     }
 
     
