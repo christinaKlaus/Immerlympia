@@ -30,12 +30,12 @@ public class PressurePlateScript : MonoBehaviour {
         GameObject cam = GameObject.Find("CameraTurn");
         cam.GetComponent<CameraTurn>().StartRotation(angle);
 
-        for(int i = 0; i < PlayerManager.current.transform.childCount; i++){
+      /*  for(int i = 0; i < PlayerManager.current.transform.childCount; i++){
             if(PlayerManager.current.transform.GetChild(i) != coll.gameObject.GetComponent<Transform>()){
                 PlayerManager.current.transform.GetChild(i).GetComponent<Dummy>().Damage(Vector3.zero);
             }
         }
-
+       */
         timer = 0;
     }
 
