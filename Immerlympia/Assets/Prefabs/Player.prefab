@@ -291,13 +291,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4614770494127570}
-  - component: {fileID: 54643540512803330}
-  - component: {fileID: 136235605069072416}
   - component: {fileID: 95964280373542822}
   - component: {fileID: 114086650645494410}
   - component: {fileID: 114682687573988798}
   - component: {fileID: 82162862992703248}
   - component: {fileID: 114368959686624790}
+  - component: {fileID: 143783722921581718}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -802,21 +801,6 @@ Transform:
   m_Father: {fileID: 4948265800575210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &54643540512803330
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1582146413347442}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!82 &82162862992703248
 AudioSource:
   m_ObjectHideFlags: 1
@@ -977,30 +961,21 @@ MonoBehaviour:
   velocityReal: {x: 0, y: 0, z: 0}
   playerNumber: 0
   hitBool: 0
-  respawnTime: 5
   walkSpeed: 11
   acceleration: 28
   deceleration: 36
   jumpSpeed: 12
   maxJumps: 2
-  increaseScoreEvent:
+  updateScoreEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!136 &136235605069072416
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1582146413347442}
-  m_Material: {fileID: 13400000, guid: 10c87d767d87fa3469d6eacfc479a7bd, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  startRespawnTimerEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!137 &137810600456542794
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1069,3 +1044,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.17556867, y: 0.17454031, z: -0.0000026226044}
     m_Extent: {x: 1.0863699, y: 0.5930331, z: 1.3299097}
   m_DirtyAABB: 0
+--- !u!143 &143783722921581718
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1582146413347442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}

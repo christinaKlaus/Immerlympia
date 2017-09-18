@@ -9,10 +9,10 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public int score = 0;
     [HideInInspector] public bool canMove = true;
     [HideInInspector] public Vector3 velocityReal = Vector3.zero;
+    
+    [HideInInspector] public float yVelocity;
+
     public int playerNumber;
-
-    [HideInInspector] public bool hitBool;
-
     public float walkSpeed;
     public float acceleration;
     public float deceleration;
@@ -22,12 +22,12 @@ public class PlayerController : MonoBehaviour {
     
     private int jumps;
     private int timesJumped;
-    private float airborne = 0;
+    
 
     Animator anim;
     GameObject player;
     Camera cam;
-    Rigidbody rigid;
+    CharacterController charCon;
     SoundManager soundMan;
 
     public UnityEvent updateScoreEvent;
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = gameObject;
-        rigid = GetComponent<Rigidbody>();
+        charCon = GetComponent<CharacterController>();
         cam = Camera.main;
         anim = GetComponent<Animator>();
         soundMan = GetComponent<SoundManager>();
@@ -79,8 +79,8 @@ public class PlayerController : MonoBehaviour {
     private void movement() {
 
         Vector3 velocityGoal = Vector3.zero;
-        
-        velocityReal.Scale(new Vector3(1, 0, 1));
+
+        velocityReal.Scale(new Vector3(1,0,1));
 
         // <--- Basic movement --->
 
@@ -115,44 +115,42 @@ public class PlayerController : MonoBehaviour {
             transform.LookAt(transform.position + velocityReal);
 
         // <---- Jumping ---->
-        RaycastHit hitGround;
-        hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
         
-        if (rigid.velocity.y <= 0 && hitBool) {
+        if (charCon.isGrounded) {
             jumps = maxJumps;
             timesJumped = 0;
+            yVelocity = 0;
         }
 
-        airborne += Time.deltaTime;
+        yVelocity += Physics.gravity.y * Time.deltaTime;
 
-        velocityReal.y = rigid.velocity.y;
-
-        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f && canMove) {
-            velocityReal.y = (Mathf.Max(rigid.velocity.y, 0) + jumpSpeed);
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && canMove) {
+            yVelocity = (Mathf.Max(yVelocity, 0) + jumpSpeed);
             jumps--;
             timesJumped++;
-            airborne = 0;
             if(timesJumped > 1) {
                anim.SetTrigger("doubleJump");
                soundMan.playClip(SoundType.Jump);
             }
         }
         
-       
-       
-        anim.SetBool("isJumping", !hitBool);
+        velocityReal.y = yVelocity;
+       print(charCon.isGrounded);
+        anim.SetBool("isJumping", !charCon.isGrounded);
 
 
         // <--- Setting velocity -->
-        rigid.velocity = velocityReal;
+        charCon.Move(velocityReal * Time.deltaTime);
+
+
         velocityReal.Scale(new Vector3(1, 0, 1));
-        if(!soundMan.IsInvoking() && velocityReal.magnitude > 5 && hitBool)
+        if(!soundMan.IsInvoking() && velocityReal.magnitude > 5 && charCon.isGrounded)
             soundMan.startFootsteps();
 
-        if(velocityReal.magnitude <= 1 || !hitBool)
+        if(velocityReal.magnitude <= 1 || !charCon.isGrounded)
             soundMan.stopFootsteps();
 
-        anim.SetFloat("speed", rigid.velocity.magnitude);
+        anim.SetFloat("speed", charCon.velocity.magnitude);
         //if(anim.GetFloat("speed") != 0 && !GetComponent<AudioSource>().isPlaying)
           //  soundMan.playClip(SoundType.Steps);
     }
@@ -164,7 +162,7 @@ public class PlayerController : MonoBehaviour {
    
     public void CharacterDeath() {
 
-        if (rigid.transform.position.y < -50) {
+        if (charCon.transform.position.y < -50) {
             Debug.Log("Death of Player" + playerNumber);
             score--;
             updateScoreEvent.Invoke();

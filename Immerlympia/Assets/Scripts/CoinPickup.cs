@@ -6,7 +6,7 @@ public class CoinPickup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        InvokeRepeating("PosCheck", 0, 2);
 	}
 	
 	// Update is called once per frame
@@ -16,7 +16,7 @@ public class CoinPickup : MonoBehaviour {
         }
 	}
 
-    void OnCollisionEnter(Collision collision) {
+    void OnTriggerEnter(Collider collision) {
         GameObject obj = collision.gameObject;
         PlayerController pc = obj.GetComponent<PlayerController>();
 
@@ -34,5 +34,14 @@ public class CoinPickup : MonoBehaviour {
         if (spawn == null)
             Debug.Log("Spawn not found");
         spawn.GetComponent<CoinSpawn>().SpawnCoin();
+    }
+
+    void PosCheck(){
+        RaycastHit hit;
+		if(Physics.Raycast(transform.position, Vector3.down, out hit, 22)){
+            transform.position = hit.point + Vector3.up;
+        }else{
+            Die();
+        }
     }
 }
