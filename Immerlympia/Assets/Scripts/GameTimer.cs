@@ -46,4 +46,9 @@ public class GameTimer : MonoBehaviour {
 
         
     }
+
+    public float getCurrentTime()
+    {
+        return currTime;
+    }
 }

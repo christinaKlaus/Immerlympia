@@ -11,10 +11,12 @@ public class Dummy : MonoBehaviour {
 
     float stunned = 0;
     PlayerController controller;
+    SoundManager soundMan;
     
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<PlayerController>();
+        soundMan = GetComponent<SoundManager>();
 	}
 	
 	// Update is called once per frame
@@ -61,5 +63,6 @@ public class Dummy : MonoBehaviour {
         
         Animator anim = this.gameObject.GetComponent<Animator>();
         anim.SetTrigger("getHit");
+        soundMan.playClip(SoundType.Hit);
     }
 }

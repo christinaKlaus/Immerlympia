@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour {
 	public AudioClip hit;
 	public AudioClip jump;
 	public AudioClip punch;
-	public AudioClip steps;
+	public AudioClip steps; //steps clip is different for all four players
 	void Start () {
 		source = GetComponent<AudioSource>();
 	}
@@ -23,7 +23,7 @@ public class SoundManager : MonoBehaviour {
 		source.Play();
 	}
 
-	public void startFootsteps(){
+	/*public void startFootsteps(){
 		InvokeRepeating("playFootsteps", 0.0f, 0.3f);
 	}
 
@@ -33,9 +33,10 @@ public class SoundManager : MonoBehaviour {
 
 	public void stopFootsteps(){
 		CancelInvoke("playFootsteps");
-	}
+	}*/
 
 	public void playClip(SoundType type){
+        source.pitch = Random.Range(0.85f, 1.15f);
 		switch (type) {
 			case (SoundType.Hit) :
 			//	if(!source.isPlaying)

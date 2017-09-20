@@ -1,10 +1,9 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour {
-
     
     [HideInInspector] public int score = 0;
     [HideInInspector] public bool canMove = true;
@@ -69,7 +68,7 @@ public class PlayerController : MonoBehaviour {
                 if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
 
                 dummy.Damage(gameObject); // Let the object hit itself
-                soundMan.playClip(SoundType.Hit);
+                
                 
             }
 
@@ -131,11 +130,12 @@ public class PlayerController : MonoBehaviour {
             if(timesJumped > 1) {
                anim.SetTrigger("doubleJump");
                soundMan.playClip(SoundType.Jump);
+               //Debug.Log("DoubleJump reached");
             }
         }
         
         velocityReal.y = yVelocity;
-       print(charCon.isGrounded);
+       //print(charCon.isGrounded);
         anim.SetBool("isJumping", !charCon.isGrounded);
 
 
@@ -144,13 +144,13 @@ public class PlayerController : MonoBehaviour {
 
 
         velocityReal.Scale(new Vector3(1, 0, 1));
-        if(!soundMan.IsInvoking() && velocityReal.magnitude > 5 && charCon.isGrounded)
+        /*if(!soundMan.IsInvoking() && velocityReal.magnitude > 5 && charCon.isGrounded)
             soundMan.startFootsteps();
 
         if(velocityReal.magnitude <= 1 || !charCon.isGrounded)
-            soundMan.stopFootsteps();
+            soundMan.stopFootsteps();*/
 
-        anim.SetFloat("speed", charCon.velocity.magnitude);
+        anim.SetFloat("speed", Mathf.Sqrt(Mathf.Pow(charCon.velocity.x,2)+Mathf.Pow(charCon.velocity.z, 2)));
         //if(anim.GetFloat("speed") != 0 && !GetComponent<AudioSource>().isPlaying)
           //  soundMan.playClip(SoundType.Steps);
     }
@@ -173,5 +173,18 @@ public class PlayerController : MonoBehaviour {
             player.SetActive(false);
 
         }        
+    }
+
+    public void PlaySound(string sound)
+    {
+        switch (sound)
+        {
+            case "step":
+                soundMan.playClip(SoundType.Steps);
+                break;
+            case "punch":
+                soundMan.playClip(SoundType.Punch);
+                break;
+        }
     }
 }
