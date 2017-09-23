@@ -9,44 +9,52 @@ public class GameMusicScript : MonoBehaviour {
     public AudioClip loop;
     public AudioClip highScoreStingerTest;
     public AudioMixerGroup musicMixer;
-    public AudioMixerSnapshot[] playerWinSnaps;
+    public AudioClip[] playerWinTracks;
 
     AudioSource loopS;
     AudioSource introS;
     GameTimer gTimer;
     public PlayerManager pMan;
 
+    double audioInitTime;
     float gTime;
+    float bpm = 100.0f;
+    float bps;
+    float sampleRate = 44100.0f;
+    public float audioStartDelay = 1.0f;
 
 
 
     void Start () {
+        pMan = GameObject.FindObjectOfType<PlayerManager>();
+
+        //building the soundsources and setting them up
         introS = gameObject.AddComponent<AudioSource>();
         loopS = gameObject.AddComponent<AudioSource>();
         introS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
         loopS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
 
+        audioInitTime = AudioSettings.dspTime;
         introS.clip = intro;
-        introS.Play();
-
+        introS.PlayScheduled(audioInitTime + audioStartDelay);
         
         loopS.clip = loop;
         loopS.loop = true;
 
-        loopS.PlayDelayed(intro.length);
+        loopS.PlayScheduled(audioInitTime + audioStartDelay + intro.length);
         Destroy(introS, intro.length);
 
         gTimer = GetComponent<GameTimer>();
         gTime = gTimer.playTime;
 
 
-        Invoke("EvaluatePlayerScore", gTime - 20);
 
-        pMan = GameObject.FindObjectOfType<PlayerManager>();
+        //Invoke("EvaluatePlayerScore", (float) (audioInitTime + audioStartDelay + 36.0f));
+
+        bps = bpm / 60.0f;
 
         
     }
-
 
     void EvaluatePlayerScore()
     {
@@ -80,7 +88,11 @@ public class GameMusicScript : MonoBehaviour {
 
         Debug.Log("Winning player is No. " + winningPlayerID);
 
-        playerWinSnaps[winningPlayerID].TransitionTo(1f);
+        AudioSource winS = gameObject.AddComponent<AudioSource>();
+        winS.outputAudioMixerGroup = loopS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("winClip")[0];
+
+        winS.clip = playerWinTracks[winningPlayerID];
+        winS.PlayScheduled(audioInitTime + audioStartDelay + 38.4f);
 
 
 

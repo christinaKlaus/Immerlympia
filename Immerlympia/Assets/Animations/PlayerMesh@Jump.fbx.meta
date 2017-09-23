@@ -107,7 +107,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.072139315
+      - time: 0.018918918
         functionName: PlaySound
         data: jump
         objectReferenceParameter: {instanceID: 0}

@@ -127,16 +127,16 @@ public class PlayerController : MonoBehaviour {
             yVelocity = (Mathf.Max(yVelocity, 0) + jumpSpeed);
             jumps--;
             timesJumped++;
-            if(timesJumped > 1) {
+            if (timesJumped > 1) {
                anim.SetTrigger("doubleJump");
-               soundMan.playClip(SoundType.Jump);
                //Debug.Log("DoubleJump reached");
             }
         }
         
         velocityReal.y = yVelocity;
-       //print(charCon.isGrounded);
-        anim.SetBool("isJumping", !charCon.isGrounded);
+        //print(charCon.isGrounded);
+
+        anim.SetBool("isJumping", !charCon.isGrounded && velocityReal.y > 0.5f);
 
 
         // <--- Setting velocity -->
@@ -184,6 +184,12 @@ public class PlayerController : MonoBehaviour {
                 break;
             case "punch":
                 soundMan.playClip(SoundType.Punch);
+                break;
+            case "jump":
+                soundMan.playClip(SoundType.Jump);
+                break;
+            case "doubleJump":
+                soundMan.playClip(SoundType.DoubleJump);
                 break;
         }
     }

@@ -86,10 +86,10 @@ ModelImporter:
     - serializedVersion: 16
       name: Punch_2
       takeName: Take 001
-      firstFrame: 4
+      firstFrame: 0
       lastFrame: 15
       wrapMode: 0
-      orientationOffsetY: -77.45
+      orientationOffsetY: -59.5
       level: 0
       cycleOffset: 0
       loop: 0
@@ -104,7 +104,7 @@ ModelImporter:
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000000000001000000010000000100000001000000010000000100000001000000
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
       - time: 0.24567702
