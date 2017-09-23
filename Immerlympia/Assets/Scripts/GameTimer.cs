@@ -6,6 +6,9 @@ using UnityEngine.Audio;
 
 public class GameTimer : MonoBehaviour {
 
+    private bool halfTimeReached;
+    GameMusicScript gameMusic;
+   
     public static GameTimer current;
     public UnityEvent gameEndEvent;
     public float playTime;
@@ -13,14 +16,22 @@ public class GameTimer : MonoBehaviour {
 
     // Use this for initialization
 	void Awake () {
+        halfTimeReached = false;
+        gameMusic = GetComponent<GameMusicScript>();
         currTime = 0;
         current = this;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (currTime < playTime) {
             currTime += Time.deltaTime;
+
+            if(!halfTimeReached && currTime > playTime / 4)
+            {
+                gameMusic.TransitionToClimaxFadeUp(playTime / 3);
+                halfTimeReached = true;
+            }
 
             if (currTime >= playTime) {
                 GameEnd();
@@ -31,7 +42,8 @@ public class GameTimer : MonoBehaviour {
     void GameEnd() {
         List<PlayerController> winner = new List<PlayerController>();
         gameEndEvent.Invoke();
-        
+        gameMusic.TransitionToGameEnd(0.0f);
+
         foreach (PlayerController p in PlayerManager.current.players) {
             if (winner.Count == 0 || p.score > winner[0].score) {
                 winner.Clear();

@@ -7,12 +7,16 @@ public class GameMusicScript : MonoBehaviour {
 
     public AudioClip intro;
     public AudioClip loop;
-    public AudioClip highScoreStingerTest;
+    public AudioClip climax;
     public AudioMixerGroup musicMixer;
-    public AudioClip[] playerWinTracks;
+
+    public AudioMixerSnapshot gameStart;
+    public AudioMixerSnapshot climaxGroupFadeUp;
+    public AudioMixerSnapshot gameEnd;
 
     AudioSource loopS;
     AudioSource introS;
+    AudioSource climaxS;
     GameTimer gTimer;
     public PlayerManager pMan;
 
@@ -31,13 +35,17 @@ public class GameMusicScript : MonoBehaviour {
         //building the soundsources and setting them up
         introS = gameObject.AddComponent<AudioSource>();
         loopS = gameObject.AddComponent<AudioSource>();
+        climaxS = gameObject.AddComponent<AudioSource>();
         introS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
         loopS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
+        climaxS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("climax")[0];
 
         audioInitTime = AudioSettings.dspTime;
         introS.clip = intro;
         introS.PlayScheduled(audioInitTime + audioStartDelay);
-        
+        climaxS.clip = climax;
+        climaxS.PlayScheduled(audioInitTime + audioStartDelay);
+
         loopS.clip = loop;
         loopS.loop = true;
 
@@ -47,16 +55,10 @@ public class GameMusicScript : MonoBehaviour {
         gTimer = GetComponent<GameTimer>();
         gTime = gTimer.playTime;
 
-
-
         //Invoke("EvaluatePlayerScore", (float) (audioInitTime + audioStartDelay + 36.0f));
-
-        bps = bpm / 60.0f;
-
-        
     }
 
-    void EvaluatePlayerScore()
+    /*void EvaluatePlayerScore()
     {
         if (pMan == null)
             Debug.Log("GameMusicScript hasn't found PlayerManager");
@@ -91,11 +93,18 @@ public class GameMusicScript : MonoBehaviour {
         AudioSource winS = gameObject.AddComponent<AudioSource>();
         winS.outputAudioMixerGroup = loopS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("winClip")[0];
 
-        winS.clip = playerWinTracks[winningPlayerID];
+        //winS.clip = playerWinTracks[winningPlayerID];
         winS.PlayScheduled(audioInitTime + audioStartDelay + 38.4f);
+    }*/
 
+    public void TransitionToClimaxFadeUp(float transitionTime)
+    {
+        climaxGroupFadeUp.TransitionTo(transitionTime);
+    }
 
-
+    public void TransitionToGameEnd(float transitionTime)
+    {
+        gameEnd.TransitionTo(transitionTime);
     }
 
 }

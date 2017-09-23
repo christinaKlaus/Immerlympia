@@ -141,15 +141,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intro: {fileID: 8300000, guid: ed24dd7484a45fe4c813ea377056c0b9, type: 3}
   loop: {fileID: 8300000, guid: 72ebcb98449d8604f9aa85e2406ea53a, type: 3}
-  highScoreStingerTest: {fileID: 0}
+  climax: {fileID: 8300000, guid: ebbda872a14789c4091b3e594c2043b8, type: 3}
   musicMixer: {fileID: 243468625747401494, guid: 5171193c4d02d724986f6bc0463cdc8d,
     type: 2}
-  playerWinSnaps:
-  - {fileID: 245286453966774012, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
-  - {fileID: 245305371812279948, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
-  - {fileID: 245880855951192968, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
-  - {fileID: 245764529553601794, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
+  gameStart: {fileID: 24500006, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
+  climaxGroupFadeUp: {fileID: 245179798717632672, guid: 5171193c4d02d724986f6bc0463cdc8d,
+    type: 2}
+  gameEnd: {fileID: 245011408950546680, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
   pMan: {fileID: 0}
+  audioStartDelay: 1
 --- !u!114 &114511284791710332
 MonoBehaviour:
   m_ObjectHideFlags: 1

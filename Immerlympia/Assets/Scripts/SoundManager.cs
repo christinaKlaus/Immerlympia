@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour {
 				break;
 			case SoundType.Steps:
                 //	if(!source.isPlaying)
-                source.PlayOneShot(steps);
+                source.PlayOneShot(steps, 0.33f);
 				break;
             case SoundType.DoubleJump:
                 source.PlayOneShot(doubleJump);
