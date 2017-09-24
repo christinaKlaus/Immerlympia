@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour {
     
     private int jumps;
     private int timesJumped;
-    
+    private bool hasDied = false; 
+   
 
     Animator anim;
     GameObject player;
@@ -161,8 +162,15 @@ public class PlayerController : MonoBehaviour {
     }
    
     public void CharacterDeath() {
+        float posY = charCon.transform.position.y;
 
-        if (charCon.transform.position.y < -50) {
+        if(!hasDied && posY < -45 && posY > -49)
+        {
+            hasDied = true;
+            soundMan.playClip(SoundType.Death);
+        }
+
+        if (posY < -50) {
             Debug.Log("Death of Player" + playerNumber);
             score--;
             updateScoreEvent.Invoke();
@@ -170,8 +178,9 @@ public class PlayerController : MonoBehaviour {
             velocityReal = Vector3.zero;
             PlayerRespawn.current.timers[playerNumber] = PlayerRespawn.current.respawnTime;
             startRespawnTimerEvent.Invoke();
+            hasDied = false;
             player.SetActive(false);
-
+            
         }        
     }
 
@@ -190,6 +199,8 @@ public class PlayerController : MonoBehaviour {
                 break;
             case "doubleJump":
                 soundMan.playClip(SoundType.DoubleJump);
+                break;
+            default:
                 break;
         }
     }

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 public enum SoundType{
-		Hit, Jump, Punch, Steps, DoubleJump, Collect
+		Hit, Jump, Punch, Steps, DoubleJump, Collect, Death
 }
 public class SoundManager : MonoBehaviour {
 
 	private AudioSource source;
-
-	//public List<AudioClip> audioclips;
 
 	public AudioClip steps; //steps clip is different for all four players
     public AudioClip punch;
@@ -16,8 +14,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip jump;
     public AudioClip doubleJump;
     public AudioClip coinCollect;
-
-    //public float defaultVolume;
+    public AudioClip death;
 
     void Start () {
 		source = GetComponent<AudioSource>();
@@ -27,18 +24,6 @@ public class SoundManager : MonoBehaviour {
 		source.clip = clip;
 		source.Play();
 	}
-
-	/*public void startFootsteps(){
-		InvokeRepeating("playFootsteps", 0.0f, 0.3f);
-	}
-
-	public void playFootsteps(){
-		source.PlayOneShot(steps, 0.5f);
-	}
-
-	public void stopFootsteps(){
-		CancelInvoke("playFootsteps");
-	}*/
 
 	public void playClip(SoundType type){
         source.pitch = Random.Range(0.85f, 1.15f);
@@ -65,6 +50,17 @@ public class SoundManager : MonoBehaviour {
                 break;
             case SoundType.Collect:
                 source.PlayOneShot(coinCollect);
+                break;
+            case SoundType.Death:
+                    GameObject tempAudioSource = new GameObject();
+                    AudioSource deathS = tempAudioSource.AddComponent<AudioSource>();
+                    deathS.maxDistance = source.maxDistance;
+                    deathS.minDistance = source.minDistance;
+                    deathS.spatialBlend = source.spatialBlend;
+                    tempAudioSource.transform.position = gameObject.transform.position;
+                    deathS.outputAudioMixerGroup = source.outputAudioMixerGroup;
+                    deathS.PlayOneShot(death, 0.75f);
+                    Destroy(tempAudioSource, death.length + 1.0f);
                 break;
 			default:
 				return;

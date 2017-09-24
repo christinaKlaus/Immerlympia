@@ -948,6 +948,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: 05e16e3d5d24633478b68cc5ca9fcabf, type: 3}
   doubleJump: {fileID: 8300000, guid: cd3b1f5483d60584ca71b2fa6634d1b6, type: 3}
   coinCollect: {fileID: 8300000, guid: 720bd1e1998ccbd41b32796e2527bbf1, type: 3}
+  death: {fileID: 8300000, guid: 3a3f93c9c4fe1e646a56fadba8cd0935, type: 3}
 --- !u!114 &114682687573988798
 MonoBehaviour:
   m_ObjectHideFlags: 1
