@@ -152,11 +152,6 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 114682687573988798, guid: 385424e9412cd144ea222da89c4b6524,
-        type: 2}
-      propertyPath: acceleration
-      value: 28
-      objectReference: {fileID: 0}
     - target: {fileID: 114368959686624790, guid: 385424e9412cd144ea222da89c4b6524,
         type: 2}
       propertyPath: steps
@@ -167,6 +162,86 @@ Prefab:
       propertyPath: hit
       value: 
       objectReference: {fileID: 8300000, guid: fa5227e98ccf83b48bfcdf24e972a356, type: 3}
+    - target: {fileID: 4932421326272350, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4203568192069486, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1052580937800648, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: randomSeed
+      value: -1037679018
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: LightsModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.lifetime.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.colorOverTrail.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.colorOverTrail.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.colorOverTrail.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: TrailModule.minVertexDistance
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.maxNumParticles
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.83
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
   m_IsPrefabParent: 0
@@ -643,7 +718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8, y: 0.9}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 279.99988, y: 144.99992}
+  m_AnchoredPosition: {x: 279.99988, y: 144.99994}
   m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638588709
@@ -838,6 +913,16 @@ Prefab:
       propertyPath: hit
       value: 
       objectReference: {fileID: 8300000, guid: a20200a77639104469e04214f3d9c16c, type: 3}
+    - target: {fileID: 119931375569313366, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: c5769f4ad0b6cd7429de1e5f85d906ce, type: 2}
+    - target: {fileID: 96849142894378198, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 95997f0a6c797b74ead50db23fc066ef, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
   m_IsPrefabParent: 0
@@ -950,6 +1035,16 @@ Prefab:
       propertyPath: hit
       value: 
       objectReference: {fileID: 8300000, guid: a590d73bfedd19b4484375de6f8da064, type: 3}
+    - target: {fileID: 119931375569313366, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 7aa0884e9e7b5b6439b4867eda946133, type: 2}
+    - target: {fileID: 96849142894378198, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f528d0f8a0ac0141a3cee14dc37b613, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
   m_IsPrefabParent: 0
@@ -1224,6 +1319,21 @@ Prefab:
       propertyPath: hit
       value: 
       objectReference: {fileID: 8300000, guid: f51139c7fc29f9648a8099ed0eaff689, type: 3}
+    - target: {fileID: 119931375569313366, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 660ac0b39fd9bc241abccb78e784dd54, type: 2}
+    - target: {fileID: 96849142894378198, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61ca498ba25e4714cb9581b5aa1e218c, type: 2}
+    - target: {fileID: 96849142894378198, guid: 385424e9412cd144ea222da89c4b6524,
+        type: 2}
+      propertyPath: m_Time
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385424e9412cd144ea222da89c4b6524, type: 2}
   m_IsPrefabParent: 0
@@ -1896,7 +2006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9}
   m_AnchorMax: {x: 0.2, y: 1}
-  m_AnchoredPosition: {x: -280, y: 144.99992}
+  m_AnchoredPosition: {x: -280, y: 144.99994}
   m_SizeDelta: {x: 119.999985, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2058450519
