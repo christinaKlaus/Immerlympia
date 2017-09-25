@@ -20,9 +20,9 @@ public class PressurePlateScript : MonoBehaviour {
         if(timer < cooldown)
             return;
         
-        Collider coll = collider;
+        //Collider coll = collider;
 
-        Debug.Log(coll);
+        //Debug.Log(coll);
 
         float angle = Mathf.Atan2(-transform.position.x, -transform.position.z) * Mathf.Rad2Deg;
         angle = Mathf.Round((angle - 30) / 120) * 120 + 30;

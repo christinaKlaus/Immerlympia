@@ -21,10 +21,6 @@ public class GameMusicScript : MonoBehaviour {
     public PlayerManager pMan;
 
     double audioInitTime;
-    float gTime;
-    float bpm = 100.0f;
-    float bps;
-    float sampleRate = 44100.0f;
     public float audioStartDelay = 1.0f;
 
 
@@ -51,9 +47,6 @@ public class GameMusicScript : MonoBehaviour {
 
         loopS.PlayScheduled(audioInitTime + audioStartDelay + intro.length);
         Destroy(introS, intro.length);
-
-        gTimer = GetComponent<GameTimer>();
-        gTime = gTimer.playTime;
 
         //Invoke("EvaluatePlayerScore", (float) (audioInitTime + audioStartDelay + 36.0f));
     }
