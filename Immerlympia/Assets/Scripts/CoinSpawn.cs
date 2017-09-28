@@ -11,6 +11,7 @@ public class CoinSpawn : MonoBehaviour {
     public float startDistToLast;
 
     private Vector3 prevPos;
+    private Vector3 pos;
     private float timer;
 	// Use this for initialization
 	void Start () {
@@ -30,7 +31,7 @@ public class CoinSpawn : MonoBehaviour {
 
 	public void SpawnCoin(){
         bool goodPos = false;
-        Vector3 pos = Vector3.zero;
+        pos = Vector3.zero;
 
         for(int i = 0; i < 20; i++) {
             float t = 2 * Mathf.PI * Random.value;
@@ -45,11 +46,19 @@ public class CoinSpawn : MonoBehaviour {
         }
 
         if (goodPos) {
-            Instantiate(coin, pos, transform.rotation);
+            Invoke("InstantiateCoin", 1.5f);
+            //Instantiate(coin, pos, transform.rotation);
             prevPos = pos;
         } else {
             timer = 1;
         }
         
 	}
+
+    void InstantiateCoin()
+    {
+        Instantiate(coin, pos, transform.rotation);
+    }
+
+   
 }

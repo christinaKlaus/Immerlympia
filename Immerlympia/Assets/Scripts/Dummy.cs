@@ -11,10 +11,12 @@ public class Dummy : MonoBehaviour {
 
     float stunned = 0;
     PlayerController controller;
+    SoundManager soundMan;
     
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<PlayerController>();
+        soundMan = GetComponent<SoundManager>();
 	}
 	
 	// Update is called once per frame
@@ -33,7 +35,7 @@ public class Dummy : MonoBehaviour {
             return;
         }
 
-        Vector3 velocity = (gameObject.transform.position - enemyPos.normalized) * knockback;
+        Vector3 velocity = (gameObject.transform.position - enemyPos).normalized * knockback;
         controller.velocityReal = velocity;
         controller.yVelocity = vertKnockup;
 
@@ -53,7 +55,7 @@ public class Dummy : MonoBehaviour {
             return;
         }
         
-        Vector3 velocity = ((gameObject.transform.position - enemy.transform.position).normalized) * knockback;
+        Vector3 velocity = (gameObject.transform.position - enemy.transform.position).normalized * knockback;
         controller.velocityReal = velocity;
         controller.yVelocity = vertKnockup;
 
@@ -61,5 +63,28 @@ public class Dummy : MonoBehaviour {
         
         Animator anim = this.gameObject.GetComponent<Animator>();
         anim.SetTrigger("getHit");
+        soundMan.playClip(SoundType.Hit);
+    }
+
+    public void DamageByWave()
+    {
+        if (stunned > -cooldown)
+            return;
+
+        if (controller == null)
+        {
+            Debug.Log("No Controller found");
+            return;
+        }
+
+        Vector3 velocity = (gameObject.transform.position - Vector3.zero).normalized * knockback;
+        controller.velocityReal = velocity;
+        controller.yVelocity = 10f;
+
+        stunned = stunTime;
+
+        Animator anim = this.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("getHit");
+        soundMan.playClip(SoundType.Hit);
     }
 }

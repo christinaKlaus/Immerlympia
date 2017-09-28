@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    AudioSource coinSoundSource;
+    public AudioClip spawn;
+
+    private void Awake()
+    {
+        if(coinSoundSource == null)
+            coinSoundSource = GetComponent<AudioSource>();
+
+        coinSoundSource.PlayOneShot(spawn);
+    }
+
+    // Use this for initialization
+    void Start () {
         InvokeRepeating("PosCheck", 0, 2);
+        if (coinSoundSource == null)
+            coinSoundSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(transform.position.y < -50) {
+		if(transform.position.y < -20) {
             Die();
         }
 	}
@@ -21,6 +34,7 @@ public class CoinPickup : MonoBehaviour {
         PlayerController pc = obj.GetComponent<PlayerController>();
 
         if(pc != null) {
+            pc.GetComponent<SoundManager>().playClip(SoundType.Collect);
             pc.CoinCountUp();
             Die();
         }

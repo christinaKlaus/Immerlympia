@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23281036945919340}
   - component: {fileID: 64506161873727746}
   m_Layer: 0
-  m_Name: Cylinder005
+  m_Name: MIDDLE_PLATFORM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 4756931232651978}
   - component: {fileID: 114704158040408530}
   - component: {fileID: 114511284791710332}
+  - component: {fileID: 114175897197563556}
+  - component: {fileID: 114763798567110074}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -122,10 +124,32 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 545591a4cebe59f4fa5530bea74e42f8, type: 3}
+--- !u!114 &114175897197563556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1931951390286502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57f12335e8f29a4dbf3959feccaab9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intro: {fileID: 8300000, guid: ed24dd7484a45fe4c813ea377056c0b9, type: 3}
+  loop: {fileID: 8300000, guid: 72ebcb98449d8604f9aa85e2406ea53a, type: 3}
+  climax: {fileID: 8300000, guid: ebbda872a14789c4091b3e594c2043b8, type: 3}
+  musicMixer: {fileID: 243468625747401494, guid: 5171193c4d02d724986f6bc0463cdc8d,
+    type: 2}
+  gameStart: {fileID: 24500006, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
+  climaxGroupFadeUp: {fileID: 245179798717632672, guid: 5171193c4d02d724986f6bc0463cdc8d,
+    type: 2}
+  gameEnd: {fileID: 245011408950546680, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
+  pMan: {fileID: 0}
+  audioStartDelay: 1
 --- !u!114 &114511284791710332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,3 +177,21 @@ MonoBehaviour:
   radius: 18
   minRadius: 15
   spawnHeight: 20
+  startDistToLast: 20
+--- !u!114 &114763798567110074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1931951390286502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480acdb442901fb4ba9cff48c1e2fbeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  playTime: 60
