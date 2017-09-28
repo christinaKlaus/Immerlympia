@@ -39,9 +39,9 @@ public class CameraTurn : MonoBehaviour {
         }
     }
        
-    public void StartRotation(float targetAngle) {
+    public bool StartRotation(float targetAngle) {
         if ((int)targetAngle == lastPosition || (lastPosition == 270 && (int)targetAngle == -90))
-            return;
+            return false;
 
         start = transform.eulerAngles.y;
         end = targetAngle;
@@ -60,6 +60,7 @@ public class CameraTurn : MonoBehaviour {
         }
         turnEnded = false;
         lastPosition = (int)end;
+        return true;
     }
 
     bool GetRotateDirection(float from, float to)

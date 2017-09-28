@@ -2461,4 +2461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a945020a0ee0c1040b273fbab5bf57f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveGeneratorObject: {fileID: 1039203527897958, guid: 00a0ffd8e41b05f4aadb02445208d7a4,
+    type: 2}
   cooldown: 3
