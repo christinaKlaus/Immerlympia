@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinSpawn : MonoBehaviour {
+public class RandomCoinSpawn : MonoBehaviour {
 
 	public GameObject coin;
 	public float radius;

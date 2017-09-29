@@ -10,44 +10,61 @@ public class PlatformScript : MonoBehaviour {
     public float warning;
     public float shakiness;
     public float appearTime;
+    public bool movingUp = true;
+    [HideInInspector] public bool canFall = true;
 
     private float timer = 8;
     private float duration;
     private bool playedDescendSound = false;
+    private bool spawnsAvailable = false;
 
     private Vector3[] basePos;
     private AudioSource platformAudio;
+    private CoinSpawnPoint[] spawns;
+    
 
-   
-
-    // Use this for initialization
     void OnEnable () {
         timer = Random.Range(lifetimeRange.x, lifetimeRange.y);
         duration = timer;
-
-        if(descendClips.Length == 0)
-        {
+        spawns = GetComponentsInChildren<CoinSpawnPoint>();
+        
+        if(descendClips.Length == 0) {
             Debug.Log("Platform prefab " + gameObject.name + " is missing descend sounds");
         }
-        if(platformAudio == null)
-        {
+        
+        if(platformAudio == null) {
             platformAudio = GetComponent<AudioSource>();
         }
 
         Update();
     }
 
-    // Update is called once per frame
     void Update () {
-        timer -= Time.deltaTime; // zählt Sekundenweise	
-        //Debug.Log(timer);
+                
+        if(!movingUp && !spawnsAvailable){
+            foreach(CoinSpawnPoint s in spawns){
+                // Debug.Log("Spawn true gesetzt");
+                s.canSpawnCoin = true;
+            }
+        }
 
+        if(canFall)
+            timer -= Time.deltaTime; // zählt Sekundenweise	
+
+        //shake
         if (timer < warning) {
-            if (!playedDescendSound)
-            {
+
+            foreach(CoinSpawnPoint s in spawns){
+                //Debug.Log("Spawn false gesetzt");
+                s.canSpawnCoin = false;
+                CoinSpawnManager.possibleCoinSpawns.Remove(s);
+            }
+
+            if (!playedDescendSound) {
                 platformAudio.PlayOneShot(descendClips[(int)transform.rotation.y / 120]);
                 playedDescendSound = true;
             }
+
             if (basePos == null) {
                 basePos = new Vector3[transform.childCount];
                 for (int i = 0; i < transform.childCount; i++)
@@ -55,20 +72,27 @@ public class PlatformScript : MonoBehaviour {
             }
 
             Vector3 offset = new Vector3(Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness));
-
+            
             for (int i = 0; i < transform.childCount; i++)
                 transform.GetChild(i).localPosition = basePos[i] + offset;
         }
+        
+        
 
         if(timer > 0) {
+            //moving up
             transform.position = -Vector3.up * Mathf.Min(timer * -1 + duration - appearTime, 0) * Mathf.Min(timer * -1 + duration - appearTime, 0) * fallSpeed;  
         } else {
+            //moving down
             transform.position = -Vector3.up * Mathf.Min(timer, 0) * Mathf.Min(timer, 0) * fallSpeed;
         }
 
         if (timer < -appearTime) {
+            //platform fell down and needs to be deactivated
             Remove();
         }
+
+        movingUp = (timer < duration - appearTime) ? false : true;
 
         
     }
@@ -79,4 +103,5 @@ public class PlatformScript : MonoBehaviour {
         gameObject.SetActive(false);
         playedDescendSound = false;
     }
+
 }

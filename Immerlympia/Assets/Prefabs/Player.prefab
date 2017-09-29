@@ -1123,8 +1123,8 @@ MonoBehaviour:
   yVelocity: 0
   playerNumber: 0
   walkSpeed: 11
-  acceleration: 28
-  deceleration: 36
+  acceleration: 50
+  deceleration: 50
   jumpSpeed: 12
   maxJumps: 2
   updateScoreEvent:
