@@ -28,7 +28,6 @@ public class CoinSpawnManager : MonoBehaviour {
 	void Update () {
 
 		if(!coinActive){
-			//print("size of possible Spawns list: " + possibleCoinSpawns.Count);
 			spawnNewCoin();
 		}
 
@@ -43,7 +42,6 @@ public class CoinSpawnManager : MonoBehaviour {
 		if(possibleCoinSpawns[index].canSpawnCoin){
 			possibleCoinSpawns[index].spawnCoin();
 			coinActive = true;
-
 		}
 
 	}
