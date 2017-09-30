@@ -8,6 +8,7 @@ TagManager:
   - UI
   - waveGenerator
   - laserBeamMount
+  - spawnPoint
   layers:
   - Default
   - TransparentFX

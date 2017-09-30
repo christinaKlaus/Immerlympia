@@ -26,6 +26,7 @@ public class CoinPickup : MonoBehaviour {
 	void Update () {
 		if(transform.position.y < -20) {
             Die();
+            Debug.Log("Coin too low");
         }
 	}
 
@@ -41,13 +42,10 @@ public class CoinPickup : MonoBehaviour {
 
     }
 
-    void Die () {
+    public void Die () {
+        CoinSpawnManager.coinActive = false;
+        transform.parent.parent.GetComponent<PlatformScript>().canFall = true;
         Destroy(gameObject);
-
-        GameObject spawn = GameObject.Find("Spawn");
-        if (spawn == null)
-            Debug.Log("Spawn not found");
-        spawn.GetComponent<CoinSpawn>().SpawnCoin();
     }
 
     void PosCheck(){

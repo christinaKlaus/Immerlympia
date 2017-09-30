@@ -12,7 +12,7 @@ public class PressurePlateScript : MonoBehaviour {
 
     void Start(){
         timer = cooldown;
-        waveGenerator = GameObject.FindGameObjectWithTag("waveGenerator").GetComponent<KnockBackWave>();
+//        waveGenerator = GameObject.FindGameObjectWithTag("waveGenerator").GetComponent<KnockBackWave>();
         //laserBeamMount = GameObject.FindGameObjectWithTag("laserBeamMount").GetComponent<LaserBeamScript>();
     }
 
@@ -37,7 +37,7 @@ public class PressurePlateScript : MonoBehaviour {
 
         //bool can be evaluated to disable waves when no cameraturn would be done on activation of pressure plate
         //if(cameraNeedsTurn)
-        waveGenerator.StartWave(collider.name);
+       // waveGenerator.StartWave(collider.name);
 
         //laserBeamMount.StartLaser(collider.GetComponent<Transform>().position);
 
