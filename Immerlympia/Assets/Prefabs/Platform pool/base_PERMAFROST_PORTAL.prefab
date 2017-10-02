@@ -664,12 +664,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4761f550a6908e04d8561c64878d1ede, type: 3}
   - {fileID: 8300000, guid: fbdee1a569ea9224389fdf7cad2f537b, type: 3}
   - {fileID: 8300000, guid: c416e8211ae91a3488c3bbf8ffa4af2f, type: 3}
-  lifetimeRange: {x: 8, y: 12}
+  lifetimeRange: {x: 10, y: 20}
   fallSpeed: 11
   warning: 5
   shakiness: 0.1
   appearTime: 3
-  movingUp: 1
+  movingUpOrDown: 1
   canFall: 1
 --- !u!114 &114265573248091104
 MonoBehaviour:
