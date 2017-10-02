@@ -20,7 +20,7 @@ public class updateTimer : MonoBehaviour {
     }
 
 	void UpdateTimer(){
-		text.text = "Respawn in " + (int) PlayerRespawn.current.timers[index];
+		text.text = "" + (int) PlayerRespawn.current.timers[index];
 	}
 
 	void StopTimer(){

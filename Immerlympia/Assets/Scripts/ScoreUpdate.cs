@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class ScoreUpdate : MonoBehaviour {
 
-    private int index;
+    public int index;
     Text text;
 
     private void Start() {
-        index = transform.GetSiblingIndex();
         text = GetComponent<Text>();
         PlayerManager.current.players[index].updateScoreEvent.AddListener(UpdateScore);
         UpdateScore();
