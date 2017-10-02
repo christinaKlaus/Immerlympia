@@ -5,18 +5,16 @@ using UnityEngine.UI;
 
 public class ScoreUpdate : MonoBehaviour {
 
-    private int index;
+    public int index;
     Text text;
 
     private void Start() {
-
-        index = transform.GetSiblingIndex();
         text = GetComponent<Text>();
-        PlayerManager.current.players[index].increaseScoreEvent.AddListener(UpdateScore);
+        PlayerManager.current.players[index].updateScoreEvent.AddListener(UpdateScore);
         UpdateScore();
     }
 
     void UpdateScore() {
-        text.text = "Player " + (index + 1) + ": " + PlayerManager.current.players[index].score;
+        text.text = "" + PlayerManager.current.players[index].score;
     } 
 }

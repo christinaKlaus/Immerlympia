@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
+    
     public PlayerController[] players;
     public Material[] playerMaterials;
     public static PlayerManager current;

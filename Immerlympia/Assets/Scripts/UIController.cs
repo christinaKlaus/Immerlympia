@@ -17,4 +17,8 @@ public class UIController : MonoBehaviour {
 	public void ExitGame(){
 		Application.Quit();
 	}
+
+	public void Credits(){
+		SceneManager.LoadScene("Credits");
+	}
 }

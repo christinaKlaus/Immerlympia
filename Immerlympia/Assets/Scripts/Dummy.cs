@@ -9,14 +9,14 @@ public class Dummy : MonoBehaviour {
     public float cooldown;
     public float vertKnockup;
 
-    private Rigidbody rigid;
     float stunned = 0;
     PlayerController controller;
+    SoundManager soundMan;
     
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<PlayerController>();
-        rigid = GetComponent<Rigidbody>();
+        soundMan = GetComponent<SoundManager>();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +28,23 @@ public class Dummy : MonoBehaviour {
 
 	}
 
+    public void Damage(Vector3 enemyPos){
+        
+        if (controller == null) {
+            Debug.Log("No Controller found");
+            return;
+        }
+
+        Vector3 velocity = (gameObject.transform.position - enemyPos).normalized * knockback;
+        controller.velocityReal = velocity;
+        controller.yVelocity = vertKnockup;
+
+        stunned = stunTime;
+        
+        Animator anim = this.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("getHit");
+    }
+
     public void Damage(GameObject enemy) {
 
         if (stunned > -cooldown)
@@ -38,13 +55,36 @@ public class Dummy : MonoBehaviour {
             return;
         }
         
-        Vector3 velocity = ((gameObject.transform.position - enemy.transform.position).normalized) * knockback;
+        Vector3 velocity = (gameObject.transform.position - enemy.transform.position).normalized * knockback;
         controller.velocityReal = velocity;
-        rigid.velocity += Vector3.up * vertKnockup; 
+        controller.yVelocity = vertKnockup;
 
         stunned = stunTime;
         
         Animator anim = this.gameObject.GetComponent<Animator>();
         anim.SetTrigger("getHit");
+        soundMan.playClip(SoundType.Hit);
+    }
+
+    public void DamageByWave()
+    {
+        if (stunned > -cooldown)
+            return;
+
+        if (controller == null)
+        {
+            Debug.Log("No Controller found");
+            return;
+        }
+
+        Vector3 velocity = (gameObject.transform.position - Vector3.zero).normalized * knockback;
+        controller.velocityReal = velocity;
+        controller.yVelocity = 10f;
+
+        stunned = stunTime;
+
+        Animator anim = this.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("getHit");
+        soundMan.playClip(SoundType.Hit);
     }
 }

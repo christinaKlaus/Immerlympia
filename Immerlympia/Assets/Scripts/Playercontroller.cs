@@ -1,16 +1,17 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour {
-
     
-    [System.NonSerialized] public int score = 0;
-    [System.NonSerialized] public bool canMove = true;
-    [System.NonSerialized] public Vector3 velocityReal = Vector3.zero;
-    [System.NonSerialized] public int playerNumber;
+    [HideInInspector] public int score = 0;
+    [HideInInspector] public bool canMove = true;
+    [HideInInspector] public Vector3 velocityReal = Vector3.zero;
+    
+    [HideInInspector] public float yVelocity;
 
+    public int playerNumber;
     public float walkSpeed;
     public float acceleration;
     public float deceleration;
@@ -20,22 +21,22 @@ public class PlayerController : MonoBehaviour {
     
     private int jumps;
     private int timesJumped;
-    
-    private float airborne = 0;
-
+    private bool hasDied = false; 
+   
 
     Animator anim;
     GameObject player;
     Camera cam;
-    Rigidbody rigid;
+    CharacterController charCon;
     SoundManager soundMan;
 
-    public UnityEvent increaseScoreEvent;
+    public UnityEvent updateScoreEvent;
+    public UnityEvent startRespawnTimerEvent;
 
 	// Use this for initialization
 	void Start () {
         player = gameObject;
-        rigid = GetComponent<Rigidbody>();
+        charCon = GetComponent<CharacterController>();
         cam = Camera.main;
         anim = GetComponent<Animator>();
         soundMan = GetComponent<SoundManager>();
@@ -68,7 +69,7 @@ public class PlayerController : MonoBehaviour {
                 if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
 
                 dummy.Damage(gameObject); // Let the object hit itself
-                soundMan.playClip("character_HIT_05");
+                
                 
             }
 
@@ -78,8 +79,8 @@ public class PlayerController : MonoBehaviour {
     private void movement() {
 
         Vector3 velocityGoal = Vector3.zero;
-        
-        velocityReal.Scale(new Vector3(1, 0, 1));
+
+        velocityReal.Scale(new Vector3(1,0,1));
 
         // <--- Basic movement --->
 
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour {
             right.Scale(new Vector3(1, 0, 1));
             right.Normalize();
             velocityGoal += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
-
+            
         } else {
 
             velocityGoal = Vector3.zero;
@@ -114,52 +115,93 @@ public class PlayerController : MonoBehaviour {
             transform.LookAt(transform.position + velocityReal);
 
         // <---- Jumping ---->
-        RaycastHit hitGround;
-        bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
         
-        if (rigid.velocity.y <= 0 && hitBool) {
+        if (charCon.isGrounded) {
             jumps = maxJumps;
             timesJumped = 0;
+            yVelocity = 0;
         }
 
-        airborne += Time.deltaTime;
+        yVelocity += Physics.gravity.y * Time.deltaTime;
 
-        velocityReal.y = rigid.velocity.y;
-
-        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f && canMove) {
-            velocityReal.y = (Mathf.Max(rigid.velocity.y, 0) + jumpSpeed);
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && canMove) {
+            yVelocity = (Mathf.Max(yVelocity, 0) + jumpSpeed);
             jumps--;
             timesJumped++;
-            airborne = 0;
-            if(timesJumped > 1) {
+            if (timesJumped > 1) {
                anim.SetTrigger("doubleJump");
+               //Debug.Log("DoubleJump reached");
             }
         }
         
-       
-       
-        anim.SetBool("isJumping", !hitBool);
+        velocityReal.y = yVelocity;
+        //print(charCon.isGrounded);
+
+        anim.SetBool("isJumping", !charCon.isGrounded && velocityReal.y > 0.5f);
 
 
         // <--- Setting velocity -->
-        rigid.velocity = velocityReal;
+        charCon.Move(velocityReal * Time.deltaTime);
 
 
-        anim.SetFloat("speed", rigid.velocity.magnitude);
+        velocityReal.Scale(new Vector3(1, 0, 1));
+        /*if(!soundMan.IsInvoking() && velocityReal.magnitude > 5 && charCon.isGrounded)
+            soundMan.startFootsteps();
 
+        if(velocityReal.magnitude <= 1 || !charCon.isGrounded)
+            soundMan.stopFootsteps();*/
+
+        anim.SetFloat("speed", Mathf.Sqrt(Mathf.Pow(charCon.velocity.x,2)+Mathf.Pow(charCon.velocity.z, 2)));
+        //if(anim.GetFloat("speed") != 0 && !GetComponent<AudioSource>().isPlaying)
+          //  soundMan.playClip(SoundType.Steps);
     }
 
     public void CoinCountUp() {
         score++;
-        increaseScoreEvent.Invoke();
+        updateScoreEvent.Invoke();
     }
    
     public void CharacterDeath() {
+        float posY = charCon.transform.position.y;
 
-        if (rigid.transform.position.y < -50) {
+        if(!hasDied && posY < -45 && posY > -49)
+        {
+            hasDied = true;
+            soundMan.playClip(SoundType.Death);
+        }
+
+        if (posY < -50) {
             Debug.Log("Death of Player" + playerNumber);
+            score--;
+            updateScoreEvent.Invoke();
             player.transform.position = new Vector3(0, 10, 0);
-            rigid.velocity = Vector3.zero;
+            velocityReal = Vector3.zero;
+            PlayerRespawn.current.timers[playerNumber] = PlayerRespawn.current.respawnTime;
+            startRespawnTimerEvent.Invoke();
+            hasDied = false;
+            player.SetActive(false);
+            
+        }        
+    }
+
+    public void PlaySound(string sound)
+    {
+        switch (sound)
+        {
+            case "step":
+                soundMan.playClip(SoundType.Steps);
+                break;
+            case "punch":
+                soundMan.playClip(SoundType.Punch);
+                break;
+            case "jump":
+                soundMan.playClip(SoundType.Jump);
+                break;
+            case "doubleJump":
+                soundMan.playClip(SoundType.DoubleJump);
+                break;
+            default:
+                break;
         }
     }
 }
