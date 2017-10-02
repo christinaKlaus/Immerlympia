@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 813f0bfabadcc3e4a9774e7273c45dc0
+timeCreated: 1497025571
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: FOREST_RIVER
+    100004: GeoSphere015
+    100006: GeoSphere016
+    100008: GeoSphere017
+    100010: GeoSphere018
+    100012: GeoSphere019
+    100014: GeoSphere020
+    100016: GeoSphere021
+    100018: GeoSphere022
+    100020: GeoSphere023
+    100022: GeoSphere024
+    100024: GeoSphere025
+    100026: GeoSphere026
+    100028: river_mesh001
+    100030: stones01
+    100032: stones02
+    100034: stones03
+    100036: stones04
+    100038: stones05
+    100040: stones06
+    100042: stones07
+    100044: stones08
+    100046: stones09
+    100048: stones10
+    100050: stones11
+    100052: tree
+    400000: //RootNode
+    400002: FOREST_RIVER
+    400004: GeoSphere015
+    400006: GeoSphere016
+    400008: GeoSphere017
+    400010: GeoSphere018
+    400012: GeoSphere019
+    400014: GeoSphere020
+    400016: GeoSphere021
+    400018: GeoSphere022
+    400020: GeoSphere023
+    400022: GeoSphere024
+    400024: GeoSphere025
+    400026: GeoSphere026
+    400028: river_mesh001
+    400030: stones01
+    400032: stones02
+    400034: stones03
+    400036: stones04
+    400038: stones05
+    400040: stones06
+    400042: stones07
+    400044: stones08
+    400046: stones09
+    400048: stones10
+    400050: stones11
+    400052: tree
+    2300000: FOREST_RIVER
+    2300002: GeoSphere015
+    2300004: GeoSphere016
+    2300006: GeoSphere017
+    2300008: GeoSphere018
+    2300010: GeoSphere019
+    2300012: GeoSphere020
+    2300014: GeoSphere021
+    2300016: GeoSphere022
+    2300018: GeoSphere023
+    2300020: GeoSphere024
+    2300022: GeoSphere025
+    2300024: GeoSphere026
+    2300026: river_mesh001
+    2300028: stones01
+    2300030: stones02
+    2300032: stones03
+    2300034: stones04
+    2300036: stones05
+    2300038: stones06
+    2300040: stones07
+    2300042: stones08
+    2300044: stones09
+    2300046: stones10
+    2300048: stones11
+    2300050: tree
+    3300000: FOREST_RIVER
+    3300002: GeoSphere015
+    3300004: GeoSphere016
+    3300006: GeoSphere017
+    3300008: GeoSphere018
+    3300010: GeoSphere019
+    3300012: GeoSphere020
+    3300014: GeoSphere021
+    3300016: GeoSphere022
+    3300018: GeoSphere023
+    3300020: GeoSphere024
+    3300022: GeoSphere025
+    3300024: GeoSphere026
+    3300026: river_mesh001
+    3300028: stones01
+    3300030: stones02
+    3300032: stones03
+    3300034: stones04
+    3300036: stones05
+    3300038: stones06
+    3300040: stones07
+    3300042: stones08
+    3300044: stones09
+    3300046: stones10
+    3300048: stones11
+    3300050: tree
+    4300000: FOREST_RIVER
+    4300002: GeoSphere015
+    4300004: GeoSphere016
+    4300006: GeoSphere017
+    4300008: GeoSphere018
+    4300010: GeoSphere019
+    4300012: GeoSphere020
+    4300014: GeoSphere021
+    4300016: GeoSphere022
+    4300018: GeoSphere023
+    4300020: GeoSphere024
+    4300022: GeoSphere025
+    4300024: GeoSphere026
+    4300026: river_mesh001
+    4300028: stones01
+    4300030: stones02
+    4300032: stones03
+    4300034: stones04
+    4300036: stones05
+    4300038: stones06
+    4300040: stones07
+    4300042: stones08
+    4300044: stones09
+    4300046: stones10
+    4300048: stones11
+    4300050: tree
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

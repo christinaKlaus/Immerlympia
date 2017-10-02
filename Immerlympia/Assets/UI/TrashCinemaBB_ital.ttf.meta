@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9c0997e70531175408d555ea08b45b7b
+timeCreated: 1506951514
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: TrashCinema BB
+  fontNames:
+  - TrashCinema BB
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8345a5e7188fbef4fa08546cf3c126c7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

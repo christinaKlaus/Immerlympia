@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - UI
+  - waveGenerator
+  - laserBeamMount
+  - spawnPoint
   layers:
   - Default
   - TransparentFX
@@ -14,9 +18,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Trigger Collide
+  - Player
+  - waveCollision
   - 
   - 
   - 

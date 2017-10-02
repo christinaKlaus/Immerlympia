@@ -1,66 +1,51 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Playercontroller : MonoBehaviour {
-
+public class PlayerController : MonoBehaviour {
     
-    [System.NonSerialized] public int score = 0;
+    [HideInInspector] public int score = 0;
+    [HideInInspector] public bool canMove = true;
+    [HideInInspector] public Vector3 velocityReal = Vector3.zero;
+    
+    [HideInInspector] public float yVelocity;
 
     public int playerNumber;
     public float walkSpeed;
+    public float acceleration;
+    public float deceleration;
+
     public float jumpSpeed;
     public int maxJumps;
-    public float smooth; // 0-1 Range, wenn 1 -> 1 Sek bis max Geschwindigkeit
-
+    
     private int jumps;
-    private float smoothUp;
-    private float airborne = 0;
+    private int timesJumped;
+    private bool hasDied = false; 
+   
 
     Animator anim;
     GameObject player;
     Camera cam;
-    Rigidbody body;
-    PlayerCollision playerCollision;
-    
-    // bool isJumping = true;
+    CharacterController charCon;
+    SoundManager soundMan;
+
+    public UnityEvent updateScoreEvent;
+    public UnityEvent startRespawnTimerEvent;
 
 	// Use this for initialization
 	void Start () {
         player = gameObject;
-        body = GetComponent<Rigidbody>();
-        cam = Camera.current;
+        charCon = GetComponent<CharacterController>();
+        cam = Camera.main;
         anim = GetComponent<Animator>();
-        playerCollision = GetComponent<PlayerCollision>();
-        switch (playerNumber) {
-            case 0:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
-                break;
-            case 1:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.blue;
-                break;
-            case 2:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.green;
-                break;
-           case 3:
-                transform.GetChild(0).GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.yellow;
-                break;
-        }
+        soundMan = GetComponent<SoundManager>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        // body.velocity = new Vector3(Input.GetAxis("Horizontal")*walkSpeed, body.velocity.y, Input.GetAxis("Vertical")*walkSpeed);
-        if(smoothUp < 1 && (Input.GetAxis("Vertical" + playerNumber) != 0 || Input.GetAxis("Horizontal" + playerNumber) != 0)){
-            smoothUp += smooth * Time.deltaTime; 
-        }else{
-            if(smoothUp > 0)
-                smoothUp -= smooth * Time.deltaTime;
-        }
-
-
         if (cam == null)
-            cam = Camera.current;
+            cam = Camera.main;
 
         if (cam == null)
             return;
@@ -72,8 +57,8 @@ public class Playercontroller : MonoBehaviour {
 
     // Hitting hittable things (with Dummy script attached to them)
     private void punch() {
-        if(Input.GetButtonDown("Punch" + playerNumber)) {
-            Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
+        if(Input.GetButtonDown("Punch" + playerNumber) && canMove) {
+            //Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
             
             RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
             anim.SetTrigger("punching");
@@ -83,7 +68,9 @@ public class Playercontroller : MonoBehaviour {
 
                 if (dummy == null || h.collider.gameObject == gameObject) continue; // Object can not be hit
 
-                dummy.damage(gameObject); // Let the object hit itself
+                dummy.Damage(gameObject); // Let the object hit itself
+                
+                
             }
 
         }
@@ -91,81 +78,130 @@ public class Playercontroller : MonoBehaviour {
 
     private void movement() {
 
-        
-        Vector3 velocity = Vector3.zero;
-        
+        Vector3 velocityGoal = Vector3.zero;
+
+        velocityReal.Scale(new Vector3(1,0,1));
+
         // <--- Basic movement --->
-        Vector3 forward = transform.position - cam.transform.position;
-        forward.Scale(new Vector3(1, 0, 1));
-        forward.Normalize();
-        velocity = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed * smoothUp;
 
-        Vector3 right = new Vector3(forward.z, 0, -forward.x);
-        right.Scale(new Vector3(1, 0, 1));
-        right.Normalize();
-        velocity += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed * smoothUp;
+        if (canMove) {
+            Vector3 forward = transform.position - cam.transform.position;
+            forward.Scale(new Vector3(1, 0, 1));
+            forward.Normalize();
+            velocityGoal = forward * Input.GetAxis("Vertical" + playerNumber) * walkSpeed;
 
-        CapsuleCollider playerCollider = GetComponent<CapsuleCollider>();
+            Vector3 right = new Vector3(forward.z, 0, -forward.x);
+            right.Scale(new Vector3(1, 0, 1));
+            right.Normalize();
+            velocityGoal += right * Input.GetAxis("Horizontal" + playerNumber) * walkSpeed;
+            
+        } else {
 
-        if (playerCollider == null)
-            return;
+            velocityGoal = Vector3.zero;
+        }
+
+        Vector3 velocityDiff = velocityGoal - velocityReal;
         
+        float acc = velocityGoal == Vector3.zero ? deceleration : acceleration;
+
+        if(velocityDiff.magnitude > acc * Time.deltaTime) {
+            
+            velocityReal += velocityDiff.normalized * acc * Time.deltaTime;
+        } else {
+            velocityReal = velocityGoal;
+        }
+        
+        if (velocityReal != Vector3.zero)
+            transform.LookAt(transform.position + velocityReal);
 
         // <---- Jumping ---->
         
-        //*
-        RaycastHit hitGround;
-        bool hitBool = Physics.Raycast(transform.position + transform.up, -transform.up, out hitGround, 1.1f);
-
-
-        if (playerCollision.yVelocity <= 0 && hitBool) {
+        if (charCon.isGrounded) {
             jumps = maxJumps;
+            timesJumped = 0;
+            yVelocity = 0;
         }
 
-        airborne += Time.deltaTime;
+        yVelocity += Physics.gravity.y * Time.deltaTime;
 
-        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && airborne > 0.1f) {
-            playerCollision.yVelocity = Mathf.Max(playerCollision.yVelocity, 0) + jumpSpeed;
+        if (Input.GetButtonDown("Jump" + playerNumber) && jumps > 0 && canMove) {
+            yVelocity = (Mathf.Max(yVelocity, 0) + jumpSpeed);
             jumps--;
-            airborne = 0;
+            timesJumped++;
+            if (timesJumped > 1) {
+               anim.SetTrigger("doubleJump");
+               //Debug.Log("DoubleJump reached");
+            }
         }
-
-       
-        anim.SetBool("isJumping", !hitBool);
-        // Debug.DrawRay(transform.position,- transform.up);
-       
-        /*/
-        if (Input.GetButtonDown("Jump" + playerNumber) && !isJumping) {
-            velocity += (new Vector3(0,1,0)) * jumpSpeed;
-            isJumping = true;
-            Debug.Log(playerNumber);
-        }
-        //*/
         
+        velocityReal.y = yVelocity;
+        //print(charCon.isGrounded);
+
+        anim.SetBool("isJumping", !charCon.isGrounded && velocityReal.y > 0.5f);
+
+
         // <--- Setting velocity -->
-        playerCollision.forward.x = velocity.x;
-        playerCollision.forward.y = velocity.z;
+        charCon.Move(velocityReal * Time.deltaTime);
 
-        velocity.Scale(new Vector3(1, 0, 1));
 
-        anim.SetFloat("speed", velocity.magnitude);
+        velocityReal.Scale(new Vector3(1, 0, 1));
+        /*if(!soundMan.IsInvoking() && velocityReal.magnitude > 5 && charCon.isGrounded)
+            soundMan.startFootsteps();
 
-        if (velocity != Vector3.zero)
-           transform.LookAt(transform.position + velocity);
-        
+        if(velocityReal.magnitude <= 1 || !charCon.isGrounded)
+            soundMan.stopFootsteps();*/
+
+        anim.SetFloat("speed", Mathf.Sqrt(Mathf.Pow(charCon.velocity.x,2)+Mathf.Pow(charCon.velocity.z, 2)));
+        //if(anim.GetFloat("speed") != 0 && !GetComponent<AudioSource>().isPlaying)
+          //  soundMan.playClip(SoundType.Steps);
     }
 
     public void CoinCountUp() {
         score++;
-        Debug.Log("Score Player" + playerNumber + " =     " + score);
+        updateScoreEvent.Invoke();
     }
    
     public void CharacterDeath() {
+        float posY = charCon.transform.position.y;
 
-        if (body.transform.position.y < -50) {
+        if(!hasDied && posY < -45 && posY > -49)
+        {
+            hasDied = true;
+            soundMan.playClip(SoundType.Death);
+        }
+
+        if (posY < -50) {
             Debug.Log("Death of Player" + playerNumber);
+            score--;
+            updateScoreEvent.Invoke();
             player.transform.position = new Vector3(0, 10, 0);
-            body.velocity = Vector3.zero;
+            velocityReal = Vector3.zero;
+            PlayerRespawn.current.timers[playerNumber] = PlayerRespawn.current.respawnTime;
+            startRespawnTimerEvent.Invoke();
+            hasDied = false;
+            player.SetActive(false);
+            
+        }        
+    }
+
+    public void PlaySound(string sound)
+    {
+        switch (sound)
+        {
+            case "step":
+                soundMan.playClip(SoundType.Steps);
+                break;
+            case "punch":
+                soundMan.playClip(SoundType.Punch);
+                break;
+            case "jump":
+                soundMan.playClip(SoundType.Jump);
+                break;
+            case "doubleJump":
+                soundMan.playClip(SoundType.DoubleJump);
+                break;
+            default:
+                break;
         }
     }
 }

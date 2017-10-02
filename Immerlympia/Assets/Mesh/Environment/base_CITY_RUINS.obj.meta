@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: ae0225c1bfb350b4893dfff3c5902864
+timeCreated: 1506366181
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CITY_RUINS004
+    100004: fallen_wall002
+    100006: fallen_wall003
+    100008: rusted_pipe005
+    100010: rusted_pipe007
+    100012: rusted_pipe008
+    100014: rusted_pipe009
+    100016: rusted_pipe010
+    100018: rusted_pipe011
+    100020: rusted_pipe012
+    100022: rusted_pipe013
+    100024: wall_high003
+    100026: wall_high004
+    400000: //RootNode
+    400002: CITY_RUINS004
+    400004: fallen_wall002
+    400006: fallen_wall003
+    400008: rusted_pipe005
+    400010: rusted_pipe007
+    400012: rusted_pipe008
+    400014: rusted_pipe009
+    400016: rusted_pipe010
+    400018: rusted_pipe011
+    400020: rusted_pipe012
+    400022: rusted_pipe013
+    400024: wall_high003
+    400026: wall_high004
+    2300000: CITY_RUINS004
+    2300002: fallen_wall002
+    2300004: fallen_wall003
+    2300006: rusted_pipe005
+    2300008: rusted_pipe007
+    2300010: rusted_pipe008
+    2300012: rusted_pipe009
+    2300014: rusted_pipe010
+    2300016: rusted_pipe011
+    2300018: rusted_pipe012
+    2300020: rusted_pipe013
+    2300022: wall_high003
+    2300024: wall_high004
+    3300000: CITY_RUINS004
+    3300002: fallen_wall002
+    3300004: fallen_wall003
+    3300006: rusted_pipe005
+    3300008: rusted_pipe007
+    3300010: rusted_pipe008
+    3300012: rusted_pipe009
+    3300014: rusted_pipe010
+    3300016: rusted_pipe011
+    3300018: rusted_pipe012
+    3300020: rusted_pipe013
+    3300022: wall_high003
+    3300024: wall_high004
+    4300000: CITY_RUINS004
+    4300002: fallen_wall002
+    4300004: fallen_wall003
+    4300006: rusted_pipe005
+    4300008: rusted_pipe007
+    4300010: rusted_pipe008
+    4300012: rusted_pipe009
+    4300014: rusted_pipe010
+    4300016: rusted_pipe011
+    4300018: rusted_pipe012
+    4300020: rusted_pipe013
+    4300022: wall_high003
+    4300024: wall_high004
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
