@@ -16,6 +16,6 @@ public class ScoreUpdate : MonoBehaviour {
     }
 
     void UpdateScore() {
-        text.text = "Player " + (index + 1) + ": " + PlayerManager.current.players[index].score;
+        text.text = "" + PlayerManager.current.players[index].score;
     } 
 }
