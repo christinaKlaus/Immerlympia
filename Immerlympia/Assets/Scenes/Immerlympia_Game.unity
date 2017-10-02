@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 9360e8e3b0663404bab02ec148d8f903, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c9173e437fe528d438d3bc63fe43996a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1290,7 +1290,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114704158040408530, guid: 0526fe4b60171314a89dfdb1d2175d43, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0526fe4b60171314a89dfdb1d2175d43, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &910729088
@@ -1590,7 +1591,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -49.4
+      value: -159.7
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1598,7 +1599,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalScale.z
@@ -1606,7 +1607,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}

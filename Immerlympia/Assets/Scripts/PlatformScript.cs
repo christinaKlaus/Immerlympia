@@ -22,12 +22,16 @@ public class PlatformScript : MonoBehaviour {
     private Vector3[] basePos;
     private AudioSource platformAudio;
     private CoinSpawnPoint[] spawns;
+    private platformDirtParticleSystem[] platformEdgeDirt = new platformDirtParticleSystem[2];
+
     
 
     void OnEnable () {
         timer = Random.Range(lifetimeRange.x, lifetimeRange.y);
         duration = timer;
         spawns = GetComponentsInChildren<CoinSpawnPoint>();
+
+        platformEdgeDirt = GetComponentsInChildren<platformDirtParticleSystem>();
         
         if(descendClips.Length == 0) {
             Debug.Log("Platform prefab " + gameObject.name + " is missing descend sounds");
@@ -60,6 +64,8 @@ public class PlatformScript : MonoBehaviour {
                 s.canSpawnCoin = false;
             }
 
+            SetEdgeDirtPlaying(true);
+
             if (!playedDescendSound) {
                 platformAudio.PlayOneShot(descendClips[(int)transform.rotation.y / 120]);
                 playedDescendSound = true;
@@ -72,9 +78,12 @@ public class PlatformScript : MonoBehaviour {
             }
 
             Vector3 offset = new Vector3(Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness));
-            
+
             for (int i = 0; i < transform.childCount; i++)
-                transform.GetChild(i).localPosition = basePos[i] + offset;
+            {
+                if(!transform.GetChild(i).name.Contains("edgeParticle"))
+                    transform.GetChild(i).localPosition = basePos[i] + offset;
+            }
         }
         
         
@@ -102,6 +111,7 @@ public class PlatformScript : MonoBehaviour {
         transform.position = new Vector3(0, -1000, 0);
         playedDescendSound = false;
         spawnPointsActive = false;
+        SetEdgeDirtPlaying(false);
         gameObject.SetActive(false);
     }
 
@@ -110,6 +120,19 @@ public class PlatformScript : MonoBehaviour {
     {
         canFall = true;
         timer = warning;
+    }
+
+    void SetEdgeDirtPlaying(bool playState)
+    {
+        if(playState && (!platformEdgeDirt[0].IsPlaying() || !platformEdgeDirt[1].IsPlaying()))
+        {
+            platformEdgeDirt[0].PlayParticleSystem();
+            platformEdgeDirt[1].PlayParticleSystem();
+        } else if(!playState && (platformEdgeDirt[0].IsPlaying() || platformEdgeDirt[1].IsPlaying()))
+        {
+            platformEdgeDirt[0].StopParticleSystem();
+            platformEdgeDirt[1].StopParticleSystem();
+        }
     }
 
 }
