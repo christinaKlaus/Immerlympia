@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinSpawnManager : MonoBehaviour {
-	public float nextSpawnTime;
+	public static float nextSpawnTime;
 	public static List<CoinSpawnPoint> possibleCoinSpawns;
 	public static bool coinActive = false;
-	private int index;
+
+    private int index;
+    private static float timer; 
 
 	// public CoinSpawnPoint[] coinArr;
 
@@ -17,7 +19,7 @@ public class CoinSpawnManager : MonoBehaviour {
 	void Start () {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag("spawnPoint");
 		foreach(GameObject g in spawns){
-			if(!possibleCoinSpawns.Contains(g.GetComponent<CoinSpawnPoint>()) && !(g.transform.parent.GetComponent<PlatformScript>().movingUp)){
+			if(!possibleCoinSpawns.Contains(g.GetComponent<CoinSpawnPoint>()) && !(g.transform.parent.GetComponent<PlatformScript>().movingUpOrDown)){
 				possibleCoinSpawns.Add(g.GetComponent<CoinSpawnPoint>());
 			}
 		}
@@ -26,23 +28,33 @@ public class CoinSpawnManager : MonoBehaviour {
 	}
 
 	void Update () {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        } else
+        {
+            if (!coinActive)
+            {
+                SpawnNewCoin();
+            }
+        }
+        // coinArr = possibleCoinSpawns.ToArray();
 
-		if(!coinActive){
-			spawnNewCoin();
-		}
+    }
 
-		// coinArr = possibleCoinSpawns.ToArray();
-		
-	}
-
-	void spawnNewCoin(){
+	void SpawnNewCoin(){
 		
 		index = Random.Range(0, possibleCoinSpawns.Count);
 		
 		if(possibleCoinSpawns[index].canSpawnCoin){
-			possibleCoinSpawns[index].spawnCoin();
+			possibleCoinSpawns[index].SpawnCoin();
 			coinActive = true;
 		}
 
 	}
+
+    public static void ResetTimer()
+    {
+        timer = nextSpawnTime;
+    }
 }

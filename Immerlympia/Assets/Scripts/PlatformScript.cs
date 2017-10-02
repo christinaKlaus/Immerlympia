@@ -10,13 +10,14 @@ public class PlatformScript : MonoBehaviour {
     public float warning;
     public float shakiness;
     public float appearTime;
-    public bool movingUp = true;
+
+    public bool movingUpOrDown = true;
     [HideInInspector] public bool canFall = true;
 
     private float timer = 8;
     private float duration;
     private bool playedDescendSound = false;
-    private bool spawnsAvailable = false;
+    private bool spawnPointsActive = false;
 
     private Vector3[] basePos;
     private AudioSource platformAudio;
@@ -41,7 +42,7 @@ public class PlatformScript : MonoBehaviour {
 
     void Update () {
                 
-        if(!movingUp && !spawnsAvailable){
+        if(!movingUpOrDown && !spawnPointsActive){
             foreach(CoinSpawnPoint s in spawns){
                 // Debug.Log("Spawn true gesetzt");
                 s.canSpawnCoin = true;
@@ -57,7 +58,6 @@ public class PlatformScript : MonoBehaviour {
             foreach(CoinSpawnPoint s in spawns){
                 //Debug.Log("Spawn false gesetzt");
                 s.canSpawnCoin = false;
-                CoinSpawnManager.possibleCoinSpawns.Remove(s);
             }
 
             if (!playedDescendSound) {
@@ -92,7 +92,7 @@ public class PlatformScript : MonoBehaviour {
             Remove();
         }
 
-        movingUp = (timer < duration - appearTime) ? false : true;
+        movingUpOrDown = (timer < duration - appearTime && timer > warning) ? false : true;
 
         
     }
@@ -100,8 +100,16 @@ public class PlatformScript : MonoBehaviour {
     void Remove () {
         transform.GetComponentInParent<PlatformSpawn>().newPlatform((int)transform.rotation.eulerAngles.y / 120);
         transform.position = new Vector3(0, -1000, 0);
-        gameObject.SetActive(false);
         playedDescendSound = false;
+        spawnPointsActive = false;
+        gameObject.SetActive(false);
+    }
+
+    //if a platform's coin is picked up, it immediately starts descend procedures
+    public void CoinPickedUp()
+    {
+        canFall = true;
+        timer = warning;
     }
 
 }
