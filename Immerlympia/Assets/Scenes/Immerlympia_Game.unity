@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 9360e8e3b0663404bab02ec148d8f903, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: c9173e437fe528d438d3bc63fe43996a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -435,7 +435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311d2934d993e3c46ab67d5bdc0aa4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSpawnTime: 2
 --- !u!1 &335552418
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8, y: 0}
   m_AnchorMax: {x: 1, y: 0.1}
-  m_AnchoredPosition: {x: 279.99988, y: -169.99995}
+  m_AnchoredPosition: {x: 279.99988, y: -169.99994}
   m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378386054
@@ -734,7 +733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.2, y: 0.1}
-  m_AnchoredPosition: {x: -280, y: -169.99995}
+  m_AnchoredPosition: {x: -280, y: -169.99994}
   m_SizeDelta: {x: 119.999985, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554899281
@@ -819,7 +818,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8, y: 0.9}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 279.99988, y: 144.99995}
+  m_AnchoredPosition: {x: 279.99988, y: 145}
   m_SizeDelta: {x: 120, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638588709
@@ -1081,7 +1080,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114704158040408530, guid: 0526fe4b60171314a89dfdb1d2175d43, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0526fe4b60171314a89dfdb1d2175d43, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &910729088
@@ -1223,7 +1223,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 27
+  field of view: 32
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1247,14 +1247,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 933064280}
-  m_LocalRotation: {x: 0.2704059, y: -0, z: -0, w: 0.96274644}
-  m_LocalPosition: {x: 0, y: 37.7, z: -66.20012}
+  m_LocalRotation: {x: 0.37460655, y: 0, z: 0, w: 0.9271839}
+  m_LocalPosition: {x: -0, y: 38.41, z: -46.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1308695340}
   m_Father: {fileID: 481201031}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 31.377, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 44, y: 0, z: 0}
 --- !u!114 &933064286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,7 +1381,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -49.4
+      value: -159.7
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1389,7 +1389,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_LocalScale.z
@@ -1397,7 +1397,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7f4e1c66c608d846a58a714a4a5586d, type: 3}
@@ -4974,7 +4974,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 27
+  field of view: 32
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -5454,7 +5454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.9}
   m_AnchorMax: {x: 0.2, y: 1}
-  m_AnchoredPosition: {x: -280, y: 144.99995}
+  m_AnchoredPosition: {x: -280, y: 145}
   m_SizeDelta: {x: 119.999985, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2058450519
