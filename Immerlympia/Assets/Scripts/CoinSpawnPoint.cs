@@ -12,7 +12,7 @@ public class CoinSpawnPoint : MonoBehaviour {
 	// 		CoinSpawnManager.possibleCoinSpawns.Add(this);
 	// }
 
-	public void spawnCoin(){
+	public void SpawnCoin(){
 		Instantiate(coin, transform.position, Quaternion.identity, transform.transform);
 		hasCoin = true;
 		canSpawnCoin = false;
@@ -30,7 +30,7 @@ public class CoinSpawnPoint : MonoBehaviour {
 	}
 
 	public void DestroyYourCoin(){
-		transform.GetChild(0).GetComponent<CoinPickup>().Die();
+		transform.GetChild(0).GetComponent<CoinPickup>().Collect();
 		hasCoin = false;
 		canSpawnCoin = true;
 	}

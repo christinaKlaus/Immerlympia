@@ -15,18 +15,12 @@ public class CoinPickup : MonoBehaviour {
         coinSoundSource.PlayOneShot(spawn);
     }
 
-    // Use this for initialization
-    void Start () {
-        InvokeRepeating("PosCheck", 0, 2);
-        if (coinSoundSource == null)
-            coinSoundSource = GetComponent<AudioSource>();
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		if(transform.position.y < -20) {
-            Die();
-            Debug.Log("Coin too low");
+            CoinSpawnManager.coinActive = false;
+            Destroy(gameObject);
+            //Debug.Log("Coin too low");
         }
 	}
 
@@ -37,23 +31,24 @@ public class CoinPickup : MonoBehaviour {
         if(pc != null) {
             pc.GetComponent<SoundManager>().playClip(SoundType.Collect);
             pc.CoinCountUp();
-            Die();
+            Collect();
         }
 
     }
 
-    public void Die () {
+    public void Collect () {
+        CoinSpawnManager.ResetTimer();
         CoinSpawnManager.coinActive = false;
-        transform.parent.parent.GetComponent<PlatformScript>().canFall = true;
+        transform.parent.parent.GetComponent<PlatformScript>().CoinPickedUp();
         Destroy(gameObject);
     }
 
-    void PosCheck(){
+    /*void PosCheck(){
         RaycastHit hit;
 		if(Physics.Raycast(transform.position, Vector3.down, out hit, 22)){
             transform.position = hit.point + Vector3.up;
         }else{
             Die();
         }
-    }
+    }*/
 }
