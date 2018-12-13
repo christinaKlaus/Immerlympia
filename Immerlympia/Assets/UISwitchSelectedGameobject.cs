@@ -30,18 +30,24 @@ public class UISwitchSelectedGameobject : MonoBehaviour, ISubmitHandler, ICancel
 
     public void OnSubmit(BaseEventData eventData)
     {
-		if(selectedOnSubmit == null) return;
-        if(!associatedCanvasSubmit.enabled)
-			associatedCanvasSubmit.enabled = true;
-		EventSystem.current.SetSelectedGameObject(selectedOnSubmit.gameObject);
+		if(selectedOnSubmit == null && submitEvent.GetPersistentEventCount() <= 0) return;
+        if(selectedOnSubmit != null){
+			if(!associatedCanvasSubmit.enabled) associatedCanvasSubmit.enabled = true;
+			EventSystem.current.SetSelectedGameObject(selectedOnSubmit.gameObject);
+		} else {
+			EventSystem.current.SetSelectedGameObject(null);
+		}
 		if(submitEvent != null) submitEvent.Invoke();
     }
     public void OnCancel(BaseEventData eventData)
     {
-		if(selectedOnCancel == null) return;
-        if(!associatedCanvasCancel.enabled)
-			associatedCanvasCancel.enabled = true;
-		EventSystem.current.SetSelectedGameObject(selectedOnCancel.gameObject);
+		if(selectedOnCancel == null && cancelEvent.GetPersistentEventCount() <= 0) return;
+        if(selectedOnCancel != null){
+			if(!associatedCanvasCancel.enabled) associatedCanvasCancel.enabled = true;
+			EventSystem.current.SetSelectedGameObject(selectedOnCancel.gameObject);
+		} else {
+			EventSystem.current.SetSelectedGameObject(null);
+		}
 		if(cancelEvent != null) cancelEvent.Invoke();
     }
 }
