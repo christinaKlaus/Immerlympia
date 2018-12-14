@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerControlling : MonoBehaviour {
     
     [HideInInspector] public int score = 0;
     [HideInInspector] public bool canMove = true;

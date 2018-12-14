@@ -26,7 +26,7 @@ public class CoinPickup : MonoBehaviour {
 
     void OnTriggerEnter(Collider collision) {
         GameObject obj = collision.gameObject;
-        PlayerController pc = obj.GetComponent<PlayerController>();
+        PlayerControlling pc = obj.GetComponent<PlayerControlling>();
 
         if(pc != null) {
             pc.GetComponent<SoundManager>().playClip(SoundType.Collect);

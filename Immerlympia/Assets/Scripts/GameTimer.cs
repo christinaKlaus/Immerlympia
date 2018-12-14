@@ -40,11 +40,11 @@ public class GameTimer : MonoBehaviour {
     }
 
     void GameEnd() {
-        List<PlayerController> winner = new List<PlayerController>();
+        List<PlayerControlling> winner = new List<PlayerControlling>();
         gameEndEvent.Invoke();
         gameMusic.TransitionToGameEnd(0.0f);
 
-        foreach (PlayerController p in PlayerManager.current.players) {
+        foreach (PlayerControlling p in PlayerManager.current.players) {
             if (winner.Count == 0 || p.score > winner[0].score) {
                 winner.Clear();
                 winner.Add(p);
@@ -53,7 +53,7 @@ public class GameTimer : MonoBehaviour {
             }
         }
 
-        foreach (PlayerController p in winner)
+        foreach (PlayerControlling p in winner)
             Debug.Log("Player " + (p.playerNumber+1) + "\tScore: " + p.score);
 
 

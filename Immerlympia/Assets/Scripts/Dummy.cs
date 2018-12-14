@@ -10,12 +10,12 @@ public class Dummy : MonoBehaviour {
     public float vertKnockup;
 
     float stunned = 0;
-    PlayerController controller;
+    PlayerControlling controller;
     SoundManager soundMan;
     
 	// Use this for initialization
 	void Start () {
-        controller = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerControlling>();
         soundMan = GetComponent<SoundManager>();
 	}
 	
