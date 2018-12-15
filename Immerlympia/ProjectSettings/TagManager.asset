@@ -38,10 +38,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - faceCamPlayer1
+  - faceCamPlayer2
+  - faceCamPlayer3
+  - faceCamPlayer4
   m_SortingLayers:
   - name: Default
     uniqueID: 0
