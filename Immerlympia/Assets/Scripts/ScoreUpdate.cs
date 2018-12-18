@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class ScoreUpdate : MonoBehaviour {
 
-    public int index;
-    Text text;
+    [ReadOnly(false)] public int playerIndex = -1;
+    public string intFormat = "00";
+    TextMeshProUGUI text;
 
-    private void Start() {
-        text = GetComponent<Text>();
-        PlayerManager.current.players[index].updateScoreEvent.AddListener(UpdateScore);
-        UpdateScore();
+    private void Awake() {
+        text = GetComponent<TextMeshProUGUI>();
+        text.SetText("0");
+        PlayerControlling.UpdateScoreEvent += UpdateScore;
     }
 
-    void UpdateScore() {
-        text.text = "" + PlayerManager.current.players[index].score;
-    } 
+    public void SetTextColor(Color color){
+        text.color = color;
+    }
+
+    public void UpdateScore(int playerIndex, int score){
+        if(playerIndex == this.playerIndex){
+            text.SetText(score.ToString(intFormat));
+        }
+    }
 }

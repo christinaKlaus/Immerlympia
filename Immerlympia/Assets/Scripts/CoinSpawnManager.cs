@@ -19,7 +19,7 @@ public class CoinSpawnManager : MonoBehaviour {
 	void Start () {
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag("spawnPoint");
 		foreach(GameObject g in spawns){
-			if(!possibleCoinSpawns.Contains(g.GetComponent<CoinSpawnPoint>()) && !(g.transform.parent.GetComponent<PlatformScript>().movingUpOrDown)){
+			if(!possibleCoinSpawns.Contains(g.GetComponent<CoinSpawnPoint>()) && !(g.transform.parent.GetComponent<PlatformScript>().isMoving)){
 				possibleCoinSpawns.Add(g.GetComponent<CoinSpawnPoint>());
 			}
 		}

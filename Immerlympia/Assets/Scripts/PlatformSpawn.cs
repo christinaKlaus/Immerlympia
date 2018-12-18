@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlatformSpawn : MonoBehaviour {
 
+    public bool enablePlatformCycle = true;
     public PlatformPool pool;
     private GameObject[] platforms;
 

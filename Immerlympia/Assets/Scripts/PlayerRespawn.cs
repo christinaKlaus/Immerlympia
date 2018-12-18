@@ -7,11 +7,10 @@ public class PlayerRespawn : MonoBehaviour {
 
 	public static PlayerRespawn current;
 	public float respawnTime;
-	public float[] timers;
 	[HideInInspector] public Transform[] players;
 	
 	public UnityEvent stopTimerEvent;
-
+	/*
 	void Awake(){
 		current = this;
 	}
@@ -24,11 +23,6 @@ public class PlayerRespawn : MonoBehaviour {
 			players[i] = PlayerManager.current.transform.GetChild(i);
 		}
 		
-		timers = new float[transform.childCount];
-		
-		for(int j = 0; j < timers.Length; j++){
-			timers[j] = 0;
-		}
 		
 	}
 
@@ -41,4 +35,5 @@ public class PlayerRespawn : MonoBehaviour {
 			}
 		}
 	}
+	*/
 }

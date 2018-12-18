@@ -62,7 +62,6 @@ public class UIPlayerJoin : MonoBehaviour {
 			bool cancelButtonDown = Input.GetButtonDown(leaveButtonNames[i]);
 			
 			float horizontalAxis = Input.GetAxis(horizontalAxisNames[i]);
-			PlayerJoinState joinState = joinStates[i];
 
 			switch(joinStates[i]){
 				case PlayerJoinState.Open:
@@ -175,11 +174,5 @@ public class UIPlayerJoin : MonoBehaviour {
 		return numJoined > 0 ? true : false;
 	}
 
-	void OnDestroy(){
-		foreach(HeroPick hp in pickableHeroes){
-			hp.currentPlayer = -1;
-			hp.isPicked = false;
-		}
-	}
 
 }

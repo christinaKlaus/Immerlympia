@@ -12,7 +12,6 @@ Shader "Toon/Lit_replacable" {
 				"RenderType" = "Opaque"
 				"XRay" = "ColoredOutline" 
 		} // wann wird es gerendert? opaque -> zuerst 
-		
 		LOD 200
 		
 

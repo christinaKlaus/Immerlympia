@@ -11,7 +11,8 @@ public class PlatformScript : MonoBehaviour {
     public float shakiness;
     public float appearTime;
 
-    public bool movingUpOrDown = true;
+    public bool isMoving = true;
+    
     [HideInInspector] public bool canFall = true;
 
     private float timer = 8;
@@ -22,16 +23,23 @@ public class PlatformScript : MonoBehaviour {
     private Vector3[] basePos;
     private AudioSource platformAudio;
     private CoinSpawnPoint[] spawns;
-    private platformDirtParticleSystem[] platformEdgeDirt = new platformDirtParticleSystem[2];
+    private platformDirtParticleSystem[] platformEdgeDirt;
+    private PlatformSpawn platformSpawn;
 
     
 
     void OnEnable () {
         timer = Random.Range(lifetimeRange.x, lifetimeRange.y);
         duration = timer;
-        spawns = GetComponentsInChildren<CoinSpawnPoint>();
 
-        platformEdgeDirt = GetComponentsInChildren<platformDirtParticleSystem>();
+        if(platformSpawn == null)
+            platformSpawn = GetComponentInParent<PlatformSpawn>();
+
+        if(spawns == null)
+            spawns = GetComponentsInChildren<CoinSpawnPoint>();
+
+        if(platformEdgeDirt == null)
+            platformEdgeDirt = GetComponentsInChildren<platformDirtParticleSystem>();
         
         if(descendClips.Length == 0) {
             Debug.Log("Platform prefab " + gameObject.name + " is missing descend sounds");
@@ -46,7 +54,7 @@ public class PlatformScript : MonoBehaviour {
 
     void Update () {
                 
-        if(!movingUpOrDown && !spawnPointsActive){
+        if(!isMoving && !spawnPointsActive){
             foreach(CoinSpawnPoint s in spawns){
                 // Debug.Log("Spawn true gesetzt");
                 s.canSpawnCoin = true;
@@ -101,8 +109,10 @@ public class PlatformScript : MonoBehaviour {
             Remove();
         }
 
-        movingUpOrDown = (timer < duration - appearTime && timer > warning) ? false : true;
-
+        isMoving = (timer < duration - appearTime && timer > warning) ? false : true;
+        if(!isMoving && !platformSpawn.enablePlatformCycle){
+            this.enabled = false;
+        }
         
     }
 

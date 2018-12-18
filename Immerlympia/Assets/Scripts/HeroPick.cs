@@ -9,7 +9,12 @@ public class HeroPick : ScriptableObject{
 	public bool isPicked = false;
 	public int currentPlayer = -1;
 	public string heroName = "Hero";
-	public Color heroNameColor = Color.white;
+	public Color heroColor = Color.white;
 	public Sprite heroSprite;
+	[Header("Materials")]
+	public Material heroMaterial;
+	public Material trailMaterial;
+	public Material projectorCircleMaterial;
+
 	
 }

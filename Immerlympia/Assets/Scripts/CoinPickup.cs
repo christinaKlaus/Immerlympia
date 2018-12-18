@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour {
 
+    int scoreIncrease = 1;
     AudioSource coinSoundSource;
     public AudioClip spawn;
 
@@ -30,7 +31,7 @@ public class CoinPickup : MonoBehaviour {
 
         if(pc != null) {
             pc.GetComponent<SoundManager>().playClip(SoundType.Collect);
-            pc.CoinCountUp();
+            pc.CoinCountUp(scoreIncrease);
             Collect();
         }
 

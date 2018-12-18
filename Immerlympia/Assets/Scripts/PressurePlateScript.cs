@@ -5,10 +5,11 @@ using UnityEngine;
 public class PressurePlateScript : MonoBehaviour {
 
     public float cooldown;
-
-    float timer;
     public KnockBackWave waveGenerator;
     public LaserBeamScript laserBeamMount;
+
+    float timer;
+    string playerTag = "Player";
 
     void Start(){
         timer = cooldown;
@@ -22,7 +23,7 @@ public class PressurePlateScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider) {
         
-        if(timer < cooldown || collider.tag != "Player")
+        if(!collider.CompareTag(playerTag))
             return;
         
         //Collider coll = collider;
@@ -33,7 +34,8 @@ public class PressurePlateScript : MonoBehaviour {
         angle = Mathf.Round((angle - 30) / 120) * 120 + 30;
         
         GameObject cam = GameObject.Find("CameraTurn");
-        bool cameraNeedsTurn = cam.GetComponent<CameraTurn>().StartRotation(angle);
+        //bool cameraNeedsTurn = 
+        cam.GetComponent<CameraTurn>().StartRotation(angle);
 
         //bool can be evaluated to disable waves when no cameraturn would be done on activation of pressure plate
         //if(cameraNeedsTurn)

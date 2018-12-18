@@ -8,7 +8,6 @@ public class GameTimer : MonoBehaviour {
 
     private bool halfTimeReached;
     GameMusicScript gameMusic;
-   
     public static GameTimer current;
     public UnityEvent gameEndEvent;
     public float playTime;
@@ -25,11 +24,11 @@ public class GameTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (currTime < playTime) {
-            currTime += Time.deltaTime;
+            currTime += Time.fixedDeltaTime;
 
-            if(!halfTimeReached && currTime > playTime / 4)
+            if(!halfTimeReached && currTime > playTime * 0.5f)
             {
-                gameMusic.TransitionToClimaxFadeUp(playTime / 3);
+                gameMusic.TransitionToClimaxFadeUp(playTime *   0.4f);
                 halfTimeReached = true;
             }
 
@@ -54,9 +53,7 @@ public class GameTimer : MonoBehaviour {
         }
 
         foreach (PlayerControlling p in winner)
-            Debug.Log("Player " + (p.playerNumber+1) + "\tScore: " + p.score);
-
-
+            Debug.Log("Player " + (p.playerIndex+1) + "\tScore: " + p.score);
         
     }
 

@@ -35,7 +35,7 @@ public class UIPlayerPanel : MonoBehaviour {
 		currentPick = newHero;
 		activeHeroImage.sprite = newHero.heroSprite;
 		characterText.SetText(newHero.heroName);
-		characterText.color = newHero.heroNameColor;
+		characterText.color = newHero.heroColor;
 	}
 
 	public void UnsetHeroPick(){
@@ -53,7 +53,7 @@ public class UIPlayerPanel : MonoBehaviour {
 		heroLocked = lockHero;
 		if(lockHero){
 			ParticleSystem.MainModule mainModule = heroLockedPS.main;
-			mainModule.startColor = currentPick.heroNameColor;
+			mainModule.startColor = currentPick.heroColor;
 			heroLockedPS.Play();
 		}
 		else {

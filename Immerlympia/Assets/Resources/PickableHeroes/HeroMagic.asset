@@ -9,10 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fedb2f4c897ff8b47a0590489399c65f, type: 3}
-  m_Name: Hero2
+  m_Name: HeroMagic
   m_EditorClassIdentifier: 
   isPicked: 0
   currentPlayer: -1
   heroName: URDIS
-  heroNameColor: {r: 0.4736781, g: 0.23589355, b: 0.8773585, a: 1}
+  heroColor: {r: 0.4950266, g: 0, b: 1, a: 1}
   heroSprite: {fileID: 21300000, guid: 7669ab304ae671a4e94a646bb2250428, type: 3}
+  heroMaterial: {fileID: 2100000, guid: c9d4d473bd72eb440b17586f77280eb4, type: 2}
+  trailMaterial: {fileID: 2100000, guid: 61ca498ba25e4714cb9581b5aa1e218c, type: 2}
+  projectorCircleMaterial: {fileID: 2100000, guid: 660ac0b39fd9bc241abccb78e784dd54,
+    type: 2}
