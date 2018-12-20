@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class UIGameTimer : MonoBehaviour {
 
@@ -13,6 +14,8 @@ public class UIGameTimer : MonoBehaviour {
 	[ReadOnly(false)]
 	UITMPTextSetter[] countdownTexts;
 	[SerializeField] RectTransform maskedProgressTransform;
+	[SerializeField, FormerlySerializedAs("centerProgressOuter")] Image centerProgressOuterDiscreet;
+	[SerializeField] Image centerProgressOuterContinuous, centerProgressInner;
 
 	public void Awake(){
 		countdownTexts = GetComponentsInChildren<UITMPTextSetter>();
@@ -31,6 +34,9 @@ public class UIGameTimer : MonoBehaviour {
 		//maskedProgressAnchorMax.x = 1 - (currentTime / maxGameTime);
 		maskedProgressImage.color = Color.Lerp(Color.red, Color.green, (maxGameTime - currentTime) / (maxGameTime * 0.5f));
 		//maskedProgressTransform.anchorMax = maskedProgressAnchorMax;
+		centerProgressOuterDiscreet.fillAmount = (int) (maxGameTime - currentTime) / maxGameTime;
+		centerProgressOuterContinuous.fillAmount = 1f - (currentTime / maxGameTime);
+		centerProgressInner.fillAmount = Mathf.Repeat(-currentTime, 1f);
 	}
 
 }
