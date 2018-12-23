@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: player_fire
   m_Shader: {fileID: 4800000, guid: 356af294bb7472e4c8f9d53542df05a0, type: 3}
   m_ShaderKeywords: ALPHA
@@ -82,7 +83,7 @@ Material:
     - _Outline: 0.201
     - _OutlineWidth: 0.105
     - _Parallax: 0.02
-    - _RampOffset: 0
+    - _RampOffset: 0.25
     - _RimBrightness: 3.6
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
