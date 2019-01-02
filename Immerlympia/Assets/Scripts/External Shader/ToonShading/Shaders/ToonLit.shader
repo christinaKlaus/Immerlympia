@@ -3,6 +3,7 @@ Shader "Toon/Lit" {
         _Color ("Main Color", Color) = (0.5,0.5,0.5,1)
         _MainTex ("Base (RGB)", 2D) = "white" {}
         _Ramp ("Toon Ramp (RGB)", 2D) = "gray" {}
+        _RampOffset("Toon Ramp Offset", Range(-1, 1)) = 0
     }
  
     SubShader {
@@ -17,6 +18,9 @@ sampler2D _Ramp;
 // custom lighting function that uses a texture ramp based
 // on angle between light direction and normal
 #pragma lighting ToonRamp exclude_path:prepass
+
+float _RampOffset;
+
 inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 {
     #ifndef USING_DIRECTIONAL_LIGHT
@@ -24,7 +28,7 @@ inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
     #endif
    
     half d = dot (s.Normal, lightDir)*0.5 + 0.5;
-    half3 ramp = tex2D (_Ramp, float2(d,d)).rgb;
+    half3 ramp = tex2D (_Ramp, float2(d,d)).rgb + _RampOffset;
    
     half4 c;
     c.rgb = s.Albedo * _LightColor0.rgb * ramp * (atten * 2);

@@ -1,6 +1,5 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "XRay Shaders/ColoredOutline"
 {
@@ -67,7 +66,7 @@ Shader "XRay Shaders/ColoredOutline"
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float NdotV = 1 - dot(i.normal, i.viewDir) * 0.7;
+				float NdotV = 1 - dot(i.normal, i.viewDir) * 1.5;
 				return _EdgeColor * NdotV;
 			}
 

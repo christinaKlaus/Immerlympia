@@ -43,8 +43,7 @@
 		Pass //Render outline
 		{
 			Tags {
-				"Queue" = "Transparent"
-				"RenderType" = "Transparent"
+				"RenderType" = "Opaque"
 			}
 			// ZWrite Off
 			// CGPROGRAM
@@ -58,7 +57,7 @@
 			// 		return _OutlineColor;
 			// 	}
 			// ENDCG
-			
+
 			Zwrite Off
 
 			CGPROGRAM
@@ -93,13 +92,14 @@
 			ENDCG
 
 		}
-
-		Tags {	"Queue" = "Geometry-1"
+		
+		Tags {
+				"Queue" = "Geometry-1"
 				"RenderType" = "Opaque"
 				"XRay" = "ColoredOutline" 
 		} // wann wird es gerendert? opaque -> zuerst 
 		LOD 200
-		
+
 		CGPROGRAM
 				#pragma surface surf ToonRamp
 				#pragma lighting ToonRamp exclude_path:prepass 

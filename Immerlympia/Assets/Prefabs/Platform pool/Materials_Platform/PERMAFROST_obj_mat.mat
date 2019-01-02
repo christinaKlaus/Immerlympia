@@ -5,7 +5,8 @@ Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: PERMAFROST_obj_mat
   m_Shader: {fileID: 4800000, guid: dd5254c3e4a03ea499321d551fe78220, type: 3}
   m_ShaderKeywords: _EMISSION
@@ -59,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 2800000, guid: a0c2f408b57347345b01d49ff43a9db4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 29ee226e3e36d5441bc19166f665d077, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransTex:
@@ -80,6 +81,7 @@ Material:
     - _OcclusionStrength: 1
     - _Offset: 3.2
     - _Parallax: 0.02
+    - _RampOffset: 0
     - _RimBrightness: 3.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -88,7 +90,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BottomColor: {r: 0.23, g: 0, b: 0.95, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.66180134, g: 0.7895435, b: 0.8301887, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ScrollDir: {r: 0, g: 0, b: 0, a: 0}
     - _TColor: {r: 0.67083853, g: 0.9852941, b: 0.87430984, a: 1}

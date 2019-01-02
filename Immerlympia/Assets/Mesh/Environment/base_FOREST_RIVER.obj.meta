@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: 813f0bfabadcc3e4a9774e7273c45dc0
-timeCreated: 1497025571
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     100002: FOREST_RIVER
@@ -137,10 +135,143 @@ ModelImporter:
     4300046: stones10
     4300048: stones11
     4300050: tree
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FOREST_RIVERMat
+    second: {fileID: 2100000, guid: 18101f2db209d5341b199b98701839cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere015Mat
+    second: {fileID: 2100000, guid: 9947457a9f3d78e418256184e2de41ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere016Mat
+    second: {fileID: 2100000, guid: 57222a01586502b4fb9ac85961521336, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere017Mat
+    second: {fileID: 2100000, guid: dd82d60f20eff0e47935a0973e64d5d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere018Mat
+    second: {fileID: 2100000, guid: 7005d868949e8f74da56f2921ef3d044, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere019Mat
+    second: {fileID: 2100000, guid: a7dace8892fd6b14fb999912223673a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere020Mat
+    second: {fileID: 2100000, guid: 8fa7df715c4b6da4e8f98df80382b0c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere021Mat
+    second: {fileID: 2100000, guid: f6f91c3c2a2ca27469e9ba7138763940, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere022Mat
+    second: {fileID: 2100000, guid: 8c526d8a3bc458d438a8651878a1aaff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere023Mat
+    second: {fileID: 2100000, guid: bbe4e667e28b6774a818299e1e04c32d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere024Mat
+    second: {fileID: 2100000, guid: d5cf6edd7f6927f4a925c86c683d0dd5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere025Mat
+    second: {fileID: 2100000, guid: 858d0e1fa2c24d4449c005af769adc27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GeoSphere026Mat
+    second: {fileID: 2100000, guid: 84799e3342f69dd40a150951bb1b648a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: river_mesh001Mat
+    second: {fileID: 2100000, guid: 5eabfe31ce4e38247a4ce07d1a7e446f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones01Mat
+    second: {fileID: 2100000, guid: d906464383e8c034b84ea4f781da1abe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones02Mat
+    second: {fileID: 2100000, guid: 9fa1cea058af4ac4eb8d280bf0e42599, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones03Mat
+    second: {fileID: 2100000, guid: 46f97c02fdfea534394ffc23ea534916, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones04Mat
+    second: {fileID: 2100000, guid: f2a2b628a7aa3974ba0ad27184f06fc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones05Mat
+    second: {fileID: 2100000, guid: db3bc5f2804d5cd4cb1ae59cc87054ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones06Mat
+    second: {fileID: 2100000, guid: 3b0e4acb009327047ad97d655ae9d4fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones07Mat
+    second: {fileID: 2100000, guid: eea3039d604d9074ba83caec04c447cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones08Mat
+    second: {fileID: 2100000, guid: 0420f5266bc999f45a82524b10fec836, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones09Mat
+    second: {fileID: 2100000, guid: ca2330720607aee44be4bd243f3054c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones10Mat
+    second: {fileID: 2100000, guid: 89fee643659b78e4cb893139ac115cf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stones11Mat
+    second: {fileID: 2100000, guid: 364897294bfd21c48b97f1fc8081fbd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: treeMat
+    second: {fileID: 2100000, guid: bcbd11f2a7242314a87be68381078cd0, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -153,12 +284,15 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -166,22 +300,34 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 180
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -196,7 +342,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

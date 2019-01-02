@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: 802786c59de6323418b66c8b08158aa9
-timeCreated: 1497025570
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     100002: debris_00
@@ -102,10 +100,108 @@ ModelImporter:
     4300032: tentacle_09
     4300034: tentacle_10
     4300036: worm
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ELDRITCH_RIFTMat
+    second: {fileID: 2100000, guid: d9179bb6a9a32d245b9f941f21c85230, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: debris_00Mat
+    second: {fileID: 2100000, guid: 242ba0995e86e32458b734407b2f3162, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: debris_01Mat
+    second: {fileID: 2100000, guid: e466f20e7ebeb5d43a61ebe1ac6fe43e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: debris_02Mat
+    second: {fileID: 2100000, guid: 62671579bf04217418a7a595fd2cc137, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: debris_03Mat
+    second: {fileID: 2100000, guid: f74333ad824ec12438424bf200b40578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: debris_04Mat
+    second: {fileID: 2100000, guid: 48071002af72236489c2ef98613b2411, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: debris_floorMat
+    second: {fileID: 2100000, guid: 0785867281bcc0c4a82ee4420e5357c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_00Mat
+    second: {fileID: 2100000, guid: 2654c23e7d48f974aa27205f905804dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_01Mat
+    second: {fileID: 2100000, guid: 59f7b39eb9548e74aacce08290882e92, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_02Mat
+    second: {fileID: 2100000, guid: faf3ce7b3c6a7a440a77c4e54b31eb93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_03Mat
+    second: {fileID: 2100000, guid: b589fc4a9fb5e754683f41ac0d0ce7cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_04Mat
+    second: {fileID: 2100000, guid: bc7e2188db26dbf4fba78fb67ca31907, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_05Mat
+    second: {fileID: 2100000, guid: f2fd35d0e14cc5945a1ea48bfda58077, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_06Mat
+    second: {fileID: 2100000, guid: ff2ec0496c8776c478be7a9b312f1ea5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_07Mat
+    second: {fileID: 2100000, guid: c0ce13d63d8c8ef4ab90c09828d968d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_08Mat
+    second: {fileID: 2100000, guid: a32365b93b1947a4ea204a2acfaaaded, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_09Mat
+    second: {fileID: 2100000, guid: c7080221970dcb349a0b1ac1ddcc1c55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tentacle_10Mat
+    second: {fileID: 2100000, guid: fb1f2da32fd54ee4eb32c2962683d25f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wormMat
+    second: {fileID: 2100000, guid: 5a8e4c5242ad8504183cdb309b107f81, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -118,12 +214,15 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -131,22 +230,34 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 180
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -161,7 +272,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

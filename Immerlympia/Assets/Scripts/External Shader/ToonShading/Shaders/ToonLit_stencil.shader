@@ -4,6 +4,7 @@ Shader "Toon/Lit_stencil" {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
+		_RampOffset("Toon Ramp Offset", Range(-1, 1)) = 0
 		_ScrollDir("Scroll Direction", Vector) = (0,0,0,0)
 	}
 
@@ -19,7 +20,6 @@ Shader "Toon/Lit_stencil" {
 			ZFail Keep
 		}
 
-
 		CGPROGRAM
 			#pragma surface surf ToonRamp
 
@@ -30,6 +30,8 @@ Shader "Toon/Lit_stencil" {
 
 			#pragma lighting ToonRamp exclude_path:prepass
 
+			float _RampOffset;
+
 			inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 			{
 				#ifndef USING_DIRECTIONAL_LIGHT
@@ -37,7 +39,7 @@ Shader "Toon/Lit_stencil" {
 				#endif
 	
 				half d = dot (s.Normal, lightDir) * 0.5 + 0.5;
-				half3 ramp = tex2D (_Ramp, float2(d,d)).rgb;
+				half3 ramp = tex2D (_Ramp, float2(d,d)).rgb + _RampOffset;
 	
 				half4 c;
 				c.rgb = s.Albedo * _LightColor0.rgb * ramp * (atten * 2);
