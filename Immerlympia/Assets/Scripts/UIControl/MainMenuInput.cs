@@ -28,7 +28,9 @@ public class MainMenuInput : MonoBehaviour {
 	}
 
 	void Start(){
-		animator.SetInteger(goToMenuHash, goToMenu);
+		Time.timeScale = 1f;
+		//animator.SetInteger(goToMenuHash, goToMenu);
+		animator.SetTrigger("platformEntry");
 	}
 
 	void GoToScene(){

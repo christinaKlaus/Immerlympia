@@ -51,7 +51,6 @@ public class UIPlayerJoin : MonoBehaviour {
 		} else {
 			SetCurrentPicks();
 		}
-
 		
 	}
 
@@ -92,9 +91,9 @@ public class UIPlayerJoin : MonoBehaviour {
 			
 			float horizontalAxis = Input.GetAxis(horizontalAxisNames[i]);
 
-			if(Mathf.Abs(horizontalAxis) > 0.4f){
-				Debug.Log("Axis " + i + ": " + horizontalAxis);
-			}
+			// if(Mathf.Abs(horizontalAxis) > 0.4f){
+			// 	Debug.Log("Axis " + i + ": " + horizontalAxis);
+			// }
 
 			switch(joinStates[i]){
 				case PlayerJoinState.Open:
@@ -136,7 +135,7 @@ public class UIPlayerJoin : MonoBehaviour {
 						joined[i] = false;
 					}
 					if(Mathf.Abs(horizontalAxis) > 0.5f){
-						Debug.Log("axis " + i + "cycling through heroes");
+						// Debug.Log("axis " + i + " cycling through heroes");
 						if(Time.time - lastInputTimes[i] > inputDelay || zeroed[i]){
 							int reps = 0;
 							int increment = Mathf.Sign(horizontalAxis) < 0 ? pickableHeroes.Length - 1 : 1;

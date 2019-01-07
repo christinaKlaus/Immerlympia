@@ -6,10 +6,14 @@ public class CoinPickup : MonoBehaviour {
 
     int scoreIncrease = 1;
     AudioSource coinSoundSource;
+    CoinSpawnManager coinSpawnManager;
+    PlatformScript currentPlatform;
     public AudioClip spawn;
 
-    private void Awake()
+    void Awake()
     {
+        coinSpawnManager = GetComponentInParent<CoinSpawnManager>();
+        currentPlatform = GetComponentInParent<PlatformScript>();
         if(coinSoundSource == null)
             coinSoundSource = GetComponent<AudioSource>();
 
@@ -19,7 +23,8 @@ public class CoinPickup : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(transform.position.y < -20) {
-            CoinSpawnManager.coinActive = false;
+            coinSpawnManager.coinActive = false;
+            currentPlatform.canFall = true;
             Destroy(gameObject);
             //Debug.Log("Coin too low");
         }
@@ -31,15 +36,15 @@ public class CoinPickup : MonoBehaviour {
 
         if(pc != null) {
             pc.GetComponent<SoundManager>().playClip(SoundType.Collect);
-            pc.CoinCountUp(scoreIncrease);
+            pc.ChangeScore(scoreIncrease);
             Collect();
         }
 
     }
 
     public void Collect () {
-        CoinSpawnManager.ResetTimer();
-        CoinSpawnManager.coinActive = false;
+        coinSpawnManager.ResetTimer();
+        coinSpawnManager.coinActive = false;
         transform.parent.parent.GetComponent<PlatformScript>().CoinPickedUp();
         Destroy(gameObject);
     }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedb2f4c897ff8b47a0590489399c65f, type: 3}
   m_Name: HeroIce
   m_EditorClassIdentifier: 
-  isPicked: 0
-  currentPlayer: -1
+  isPicked: 1
+  currentPlayer: 0
   heroName: TAUTALON
   heroColor: {r: 0, g: 1, b: 1, a: 1}
   heroSprite: {fileID: 21300000, guid: 89afc85afd3950041890f6c9b6c0281d, type: 3}

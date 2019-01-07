@@ -27,6 +27,7 @@ public class PlayerControlling : MonoBehaviour
     private int jumps;
     private int timesJumped;
     private bool deathSoundPlayed = false;
+    [ReadOnly(false)] public string axisVertical = "Vertical", axisHorizontal = "Horizontal", jumpButton = "Jump", punchButton = "Punch";
 
 
     Animator anim;
@@ -51,14 +52,16 @@ public class PlayerControlling : MonoBehaviour
     void Update()
     {
         CharacterDeath();
-        movement();
-        punch();
+        if(gameObject.activeSelf){
+            movement();
+            punch();
+        }
     }
 
     // Hitting hittable things (with Dummy script attached to them)
     private void punch()
     {
-        if (Input.GetButtonDown("Punch" + playerIndex) && canMove)
+        if (Input.GetButtonDown(punchButton) && canMove)
         {
             //Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
 
@@ -91,13 +94,15 @@ public class PlayerControlling : MonoBehaviour
             Vector3 forward = transform.position - cam.transform.position;
             forward.Scale(new Vector3(1, 0, 1));
             forward.Normalize();
-            velocityGoal = forward * Input.GetAxis("Vertical" + playerIndex) * walkSpeed;
+            velocityGoal = forward * Input.GetAxis(axisVertical) * walkSpeed;
 
             Vector3 right = new Vector3(forward.z, 0, -forward.x);
             right.Scale(new Vector3(1, 0, 1));
             right.Normalize();
-            velocityGoal += right * Input.GetAxis("Horizontal" + playerIndex) * walkSpeed;
-
+            velocityGoal += right * Input.GetAxis(axisHorizontal) * walkSpeed;
+            // if(Mathf.Abs(Input.GetAxis(axisHorizontal)) > 0 || Mathf.Abs(Input.GetAxis(axisVertical)) > 0){
+            //     Debug.Log("H: " + Input.GetAxis(axisHorizontal) + " | V: " + Input.GetAxis(axisVertical));
+            // }
         }
         else
         {
@@ -133,7 +138,7 @@ public class PlayerControlling : MonoBehaviour
 
         yVelocity += Physics.gravity.y * Time.deltaTime;
 
-        if (Input.GetButtonDown("Jump" + playerIndex) && jumps > 0 && canMove)
+        if (Input.GetButtonDown(jumpButton) && jumps > 0 && canMove)
         {
             yVelocity = (Mathf.Max(yVelocity, 0) + jumpSpeed);
             jumps--;
@@ -167,9 +172,11 @@ public class PlayerControlling : MonoBehaviour
         //  soundMan.playClip(SoundType.Steps);
     }
 
-    public void CoinCountUp(int scoreIncrease)
+    public void ChangeScore(int scoreIncrease)
     {
-        ChangeScore(scoreIncrease);
+        score += scoreIncrease;
+        if(UpdateScoreEvent != null)
+            UpdateScoreEvent(playerIndex, score);
     }
 
     public void CharacterDeath()
@@ -183,6 +190,7 @@ public class PlayerControlling : MonoBehaviour
                 deathSoundPlayed = true;
                 soundMan.playClip(SoundType.Death);
             }
+            gameObject.SetActive(false);
             //Debug.Log("Death of Player" + playerIndex);
             ChangeScore(-1);
             player.transform.position = new Vector3(0, 10, 0);
@@ -192,11 +200,6 @@ public class PlayerControlling : MonoBehaviour
         }
     }
 
-    void ChangeScore(int scoreChange){
-        score += scoreChange;
-        if(UpdateScoreEvent != null)
-            UpdateScoreEvent(playerIndex, score);
-    }
 
 
     public void PlaySound(string sound)

@@ -36,12 +36,19 @@ public class UIPlayerInformation : MonoBehaviour {
             }
         }
 		PlayerManager.characterDeathEvent += OnPlayerDeath;
+		PlayerManager.startWinCamEvent += OnWinCamActivated;
+	}
+
+	private void OnWinCamActivated(){
+		foreach(Transform t in transform){
+			t.gameObject.SetActive(false);
+		}
 	}
 
 	private void OnPlayerDeath(int playerID){
 		if(respawnTimers[playerID] != null){
 			if(playerManager.RespawnActive){
-				Debug.Log("Respawn timer started for player " + playerID);
+				// Debug.Log("Respawn timer started for player " + playerID);
 				respawnTimers[playerID].StartTimer(playerManager.timeToRespawn);
 			} else {
 				respawnTimers[playerID].MarkPlayerInactive();
@@ -52,6 +59,7 @@ public class UIPlayerInformation : MonoBehaviour {
 
 	void OnDestroy(){
 		PlayerManager.characterDeathEvent -= OnPlayerDeath;
+		PlayerManager.startWinCamEvent -= OnWinCamActivated;
 	}
 
 }

@@ -10,6 +10,8 @@ ModelImporter:
     100008: portal_002
     100010: portal_005
     100012: portal_2_004
+    100014: portalpart01
+    100016: portalpart02
     400000: //RootNode
     400002: Box183
     400004: Line028
@@ -17,24 +19,32 @@ ModelImporter:
     400008: portal_002
     400010: portal_005
     400012: portal_2_004
+    400014: portalpart01
+    400016: portalpart02
     2300000: Box183
     2300002: Line028
     2300004: PERMAFROST_PORTAL
     2300006: portal_002
     2300008: portal_005
     2300010: portal_2_004
+    2300012: portalpart01
+    2300014: portalpart02
     3300000: Box183
     3300002: Line028
     3300004: PERMAFROST_PORTAL
     3300006: portal_002
     3300008: portal_005
     3300010: portal_2_004
+    3300012: portalpart01
+    3300014: portalpart02
     4300000: Box183
     4300002: Line028
     4300004: PERMAFROST_PORTAL
     4300006: portal_002
     4300008: portal_005
     4300010: portal_2_004
+    4300012: portalpart01
+    4300014: portalpart02
     6400000: Box183
     6400002: Line028
     6400004: PERMAFROST_PORTAL
@@ -73,8 +83,18 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: portal_2_004Mat
     second: {fileID: 2100000, guid: fc4ffcf12f57a2147810056112dc1680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: portalpart01Mat
+    second: {fileID: 2100000, guid: 6d1a19ecc4d4a124dbb405e8727bcabf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: portalpart02Mat
+    second: {fileID: 2100000, guid: d28e473ed08f6d74a85ed4c423088d3d, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -127,14 +147,14 @@ ModelImporter:
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
-    normalSmoothAngle: 180
+    normalSmoothAngle: 60
     normalImportMode: 1
     tangentImportMode: 3
-    normalCalculationMode: 4
+    normalCalculationMode: 1
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

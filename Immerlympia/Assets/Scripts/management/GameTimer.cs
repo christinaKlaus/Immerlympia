@@ -26,35 +26,33 @@ public class GameTimer : MonoBehaviour {
         gameMusic = GetComponent<GameMusicScript>();
         current = this;
         playerManager = FindObjectOfType<PlayerManager>();
-        PlayerManager.gameEndEvent += GameEnd;
+        PlayerManager.startWinCamEvent += OnWinCamStarted;
     }
 
     void Start(){
-        
         currentGameTimerRoutine = StartCoroutine(GameTimeRoutine(playTime));
     }
 
     IEnumerator GameTimeRoutine(float maxPlayTime){
         currentTime = maxPlayTime;
         Debug.Log("started game time routine", this);
-        while (currentTime > 0) {
+        while (currentTime > maxPlayTime * 0.5f) {
             currentTime -= Time.deltaTime;
-
-            if(!halfTimeReached && currentTime < maxPlayTime * 0.5f)
-            {
-                gameMusic.TransitionToClimaxFadeUp(maxPlayTime * 0.4f);
-                halfTimeReached = true;
-            }
-
-            if (currentTime <= 0) {
-                playerManager.ToggleRespawn(false);
-            }
             yield return null;
         }
+
+        gameMusic.TransitionToClimaxFadeUp(maxPlayTime * 0.4f);
+        halfTimeReached = true;
+
+        while(currentTime > 0){
+            currentTime -= Time.deltaTime;
+            yield return null;
+        }
+        playerManager.DetermineGameEnd();
         currentTime = 0;
     }
 
-    void GameEnd() {
+    void OnWinCamStarted() {
         List<PlayerControlling> winner = new List<PlayerControlling>();
         gameMusic.TransitionToGameEnd(0.0f);
         foreach (PlayerControlling p in PlayerManager.current.players) {
@@ -72,6 +70,6 @@ public class GameTimer : MonoBehaviour {
     }
 
     public void OnDestroy(){
-        PlayerManager.gameEndEvent -= GameEnd;
+        PlayerManager.startWinCamEvent -= OnWinCamStarted;
     }
 }

@@ -16,21 +16,22 @@ public class platformDirtParticleSystem : MonoBehaviour {
             Debug.Log("No Particle System found on child of platform " + transform.parent.name);
         }
 
-        particleSys.Stop();
+        particleSys.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 	}
 	
 	public void PlayParticleSystem()
     {
-        particleSys.Play();
+        particleSys.Play(true);
     }
 
     public void StopParticleSystem()
     {
-        particleSys.Stop();
+        particleSys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 
     public bool IsPlaying()
     {
+        if(particleSys == null) particleSys = GetComponent<ParticleSystem>();
         return particleSys.isPlaying;
     }
 }

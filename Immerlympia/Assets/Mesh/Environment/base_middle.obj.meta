@@ -5,11 +5,17 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: Cylinder005
+    100004: MIDDLE_PLATFORM
     400000: //RootNode
     400002: Cylinder005
+    400004: MIDDLE_PLATFORM
     2300000: Cylinder005
+    2300002: MIDDLE_PLATFORM
     3300000: Cylinder005
+    3300002: MIDDLE_PLATFORM
     4300000: Cylinder005
+    4300002: MIDDLE_PLATFORM
+    6400000: MIDDLE_PLATFORM
     2186277476908879412: ImportLogs
   externalObjects:
   - first:
@@ -18,7 +24,7 @@ ModelImporter:
       name: Cylinder005Mat
     second: {fileID: 2100000, guid: 05b83f255a4bbaa4bb89026be97b1af9, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -49,7 +55,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 0
     importBlendShapes: 0
@@ -71,14 +77,14 @@ ModelImporter:
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
-    normalSmoothAngle: 180
-    normalImportMode: 0
+    normalSmoothAngle: 60
+    normalImportMode: 1
     tangentImportMode: 3
-    normalCalculationMode: 4
+    normalCalculationMode: 1
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

@@ -29,4 +29,8 @@ public class UITMPTextSetter : MonoBehaviour {
 		thisText.SetText(value.ToString(floatFormat));
 	}
 
+	public void SetColor(Color newColor){
+		thisText.color = newColor;
+	}
+
 }

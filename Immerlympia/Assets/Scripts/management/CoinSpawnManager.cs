@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoinSpawnManager : MonoBehaviour {
-	public static float nextSpawnTime;
-	public static List<CoinSpawnPoint> possibleCoinSpawns;
-	public static bool coinActive = false;
+	public float nextSpawnTime;
+	public List<CoinSpawnPoint> possibleCoinSpawns;
+	public bool coinActive = false;
 
     private int index;
-    private static float timer; 
+    private float timer; 
 
 	// public CoinSpawnPoint[] coinArr;
 
@@ -53,7 +53,7 @@ public class CoinSpawnManager : MonoBehaviour {
 
 	}
 
-    public static void ResetTimer()
+    public void ResetTimer()
     {
         timer = nextSpawnTime;
     }

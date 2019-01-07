@@ -13,25 +13,21 @@ public class GameOverUI : MonoBehaviour {
 	
 	void Awake(){
 		current = this;
-		PlayerManager.gameEndEvent += OnGameEnded;
+		PlayerManager.activateGameOverUIEvent += OnActivateGameOverUI;
 	}
 
 	void Start(){
 		gameObject.SetActive(false);
 	}
 
-	public void OnGameEnded(){
+	void OnActivateGameOverUI(){
 		gameObject.SetActive(true);
-		// foreach(GameObject g in activateOnGameEnd){
-		// 	g.SetActive(true);
-		// }
-		//Debug.Log("Event ist angekommen");
 		EventSystem.current.SetSelectedGameObject(firstSelectedOnGameEnd.gameObject);
 		Time.timeScale = 0;
 	}
 
 	void OnDestroy(){
-		PlayerManager.gameEndEvent -= OnGameEnded;
+		PlayerManager.activateGameOverUIEvent -= OnActivateGameOverUI;
 	}
 
 }

@@ -6,7 +6,7 @@ public class PlatformSpawn : MonoBehaviour {
 
     public bool enablePlatformCycle = true;
     public PlatformPool pool;
-    private GameObject[] platforms;
+    private PlatformScript[] platforms;
 
 	// Use this for initialization
 	void Start () {
@@ -17,22 +17,23 @@ public class PlatformSpawn : MonoBehaviour {
     }
 
     void generatePool(){
-        platforms = new GameObject[pool.platformPool.Length];
+        platforms = new PlatformScript[pool.platformPool.Length];
         for(int i = 0; i < platforms.Length; i++) {
-            platforms[i] = Instantiate(pool.platformPool[i], new Vector3(0, -1000, 0), Quaternion.identity, transform.transform);
-            platforms[i].SetActive(false);    
+            platforms[i] = Instantiate(pool.platformPool[i], new Vector3(0, -1000, 0), Quaternion.identity, transform.transform).GetComponent<PlatformScript>();
+            platforms[i].gameObject.SetActive(false);
         }
     }
 
     public void newPlatform(int position) {
-        List<GameObject> possiblePlat = new List<GameObject>();
-        foreach(GameObject g in platforms)
-            if(!g.activeSelf) possiblePlat.Add(g);
+        List<PlatformScript> possiblePlat = new List<PlatformScript>();
+        foreach(PlatformScript p in platforms)
+            if(!p.gameObject.activeSelf) possiblePlat.Add(p);
 
-        GameObject newPlatform = possiblePlat[Random.Range(0,possiblePlat.Count)];
-        newPlatform.transform.rotation = Quaternion.Euler(0, 120 * position, 0);
-        newPlatform.transform.position = Vector3.zero;
-        newPlatform.SetActive(true);
+        PlatformScript newPlatform = possiblePlat[Random.Range(0,possiblePlat.Count)];
+        newPlatform.currentPosition = position;
+        newPlatform.gameObject.transform.rotation = Quaternion.Euler(0, 120 * position, 0);
+        newPlatform.gameObject.transform.position = Vector3.zero;
+        newPlatform.gameObject.SetActive(true);
         
     }
 }

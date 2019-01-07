@@ -35,9 +35,9 @@ public class UISwitchSelectedGameobject : MonoBehaviour, ISubmitHandler, ICancel
     public void OnSubmit(BaseEventData eventData)
     {
 		if(mainMenuInput.InTransition || (selectedOnSubmit == null && submitEvent.GetPersistentEventCount() <= 0)) return;
-		Debug.Log("Submit callback on " + gameObject.name, this);
+		// Debug.Log("Submit callback on " + gameObject.name, this);
         if(selectedOnSubmit != null){
-			Debug.Log("Selecting on submit: " + selectedOnSubmit.gameObject.name, this);
+			// Debug.Log("Selecting on submit: " + selectedOnSubmit.gameObject.name, this);
 			if(!associatedCanvasSubmit.enabled) associatedCanvasSubmit.enabled = true;
 			EventSystem.current.SetSelectedGameObject(selectedOnSubmit.gameObject);
 		} /* else {
