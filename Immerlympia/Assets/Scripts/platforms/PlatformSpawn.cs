@@ -10,6 +10,9 @@ public class PlatformSpawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        List<string> args = new List<string>(System.Environment.GetCommandLineArgs());
+        if(args.Contains("-noCycling")) enablePlatformCycle = false;
+
         generatePool();
         newPlatform(0);
         newPlatform(1);

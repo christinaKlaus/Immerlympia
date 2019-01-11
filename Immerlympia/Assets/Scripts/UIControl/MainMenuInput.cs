@@ -4,32 +4,79 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Pixelplacement;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(Animator))]
 public class MainMenuInput : MonoBehaviour {
 
+	[SerializeField] SimpleAudioEvent rotateAudio, snapAudio, riseAudio;
 	private bool inTransition = false;
 	private Animator animator;
-	private GameObject lastSelected;
-	
+	private AudioSource audioSource;
+	[Header("Audio")]
+	[SerializeField] private AudioSource musicSource;
 
 	[HideInInspector] public int goToMenuHash = Animator.StringToHash("GoToMenu");
 	[SerializeField] private int goToMenu = 0;
 	[ReadOnly(false)] public int currentPosition = 0;
-	[ReadOnly(false)] public float currentTargetAngle;
+	[ReadOnly(false)] public float currentTargetAngle = 0;
 	[SerializeField] Transform cameraOriginTransform = null;
+	[Header("Platform rise parameters")]
+	[SerializeField] float platformRiseDelay = 0.5f;
+	[SerializeField] float platformRiseDuration = 2f;
+	[SerializeField] Transform[] platformTransforms;
 	public bool InTransition {
 		get { return inTransition; }
 	}
 
 	void Awake(){
 		animator = GetComponent<Animator>();
-		Cursor.visible = false;
+		audioSource = GetComponent<AudioSource>();
+		// Cursor.visible = false;
+		// Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	void Start(){
 		Time.timeScale = 1f;
 		//animator.SetInteger(goToMenuHash, goToMenu);
+		riseAudio.Play(audioSource);
+		float musicDelay = (platformRiseDelay * platformTransforms.Length) + platformRiseDuration;
+		musicSource.PlayDelayed(musicDelay);
+		musicSource.volume = 0f;
+		Tween.Volume(musicSource, 1f, 1.5f, musicDelay, null, Tween.LoopType.None, null, null, false);
+		if(platformTransforms != null && platformTransforms.Length > 0){
+			inTransition = true;
+			for(int i = 0; i < platformTransforms.Length-1; i++){
+				Transform t = platformTransforms[i];
+				Tween.Position(
+					t,
+					transform.position + Vector3.down * 100f,
+					transform.position,
+					platformRiseDuration,
+					i * platformRiseDelay,
+					Tween.EaseOutBack,
+					Tween.LoopType.None,
+					null,
+					null,//() => snapAudio.PlayOneShot(audioSource),
+					false);
+			}
+			Transform last = platformTransforms[platformTransforms.Length-1];
+			Tween.Position(
+					last,
+					transform.position + Vector3.down * 100f,
+					transform.position,
+					platformRiseDuration,
+					(platformTransforms.Length - 1) * platformRiseDelay,
+					Tween.EaseOutBack,
+					Tween.LoopType.None,
+					null,
+					() => ToggleTransition(false),//() => snapAudio.PlayOneShot(audioSource),
+					false);
+		}
+		Invoke("FadeInMenus", musicDelay - 0.5f);
+	}
+
+	void FadeInMenus(){
 		animator.SetTrigger("platformEntry");
 	}
 
@@ -56,9 +103,10 @@ public class MainMenuInput : MonoBehaviour {
 	}
 
 	public void RotateMenu(float toAngle){
-		if(inTransition) return;
+		if(inTransition || currentTargetAngle == toAngle) return;
 		currentTargetAngle = toAngle;
-		Tween.Rotation(cameraOriginTransform, new Vector3(0f, currentTargetAngle, 0f), 1f, 0f, Tween.EaseInOut, Tween.LoopType.None, () => ToggleTransition(true), () => ToggleTransition(false));
+		Tween.Rotation(cameraOriginTransform, new Vector3(0f, currentTargetAngle, 0f), 1f, 0f, Tween.EaseInOutBack, Tween.LoopType.None, () => ToggleTransition(true), () => ToggleTransition(false));
+		rotateAudio.PlayOneShot(audioSource);
 	}
 
 	public void ToggleTransition(bool onOff){

@@ -5,51 +5,74 @@ using UnityEngine.Audio;
 
 public class GameMusicScript : MonoBehaviour {
 
-    public AudioClip intro;
-    public AudioClip loop;
-    public AudioClip climax;
-    public AudioMixerGroup musicMixer;
-
-    public AudioMixerSnapshot gameStart;
-    public AudioMixerSnapshot climaxGroupFadeUp;
-    public AudioMixerSnapshot gameEnd;
-
-    AudioSource loopS;
-    AudioSource introS;
-    AudioSource climaxS;
-    GameTimer gTimer;
-    public PlayerManager pMan;
-
-    double audioInitTime;
-    public float audioStartDelay = 1.0f;
-
-
-
-    void Start () {
-        pMan = GameObject.FindObjectOfType<PlayerManager>();
-
-        //building the soundsources and setting them up
-        introS = gameObject.AddComponent<AudioSource>();
-        loopS = gameObject.AddComponent<AudioSource>();
-        climaxS = gameObject.AddComponent<AudioSource>();
-        introS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
-        loopS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
-        climaxS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("climax")[0];
-
-        audioInitTime = AudioSettings.dspTime;
-        introS.clip = intro;
-        introS.PlayScheduled(audioInitTime + audioStartDelay);
-        climaxS.clip = climax;
-        climaxS.PlayScheduled(audioInitTime + audioStartDelay);
-
-        loopS.clip = loop;
-        loopS.loop = true;
-
-        loopS.PlayScheduled(audioInitTime + audioStartDelay + intro.length);
-        Destroy(introS, intro.length);
-
-        //Invoke("EvaluatePlayerScore", (float) (audioInitTime + audioStartDelay + 36.0f));
+    public enum GameMusicState{
+        Start,
+        Main,
+        Loop,
+        Menu
     }
+
+    [SerializeField] AudioMixerGroup musicMainGroup;
+    [SerializeField] AudioMixerSnapshot gameStart, gameRunning, gameRunningLoop, gameMenuLoop;
+    [SerializeField] AudioSource gameTrackFullS, gameTrackLoopS, gameMenuLoopS;
+
+    void Awake(){
+        GameTimer gameTimer = FindObjectOfType<GameTimer>();
+
+        List<string> args = new List<string>(System.Environment.GetCommandLineArgs());
+        if(args.Contains("-noDancing")) return;
+        else {
+            TransitionTo(GameMusicState.Start, 0f);
+            double allSourcesStartTime = AudioSettings.dspTime + gameTimer.gameTimerDelay;
+            gameTrackFullS.PlayScheduled(allSourcesStartTime);
+            gameTrackLoopS.PlayScheduled(allSourcesStartTime);
+            gameMenuLoopS.PlayScheduled(allSourcesStartTime);
+        }
+    }
+
+    public void TransitionTo(GameMusicState state, float transitionTime){
+        switch(state){
+            case GameMusicState.Start:
+                gameStart.TransitionTo(transitionTime);
+                break;
+            case GameMusicState.Main:
+                gameRunning.TransitionTo(transitionTime);
+                break;
+            case GameMusicState.Loop:
+                gameRunningLoop.TransitionTo(transitionTime);
+                break;
+            case GameMusicState.Menu:
+                gameMenuLoop.TransitionTo(transitionTime);
+                break;
+        }
+    }
+
+
+    // void Start () {
+    //     pMan = GameObject.FindObjectOfType<PlayerManager>();
+
+    //     //building the soundsources and setting them up
+    //     introS = gameObject.AddComponent<AudioSource>();
+    //     loopS = gameObject.AddComponent<AudioSource>();
+    //     climaxS = gameObject.AddComponent<AudioSource>();
+    //     introS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
+    //     loopS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("main")[0];
+    //     climaxS.outputAudioMixerGroup = musicMixer.audioMixer.FindMatchingGroups("climax")[0];
+
+    //     audioInitTime = AudioSettings.dspTime;
+    //     introS.clip = intro;
+    //     introS.PlayScheduled(audioInitTime + audioStartDelay);
+    //     climaxS.clip = climax;
+    //     climaxS.PlayScheduled(audioInitTime + audioStartDelay);
+
+    //     loopS.clip = loop;
+    //     loopS.loop = true;
+
+    //     loopS.PlayScheduled(audioInitTime + audioStartDelay + intro.length);
+    //     Destroy(introS, intro.length);
+
+    //     //Invoke("EvaluatePlayerScore", (float) (audioInitTime + audioStartDelay + 36.0f));
+    // }
 
     /*void EvaluatePlayerScore()
     {
@@ -90,14 +113,14 @@ public class GameMusicScript : MonoBehaviour {
         winS.PlayScheduled(audioInitTime + audioStartDelay + 38.4f);
     }*/
 
-    public void TransitionToClimaxFadeUp(float transitionTime)
-    {
-        climaxGroupFadeUp.TransitionTo(transitionTime);
-    }
+    // public void TransitionToClimaxFadeUp(float transitionTime)
+    // {
+    //     climaxGroupFadeUp.TransitionTo(transitionTime);
+    // }
 
-    public void TransitionToGameEnd(float transitionTime)
-    {
-        gameEnd.TransitionTo(transitionTime);
-    }
+    // public void TransitionToGameEnd(float transitionTime)
+    // {
+    //     gameEnd.TransitionTo(transitionTime);
+    // }
 
 }

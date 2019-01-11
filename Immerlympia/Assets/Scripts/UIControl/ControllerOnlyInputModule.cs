@@ -95,6 +95,12 @@ namespace UnityEngine.EventSystems
             set { m_CancelButton = value; }
         }
 
+        protected override void Start(){
+            base.Start();
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         public override void UpdateModule()
         {
             m_LastMousePosition = m_MousePosition;

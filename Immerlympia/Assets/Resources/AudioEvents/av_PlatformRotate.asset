@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a9f940313d06d4caed9863bf024ebf, type: 3}
+  m_Name: av_PlatformRotate
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 59def3e2c240d2149b5c1e425ae0efbe, type: 3}
+  - {fileID: 8300000, guid: c1c9889b3813b8a47bd1722ad1005149, type: 3}
+  volume:
+    minValue: 0.9451863
+    maxValue: 1
+  pitch:
+    minValue: 0.97293586
+    maxValue: 1.0277491

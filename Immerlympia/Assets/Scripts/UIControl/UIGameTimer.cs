@@ -44,7 +44,7 @@ public class UIGameTimer : MonoBehaviour {
 		}
 
 		currentTime = currentMaxGameTime;
-		Debug.Log("started game time UI routine", this);
+		//Debug.Log("started game time UI routine", this);
 		yield return new WaitForEndOfFrame();
 		while(countdownActive){
 			currentTime = GameTimer.current.CurrentTime;

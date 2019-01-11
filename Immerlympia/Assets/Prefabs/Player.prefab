@@ -779,6 +779,10 @@ MonoBehaviour:
   jumpSpeed: 12
   maxJumps: 2
   timeOfLastDeath: 0
+  axisVertical: Vertical
+  axisHorizontal: Horizontal
+  jumpButton: Jump
+  punchButton: Punch
 --- !u!114 &114302439907231286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,7 +1000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685632472739588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.052, z: -0.161}
+  m_LocalPosition: {x: 0, y: 1.471, z: -0.334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4614770494127570}
@@ -1040,10 +1044,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2.33
+  m_Time: 2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.667
+    widthMultiplier: 0.33
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -1061,6 +1065,15 @@ TrailRenderer:
         value: 0.34433
         inSlope: -1.4786917
         outSlope: -1.4786917
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.99
+        value: 0.02
+        inSlope: -0.0714827
+        outSlope: -0.0714827
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
@@ -1112,7 +1125,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0
     generateLightingData: 0
-  m_MinVertexDistance: 0.01
+  m_MinVertexDistance: 0.02
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &1686336432636226

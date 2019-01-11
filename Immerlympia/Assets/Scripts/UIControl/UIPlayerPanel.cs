@@ -11,17 +11,19 @@ public class UIPlayerPanel : MonoBehaviour {
 	[ReadOnly(false)] public HeroPick currentPick;
 	[SerializeField, ReadOnly(false)] private bool joinedBefore = false, heroLocked = false;
 	[SerializeField] private Image activeHeroImage = null;
-	[SerializeField] private TMPro.TextMeshProUGUI characterText = null, playerText = null;
+	[SerializeField] public TMPro.TextMeshProUGUI characterText = null, playerText = null;
 	[SerializeField] private ParticleSystem heroLockedPS = null;
+	[SerializeField] private Image heroLockedBorder = null;
 
-	public void Awake(){
+	public void OnEnable(){
 		if(activeHeroImage == null)
 			throw new Exception("ActiveHeroImage on " + gameObject + " not set!");
 		
-		if(playerName.Length == 0){
-			playerName = "Player" + playerNumber;
-		}
-		playerText.SetText(playerName);
+		// Debug.Log("Enabling Player Slot " + playerNumber);
+		// if(playerName.Length == 0){
+		// 	playerName = "Player" + playerNumber;
+		// }
+		// playerText.SetText(playerName);
 	}
 
 	public void SetHeroPick(HeroPick newHero){
@@ -51,14 +53,14 @@ public class UIPlayerPanel : MonoBehaviour {
 
 	public void LockUnlockHeroPick(bool lockHero){
 		heroLocked = lockHero;
+		heroLockedBorder.enabled = lockHero;
 		if(lockHero){
 			ParticleSystem.MainModule mainModule = heroLockedPS.main;
 			mainModule.startColor = currentPick.heroColor;
 			heroLockedPS.Play();
 		}
 		else {
-			heroLockedPS.Stop();
-			heroLockedPS.Clear();
+			heroLockedPS.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 		}
 	}
 

@@ -110,7 +110,7 @@ public class PlayerManager : MonoBehaviour {
         if(activateGameOverUIEvent != null) activateGameOverUIEvent();
 
         while(gameObject.activeSelf){
-            position += winCamSpeed * Time.fixedUnscaledDeltaTime;
+            position += winCamSpeed * Time.unscaledDeltaTime;
             trackedDolly.m_PathPosition = position % 1f;
             yield return null;
         }

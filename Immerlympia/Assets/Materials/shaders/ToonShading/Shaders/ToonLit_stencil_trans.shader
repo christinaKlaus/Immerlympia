@@ -1,6 +1,5 @@
 Shader "Toon/Lit_stencil_transparent" {
 	Properties {
-		
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_TransOffset ("Transparency Offset", Range(-1,1)) = 0
@@ -9,6 +8,10 @@ Shader "Toon/Lit_stencil_transparent" {
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
 		_ScrollDir("Scroll Direction", Vector) = (0,0,0,0)
 
+		[Enum(UnityEngine.Rendering.CullMode)] _Culling ("Cull Mode", Int) = 2
+		[Enum(Off,0,On,1)] _ZWrite("ZWrite", Int) = 0
+		[Enum(UnityEngine.Rendering.BlendMode)] _BlendSrc ("Blend Source", Int) = 5
+		[Enum(UnityEngine.Rendering.BlendMode)] _BlendDst ("Blend Destination", Int) = 10
 	}
 
 	SubShader {
@@ -34,8 +37,9 @@ Shader "Toon/Lit_stencil_transparent" {
 				"RenderType" = "Transparent"
 			}
 
-			ZWrite Off
-        	Blend SrcAlpha OneMinusSrcAlpha
+			Cull [_Culling] //On
+			ZWrite [_Zwrite] //Off
+        	Blend [_BlendSrc] [_BlendDst] //SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
 			#include "UnityCG.cginc"

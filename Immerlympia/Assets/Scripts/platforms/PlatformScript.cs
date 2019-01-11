@@ -104,6 +104,10 @@ public class PlatformScript : MonoBehaviour {
 
         isMoving = (timer < duration - appearTime && timer > warning) ? false : true;
         if(!isMoving && !platformSpawn.enablePlatformCycle){
+            foreach(CoinSpawnPoint s in spawns){
+                s.canSpawnCoin = true;
+                coinSpawnsActive = true;
+            }
             this.enabled = false;
         }
         

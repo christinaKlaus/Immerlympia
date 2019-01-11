@@ -16,10 +16,11 @@ public class UIPlayerJoin : MonoBehaviour {
 	private bool[] zeroed, joined;
 	private float[] lastInputTimes;
 	private string[] leaveButtonNames = new string[]{ "Cancel0", "Cancel1", "Cancel2", "Cancel3"};
-	private string[] joinButtonNames = new string[]{ "Jump0", "Jump1", "Jump2", "Jump3"};
+	private string[] joinButtonNames = new string[]{ "Submit0", "Jump1", "Jump2", "Jump3"};
 	private string[] horizontalAxisNames = new string[]{ "Horizontal0", "Horizontal1", "Horizontal2", "Horizontal3"};
 	[SerializeField] private UIPlayerPanel[] playerPanels = null;
 	[SerializeField] private HeroPick[] pickableHeroes = null;
+	[SerializeField] private GameObject[] playerJoinButtonPrompts = null;
 	[Space, SerializeField] private Selectable selectOnNoJoinedCancel = null, selectOnAllLockedIn = null;
 	[SerializeField] UnityEvent OnNoJoinedCancel = null;
 	private PlayerJoinState[] joinStates;
@@ -37,7 +38,12 @@ public class UIPlayerJoin : MonoBehaviour {
 
 		for(int i = 0; i < playerPanels.Length; i++){
 			joinStates[i] = PlayerJoinState.Open;
+			//Debug.Log("Setting up player number for player " + i);
 			playerPanels[i].playerNumber = i;
+			if(playerPanels[i].playerName.Length == 0){
+				playerPanels[i].playerName = "Player " + (playerPanels[i].playerNumber + 1);
+			}
+			playerPanels[i].playerText.SetText(playerPanels[i].playerName);
 		}
 		
 		selectOnAllLockedIn.gameObject.SetActive(false);
@@ -97,6 +103,7 @@ public class UIPlayerJoin : MonoBehaviour {
 
 			switch(joinStates[i]){
 				case PlayerJoinState.Open:
+					if(!playerJoinButtonPrompts[i].activeSelf) playerJoinButtonPrompts[i].SetActive(true);
 					if(submitButtonDown){
 						playerPanels[i].gameObject.SetActive(true);
 						joinStates[i] = PlayerJoinState.Joined;
@@ -128,6 +135,7 @@ public class UIPlayerJoin : MonoBehaviour {
 					}
 					break;
 				case PlayerJoinState.Joined:
+					if(playerJoinButtonPrompts[i].activeSelf) playerJoinButtonPrompts[i].SetActive(false);
 					if(cancelButtonDown){
 						playerPanels[i].UnsetHeroPick();
 						joinStates[i] = PlayerJoinState.Open;
