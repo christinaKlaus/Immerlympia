@@ -6,30 +6,36 @@ using UnityEngine.UI;
 public class ScreenTargetArrow : MonoBehaviour
 {
 
+    public bool MarkerVisible {
+        get { return (iconImage.enabled || arrowImage.enabled);}
+    }
+
     [SerializeField] Camera gameCam;
     [SerializeField, ReadOnly(false)] MeshRenderer currentCoinRenderer;
+    [SerializeField, ReadOnly(false)] CoinPickup currentCoin;
     [SerializeField] Image arrowImage, iconImage;
     
 
-    bool currentlyVisible = false;
+    bool markerVisible = false;
     Vector2 screenSize;
     Vector2 currentScreenPosition;
     Vector3 arrowRotation = Vector3.zero;
 
     void Awake(){
-        CoinPickup.coinSpawnEvent += RegisterRenderer;
+        // CoinPickup.coinSpawnEvent += RegisterRenderer;
         screenSize = new Vector2(Screen.width, Screen.height);
     }
 
-    void Update()
-    {
-        if(currentCoinRenderer == null || !currentCoinRenderer.gameObject.activeSelf) {
-            SwitchSprite(null);
-            currentlyVisible = false;
-            return;
-        } else if (currentlyVisible) {
+    void Update() {
+        if(MarkerVisible)
             Reposition();
-        }
+
+        // if(Time.frameCount % 300 == 0){
+        //     Debug.Log("Coin " + (currentCoin.gameObject.activeSelf ? "active" : "inactive"));
+        //     Debug.Log("CoinRenderer " + (currentCoinRenderer.isVisible ? "visible" : "not visible"));
+        //     Debug.Log("bounding sphere 0 " + (currentCoin.cullingGroup.IsVisible(0) ? "visible" : "not visible"));
+        //     Debug.Log("Marker " + (MarkerVisible ? "visible" : "not visible"));
+        // }
     }
 
     void Reposition(){
@@ -47,35 +53,44 @@ public class ScreenTargetArrow : MonoBehaviour
 
     void OnCoinCullingStateChanged(CullingGroupEvent cullEvent){
         // Debug.Log("Cull state of coin has changed");
+        // Debug.Log("culling group target cam: " + currentCoin.cullingGroup.targetCamera.name, currentCoin.cullingGroup.targetCamera);
+        // Debug.Log("bounding sphere pos: " + currentCoin.boundingSphere.position, this);
+        //Debug.Break();
         SwitchSprite(cullEvent.isVisible);
     }
 
     public void RegisterRenderer(CoinPickup coin){
-        currentCoinRenderer = coin.coinRenderer;
-        coin.cullingGroup.targetCamera = gameCam;
-        coin.cullingGroup.onStateChanged = OnCoinCullingStateChanged;
-        Reposition();
-        SwitchSprite(coin.coinRenderer.isVisible);
+        // Debug.Log("Renderer registered to target arrow for " + coin.name, this);
+        currentCoin = coin;
+        currentCoinRenderer = currentCoin.coinRenderer;
+        currentCoin.cullingGroup.targetCamera = gameCam;
+        currentCoin.cullingGroup.onStateChanged = OnCoinCullingStateChanged;
+    }
+
+    public void CoinSpawned(){
+        SwitchSprite(currentCoin.cullingGroup.IsVisible(0));
+    }
+
+    public void CoinCollected(){
+        SwitchSprite(null);
     }
 
     /// <summary>Show icon (true), arrow (false) or nothing (null) </summary>
-    void SwitchSprite(bool? showIcon){
+    public void SwitchSprite(bool? showIcon){
         if(showIcon == null){
             iconImage.enabled = false;
             arrowImage.enabled = false;
         } else if((bool)showIcon){
-            currentlyVisible = true;
             iconImage.enabled = true;
             arrowImage.enabled = false;
         } else {
-            currentlyVisible = true;
             arrowImage.enabled = true;
             iconImage.enabled = false;
         }
     }
 
     void OnDestroy(){
-        CoinPickup.coinSpawnEvent -= RegisterRenderer;
+        // CoinPickup.coinSpawnEvent -= RegisterRenderer;
     }
 
 }

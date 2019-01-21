@@ -773,6 +773,9 @@ MonoBehaviour:
   velocityReal: {x: 0, y: 0, z: 0}
   yVelocity: 0
   playerIndex: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   walkSpeed: 11
   acceleration: 66
   deceleration: 66
@@ -909,7 +912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steps: {fileID: 8300000, guid: d3a69ee6932c6844aa384da78e0cefd9, type: 3}
-  punch: {fileID: 8300000, guid: 62d6091ebf96c644fb8c63383ec7d9ea, type: 3}
+  swing: {fileID: 8300000, guid: 62d6091ebf96c644fb8c63383ec7d9ea, type: 3}
   hit: {fileID: 8300000, guid: a590d73bfedd19b4484375de6f8da064, type: 3}
   jump: {fileID: 8300000, guid: 05e16e3d5d24633478b68cc5ca9fcabf, type: 3}
   doubleJump: {fileID: 8300000, guid: cd3b1f5483d60584ca71b2fa6634d1b6, type: 3}

@@ -5,37 +5,47 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+[RequireComponent(typeof(AudioSource))]
 public class CoinSpawnPoint : MonoBehaviour {
-	CoinSpawnManager coinSpawnManager;
-	PlatformScript thisPlatform;
+	
 	public GameObject coin;
 	public bool hasCoin;
 	public bool canSpawnCoin = false;
 
-	// void Start(){
-	// 	if(CoinSpawnManager.possibleCoinSpawns != null)
-	// 		CoinSpawnManager.possibleCoinSpawns.Add(this);
-	// }
+	CoinSpawnManager coinSpawnManager;
+	PlatformScript thisPlatform;
+	AudioSource audioSource;
+	[SerializeField] AudioClip spawnSound, collectSound;
 
-	public void SpawnCoin(){
-		Instantiate(coin, transform.position + (Vector3.up * 1.5f), Quaternion.identity, transform.transform);
+	void Awake(){
+		coinSpawnManager = GetComponentInParent<CoinSpawnManager>();
+		thisPlatform = GetComponentInParent<PlatformScript>();
+		audioSource = GetComponent<AudioSource>();
+	}
+
+	public void SpawnCoin(CoinPickup coin){
+		coin.transform.SetParent(transform);
+		coin.transform.position = transform.position + (Vector3.up * 1.5f);
+		coin.transform.rotation = Quaternion.identity;
+		// Instantiate(coin, transform.position + (Vector3.up * 1.5f), Quaternion.identity, transform.transform);
 		hasCoin = true;
 		canSpawnCoin = false;
-		transform.parent.GetComponent<PlatformScript>().canFall = false;
+		thisPlatform.canFall = false;
+		coin.Setup(thisPlatform, this);
+		coin.gameObject.SetActive(true);
+		audioSource.PlayOneShot(spawnSound);
+	}
+
+	public void CoinCollected(){
+		audioSource.PlayOneShot(collectSound);
 	}
 
 	void OnEnable(){
-		if(!coinSpawnManager)
-			coinSpawnManager = GetComponentInParent<CoinSpawnManager>();
-		if(!thisPlatform)
-			thisPlatform = GetComponentInParent<PlatformScript>();
-
 		if(coinSpawnManager.possibleCoinSpawns != null)
 			coinSpawnManager.possibleCoinSpawns.Add(this);
 	}
 
 	void OnDisable(){
-		//Destroy(transform.GetChild(0));
 		coinSpawnManager.possibleCoinSpawns.Remove(this);
 	}
 

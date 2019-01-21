@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pixelplacement.TweenSystem;
 using Pixelplacement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PlatformScript : MonoBehaviour {
 
     public AudioClip[] descendClips;
     public Vector2 lifetimeRange = new Vector2(10, 20);
     public float fallSpeed = 11f;
-    public float warning = 5f;
+    public float warningDuration = 5f, disappearDuration = 5f;
     public Vector3 shakiness = new Vector3(0.1f, 0.1f, 0.1f);
     public Vector3 descendTilt = new Vector3(0f, 0f, -45f);
     public float descendTiltTime = 2.5f;
@@ -27,17 +30,33 @@ public class PlatformScript : MonoBehaviour {
     private bool coinSpawnsActive = false;
     private bool gameEnded = false;
 
+    private static string platformShaderName = "Immerlympia/platforms";
+    [SerializeField] Material[] platformMaterials;
+    [SerializeField] ParticleSystem holoScanParticles;
+
     private Vector3[] basePos;
     private AudioSource platformAudio;
     private CoinSpawnPoint[] spawns;
     private platformDirtParticleSystem[] platformEdgeDirt;
     private PlatformSpawn platformSpawn;
-    private Coroutine shakeRoutine;
+    private Coroutine shakeRoutine, deactivationRoutine;
     private TweenBase rotateTween, shakeTween;
+    private WaitForSeconds warningDelay, disappearDelay;
+    private ParticleSystem[] allParticleSystems;
 
     void Awake(){
         gameEnded = false;
         PlayerManager.startWinCamEvent += OnWinCamActivated;
+
+        warningDelay = new WaitForSeconds(warningDuration + 0.5f);
+        disappearDelay = new WaitForSeconds(disappearDuration + 0.5f);
+
+        allParticleSystems = GetComponentsInChildren<ParticleSystem>();
+
+        if(platformMaterials == null || platformMaterials.Length == 0){
+            Debug.LogError("platform materials not set on " + gameObject.name, this);
+        }
+        //Debug.Log(platformMaterials[0].shader.name);
     }
 
     void OnEnable () {
@@ -68,6 +87,11 @@ public class PlatformScript : MonoBehaviour {
         }
 
         platformAudio.volume = 1;
+
+        foreach(ParticleSystem ps in allParticleSystems){
+            ps.Play(true);
+        }
+
         Update();
     }
 
@@ -84,7 +108,7 @@ public class PlatformScript : MonoBehaviour {
             timer -= Time.deltaTime; // zählt Sekundenweise	
 
         //shake
-        if (timer < warning && canFall && !gameEnded) {
+        if (timer < warningDuration && canFall && !gameEnded) {
             if(shakeRoutine == null)
                 shakeRoutine = StartCoroutine(ShakePlatform());
         }
@@ -99,10 +123,10 @@ public class PlatformScript : MonoBehaviour {
 
         if (timer < -appearTime) {
             //platform fell down and needs to be deactivated
-            Remove();
+            DeactivatePlatform();
         }
 
-        isMoving = (timer < duration - appearTime && timer > warning) ? false : true;
+        isMoving = (timer < duration - appearTime && timer > warningDuration) ? false : true;
         if(!isMoving && !platformSpawn.enablePlatformCycle){
             foreach(CoinSpawnPoint s in spawns){
                 s.canSpawnCoin = true;
@@ -111,6 +135,23 @@ public class PlatformScript : MonoBehaviour {
             this.enabled = false;
         }
         
+    }
+
+    public void StartDeactivation(){
+        if(deactivationRoutine == null){
+            deactivationRoutine = StartCoroutine(PlatformDeactivation());
+        }
+    }
+
+    public void RevertDeactivation(){
+        foreach(Material m in platformMaterials){
+            m.renderQueue = m.shader.renderQueue;
+            m.SetFloat("_AlphaStep", 1f);
+            m.SetFloat("_HoloMaster", 0f);
+            Vector4 glitchControl = m.GetVector("_GlitchControl");
+            glitchControl.w = 0f;
+            m.SetVector("_GlitchControl", glitchControl);
+        }
     }
 
     IEnumerator ShakePlatform(){
@@ -128,8 +169,9 @@ public class PlatformScript : MonoBehaviour {
             playedDescendSound = true;
         }
         // Debug.Log("Platform " + gameObject.name + " starts tweens");
-        shakeTween = Tween.Shake(transform, transform.position, shakiness, warning, 0f, Tween.LoopType.None, null, null, true);
-        rotateTween = Tween.Rotate(transform, descendTilt, Space.Self, descendTiltTime, warning * 0.75f, Tween.EaseInOutBack, Tween.LoopType.None, null, null, true);
+        shakeTween = Tween.Shake(transform, transform.position, shakiness, warningDuration, 0f, Tween.LoopType.None, null, null, true);
+        rotateTween = Tween.Rotate(transform, descendTilt, Space.Self, descendTiltTime, warningDuration * 0.75f, Tween.EaseInOutBack, Tween.LoopType.None, null, null, true);
+
         yield return null;
         // while(gameObject.activeSelf){
         //     Vector3 offset = new Vector3(Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness), Random.Range(-shakiness, shakiness));
@@ -142,10 +184,64 @@ public class PlatformScript : MonoBehaviour {
         // }
     }
 
-    void Remove () {
+    IEnumerator PlatformDeactivation(){
+        foreach(ParticleSystem ps in allParticleSystems){
+            ps.Pause(true);
+        }
+
+        Debug.Log("Started deactivation of " + gameObject.name, this);
+
+        holoScanParticles.Play(true);
+        float fifth = warningDuration * 0.2f;
+        Vector4 glitchControlSrc, glitchControlDst;
+        foreach(Material m in platformMaterials){
+            if(m.shader.name != platformShaderName) continue;
+            else {
+                m.renderQueue = 3001;
+                m.SetFloat("_AlphaStep", 1f);
+                Tween.ShaderFloat(m, "_HoloMaster",0 , 0.5f, fifth, 0f, Tween.EaseLinear, Tween.LoopType.None, null, null, true);
+                Tween.ShaderFloat(m, "_HoloMaster",0 , 0.5f, fifth, fifth * 4f, Tween.EaseLinear, Tween.LoopType.None, null, null, true);
+                glitchControlSrc = m.GetVector("_GlitchControl");
+                glitchControlDst = new Vector4(glitchControlSrc.x, glitchControlSrc.y, glitchControlSrc.z, 1f);
+                Tween.ShaderVector(m, "_GlitchControl", glitchControlSrc , glitchControlDst, fifth * 2f, 0f, Tween.EaseLinear, Tween.LoopType.None, null, null, true);
+            }
+        }
+        yield return warningDelay;
+        Debug.Log("warning finished for " + gameObject.name, this);
+        fifth = disappearDuration * 0.2f;
+        foreach(ParticleSystem ps in allParticleSystems){
+            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+
+        holoScanParticles.Pause(true);
+
+        foreach(Material m in platformMaterials){
+            if(m.shader.name != platformShaderName) continue;
+            else {
+                Tween.ShaderFloat(m, "_AlphaStep", 1, 0.9f, fifth, 0f, Tween.EaseLinear, Tween.LoopType.None, null, null, true);
+                Tween.ShaderFloat(m, "_AlphaStep", 0f, fifth * 4f, fifth, Tween.EaseLinear, Tween.LoopType.None, null, null, true);
+                glitchControlSrc = m.GetVector("_GlitchControl");
+                glitchControlDst = new Vector4(glitchControlSrc.x, glitchControlSrc.y, glitchControlSrc.z, 0f);
+                Tween.ShaderVector(m, "_GlitchControl", glitchControlSrc , glitchControlDst, fifth, 0f, Tween.EaseLinear, Tween.LoopType.None, null, null, true);
+            }
+        }
+
+        holoScanParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        yield return disappearDelay;
+        DeactivatePlatform();
+        deactivationRoutine = null;
+        Debug.Log("Finished deactivation of " + gameObject.name, this);
+    }
+
+    void DeactivatePlatform() {
         if(shakeRoutine != null){
             StopCoroutine(shakeRoutine);
             shakeRoutine = null;
+        }
+        if(deactivationRoutine != null){
+            StopCoroutine(deactivationRoutine);
+            deactivationRoutine = null;
         }
         transform.GetComponentInParent<PlatformSpawn>().newPlatform(currentPosition);
         currentPosition = -1;
@@ -159,11 +255,10 @@ public class PlatformScript : MonoBehaviour {
     //if a platform's coin is picked up, it immediately starts descend procedures
     public void CoinPickedUp() {
         canFall = true;
-        timer = warning;
+        timer = warningDuration;
     }
 
-    void OnWinCamActivated(){
-        // Debug.Log("Platform " + gameObject.name + " noticed wincam");
+    void OnWinCamActivated() {
         gameEnded = true;
         if(shakeTween != null) shakeTween.Cancel();
         if(rotateTween != null) rotateTween.Stop();
@@ -173,8 +268,7 @@ public class PlatformScript : MonoBehaviour {
         platformAudio.volume = 0;
     }
 
-    void SetEdgeDirtPlaying(bool playState)
-    {
+    void SetEdgeDirtPlaying(bool playState) {
         if(playState && (!platformEdgeDirt[0].IsPlaying() || !platformEdgeDirt[1].IsPlaying()))
         {
             platformEdgeDirt[0].PlayParticleSystem();
@@ -188,6 +282,26 @@ public class PlatformScript : MonoBehaviour {
 
     void OnDestroy(){
         PlayerManager.startWinCamEvent -= OnWinCamActivated;
+        RevertDeactivation();
     }
 
 }
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(PlatformScript)), CanEditMultipleObjects]
+public class PlatformScriptEditor : Editor {
+    public override void OnInspectorGUI(){
+        PlatformScript platformScript = serializedObject.targetObject as PlatformScript;
+        DrawDefaultInspector();
+        GUILayout.BeginHorizontal();
+        if(GUILayout.Button("test deactivation")){
+            platformScript.StartDeactivation();
+        }
+        if(GUILayout.Button("revert deactivation")){
+            platformScript.RevertDeactivation();
+        }
+        GUILayout.EndHorizontal();
+    } 
+}
+#endif

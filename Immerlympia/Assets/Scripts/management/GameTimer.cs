@@ -58,7 +58,7 @@ public class GameTimer : MonoBehaviour {
     IEnumerator GameTimeRoutine(float maxPlayTime){
         currentTime = maxPlayTime;
         yield return new WaitForSeconds(gameTimerDelay);
-        gameMusic.TransitionTo(GameMusicScript.GameMusicState.Main, gameTimerDelay);
+        // gameMusic.TransitionTo(GameMusicScript.GameMusicState.Main, gameTimerDelay);
         //Debug.Log("started game time routine", this);
         while (currentTime > maxPlayTime * 0.5f) {
             currentTime -= Time.deltaTime;
@@ -71,13 +71,13 @@ public class GameTimer : MonoBehaviour {
             currentTime -= Time.deltaTime;
             yield return null;
         }
-        gameMusic.TransitionTo(GameMusicScript.GameMusicState.Loop, 0.1f);
+        // gameMusic.TransitionTo(GameMusicScript.GameMusicState.Loop, 0.1f);
         playerManager.DetermineGameEnd();
         currentTime = 0;
     }
 
     void OnWinCamStarted() {
-        gameMusic.TransitionTo(GameMusicScript.GameMusicState.Menu, 1f);
+        // gameMusic.TransitionTo(GameMusicScript.GameMusicState.Menu, 1f);
         List<PlayerControlling> winner = new List<PlayerControlling>();
         //gameMusic.TransitionToGameEnd(0.0f);
         foreach (PlayerControlling p in PlayerManager.current.players) {

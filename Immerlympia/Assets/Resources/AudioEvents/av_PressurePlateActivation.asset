@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a9f940313d06d4caed9863bf024ebf, type: 3}
+  m_Name: av_PressurePlateActivation
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 916a4495e60f54b4b83d014817ab56ff, type: 3}
+  - {fileID: 8300000, guid: 78e964b8037dc6940b97dd729379bd5b, type: 3}
+  - {fileID: 8300000, guid: 216639ced6e73f24f8cb864df4266d33, type: 3}
+  - {fileID: 8300000, guid: 70f6d2f315bd19d4982e8aad694596c1, type: 3}
+  - {fileID: 8300000, guid: f88a7328386cd1648a3fe4e003a417d5, type: 3}
+  volume:
+    minValue: 0.95
+    maxValue: 1
+  pitch:
+    minValue: 1.0015385
+    maxValue: 1.0461538

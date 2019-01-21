@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48923404b67179b41ba94ef6b7768110, type: 3}
+  m_Name: IngameMusic_01
+  m_EditorClassIdentifier: 
+  startTime: 2
+  output: {fileID: 243468625747401494, guid: 5171193c4d02d724986f6bc0463cdc8d, type: 2}
+  clipSet:
+  - looped: 0
+    repeatTimes: 1
+    clipDuration: 25.756735
+    clip: {fileID: 8300000, guid: 8f202154a6e8f3d4483bf9b5bfa719e9, type: 3}
+  - looped: 0
+    repeatTimes: 1
+    clipDuration: 34.324898
+    clip: {fileID: 8300000, guid: 03c867198a8c43b42bf3d1aadab144fa, type: 3}
+  - looped: 1
+    repeatTimes: 0
+    clipDuration: 34.324898
+    clip: {fileID: 8300000, guid: 4c09b36cfc214b649af8a82c4bc89ed0, type: 3}
+  schedule: '2: 01-main-start[25.75673] (1/1)
+
+    27.75673: 02-main-round[34.3249] (1/1)
+
+    62.08163: 03-main-loop[34.3249] (looped)
+
+'

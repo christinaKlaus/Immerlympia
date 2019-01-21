@@ -6,15 +6,15 @@ using UnityEditor;
 #endif
 
 public class CoinSpawnManager : MonoBehaviour {
-	public float nextSpawnTime;
+	public float spawnDelay;
 	public List<CoinSpawnPoint> possibleCoinSpawns;
 	[ReadOnly(false)] public bool coinActive = false;
 
     private int index;
     private float timer; 
 	[ReadOnly(false), SerializeField] private bool coinSpawnActive = true;
-
-	// public CoinSpawnPoint[] coinArr;
+	[SerializeField] private CoinPickup coinPrefab;
+	private CoinPickup gameCoin;
 
 	void Awake(){
 		possibleCoinSpawns = new List<CoinSpawnPoint>();
@@ -32,7 +32,11 @@ public class CoinSpawnManager : MonoBehaviour {
 				possibleCoinSpawns.Add(g.GetComponent<CoinSpawnPoint>());
 			}
 		}
+
+		// create coin
 		
+		gameCoin = Instantiate(coinPrefab, transform.position - Vector3.up * 100f, Quaternion.identity, transform).GetComponent<CoinPickup>();
+
 		// Debug.Log("poss spawns in start " + possibleCoinSpawns.Count);
 	}
 
@@ -50,7 +54,6 @@ public class CoinSpawnManager : MonoBehaviour {
 			}
 		}
 		
-        // coinArr = possibleCoinSpawns.ToArray();
 		if(Input.GetKey(KeyCode.LeftControl)){
 			if(Input.GetKeyDown(KeyCode.C)){
 				if(Input.GetKey(KeyCode.LeftShift)){
@@ -69,7 +72,7 @@ public class CoinSpawnManager : MonoBehaviour {
 		index = Random.Range(0, possibleCoinSpawns.Count);
 		
 		if(possibleCoinSpawns[index].canSpawnCoin){
-			possibleCoinSpawns[index].SpawnCoin();
+			possibleCoinSpawns[index].SpawnCoin(gameCoin);
 			coinActive = true;
 		}
 
@@ -78,13 +81,13 @@ public class CoinSpawnManager : MonoBehaviour {
 	public void SpawnNewCoinFromInspector(){
 		if(coinActive || possibleCoinSpawns.Count <= 0) return;
 		index = Random.Range(0, possibleCoinSpawns.Count);
-		possibleCoinSpawns[index].SpawnCoin();
+		possibleCoinSpawns[index].SpawnCoin(gameCoin);
 		coinActive = true;
 	}
 
     public void ResetTimer()
     {
-        timer = nextSpawnTime;
+        timer = spawnDelay;
     }
 }
 

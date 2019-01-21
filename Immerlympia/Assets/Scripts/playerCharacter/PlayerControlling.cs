@@ -15,13 +15,13 @@ public class PlayerControlling : MonoBehaviour
 
     [HideInInspector] public float yVelocity;
 
-    public int playerIndex;
-    public float walkSpeed;
-    public float acceleration;
-    public float deceleration;
-
-    public float jumpSpeed;
-    public int maxJumps;
+    [ReadOnly(false)] public int playerIndex;
+    [SerializeField] LayerMask playerLayer;
+    [SerializeField] float walkSpeed;
+    [SerializeField] float acceleration;
+    [SerializeField] float deceleration;
+    [SerializeField] float jumpSpeed;
+    [SerializeField] int maxJumps;
     [HideInInspector] public float timeOfLastDeath;
 
     private int jumps;
@@ -65,7 +65,7 @@ public class PlayerControlling : MonoBehaviour
         {
             //Debug.DrawRay(transform.position + Vector3.up, transform.forward, Color.magenta, 1, false);
 
-            RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f);
+            RaycastHit[] hit = Physics.CapsuleCastAll(transform.position + (Vector3.up * 1.5f), transform.position + (Vector3.up * 0.5f), 1.5f, transform.forward, 5.0f, playerLayer, QueryTriggerInteraction.Ignore);
             anim.SetTrigger("punching");
 
             foreach (RaycastHit h in hit)
@@ -210,7 +210,7 @@ public class PlayerControlling : MonoBehaviour
                 soundMan.playClip(SoundType.Steps);
                 break;
             case "punch":
-                soundMan.playClip(SoundType.Punch);
+                soundMan.playClip(SoundType.Swing);
                 break;
             case "jump":
                 soundMan.playClip(SoundType.Jump);

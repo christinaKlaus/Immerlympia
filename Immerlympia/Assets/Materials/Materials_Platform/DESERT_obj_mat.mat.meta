@@ -1,8 +1,11 @@
 fileFormatVersion: 2
 guid: 44805307aa042f54fbc52b864521881a
-timeCreated: 1494765517
-licenseType: Free
+labels:
+- Platform
+- PlatformObjectMaterial
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

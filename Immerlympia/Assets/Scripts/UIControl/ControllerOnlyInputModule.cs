@@ -97,8 +97,12 @@ namespace UnityEngine.EventSystems
 
         protected override void Start(){
             base.Start();
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            #if UNITY_EDITOR
+
+            #else
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            #endif
         }
 
         public override void UpdateModule()

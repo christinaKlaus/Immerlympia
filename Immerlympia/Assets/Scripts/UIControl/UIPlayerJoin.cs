@@ -16,7 +16,7 @@ public class UIPlayerJoin : MonoBehaviour {
 	private bool[] zeroed, joined;
 	private float[] lastInputTimes;
 	private string[] leaveButtonNames = new string[]{ "Cancel0", "Cancel1", "Cancel2", "Cancel3"};
-	private string[] joinButtonNames = new string[]{ "Submit0", "Jump1", "Jump2", "Jump3"};
+	private string[] joinButtonNames = new string[]{ "Jump0", "Jump1", "Jump2", "Jump3"};
 	private string[] horizontalAxisNames = new string[]{ "Horizontal0", "Horizontal1", "Horizontal2", "Horizontal3"};
 	[SerializeField] private UIPlayerPanel[] playerPanels = null;
 	[SerializeField] private HeroPick[] pickableHeroes = null;

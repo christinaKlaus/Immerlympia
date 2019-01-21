@@ -12,11 +12,13 @@ public class Dummy : MonoBehaviour {
     float stunned = 0;
     PlayerControlling controller;
     SoundManager soundMan;
+    Animator animator;
     
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<PlayerControlling>();
         soundMan = GetComponent<SoundManager>();
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -28,25 +30,24 @@ public class Dummy : MonoBehaviour {
 
 	}
 
-    public void Damage(Vector3 enemyPos){
+    // public void Damage(Vector3 enemyPos){
         
-        if (controller == null) {
-            Debug.Log("No Controller found");
-            return;
-        }
+    //     if (controller == null) {
+    //         Debug.Log("No Controller found");
+    //         return;
+    //     }
 
-        Vector3 velocity = (gameObject.transform.position - enemyPos).normalized * knockback;
-        controller.velocityReal = velocity;
-        controller.yVelocity = vertKnockup;
+    //     Vector3 velocity = (gameObject.transform.position - enemyPos).normalized * knockback;
+    //     controller.velocityReal = velocity;
+    //     controller.yVelocity = vertKnockup;
 
-        stunned = stunTime;
+    //     stunned = stunTime;
         
-        Animator anim = this.gameObject.GetComponent<Animator>();
-        anim.SetTrigger("getHit");
-    }
+    //     Animator anim = this.gameObject.GetComponent<Animator>();
+    //     anim.SetTrigger("getHit");
+    // }
 
     public void Damage(GameObject enemy) {
-
         if (stunned > -cooldown)
             return;
 
@@ -61,8 +62,7 @@ public class Dummy : MonoBehaviour {
 
         stunned = stunTime;
         
-        Animator anim = this.gameObject.GetComponent<Animator>();
-        anim.SetTrigger("getHit");
+        animator.SetTrigger("getHit");
         soundMan.playClip(SoundType.Hit);
     }
 
@@ -83,8 +83,7 @@ public class Dummy : MonoBehaviour {
 
         stunned = stunTime;
 
-        Animator anim = this.gameObject.GetComponent<Animator>();
-        anim.SetTrigger("getHit");
+        animator.SetTrigger("getHit");
         soundMan.playClip(SoundType.Hit);
     }
 }

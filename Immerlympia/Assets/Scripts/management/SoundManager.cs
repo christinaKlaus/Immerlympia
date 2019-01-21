@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 public enum SoundType{
-		Hit, Jump, Punch, Steps, DoubleJump, Collect, Death
+		Hit, Jump, Swing, Steps, DoubleJump, Death
 }
 public class SoundManager : MonoBehaviour {
 
 	private AudioSource source;
 
 	public AudioClip steps; //steps clip is different for all four players
-    public AudioClip punch;
+    public AudioClip swing;
     public AudioClip hit;
     public AudioClip jump;
     public AudioClip doubleJump;
@@ -37,9 +37,9 @@ public class SoundManager : MonoBehaviour {
                 //if(!source.isPlaying)
                 source.PlayOneShot(jump);
 				break;
-			case SoundType.Punch:
+			case SoundType.Swing:
                 //	if(!source.isPlaying)
-                source.PlayOneShot(punch);
+                source.PlayOneShot(swing);
 				break;
 			case SoundType.Steps:
                 //	if(!source.isPlaying)
@@ -47,9 +47,6 @@ public class SoundManager : MonoBehaviour {
 				break;
             case SoundType.DoubleJump:
                 source.PlayOneShot(doubleJump);
-                break;
-            case SoundType.Collect:
-                source.PlayOneShot(coinCollect);
                 break;
             case SoundType.Death:
                     GameObject tempAudioSource = new GameObject();

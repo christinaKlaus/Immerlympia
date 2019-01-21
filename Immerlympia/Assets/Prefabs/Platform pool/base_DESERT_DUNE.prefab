@@ -1568,7 +1568,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c416e8211ae91a3488c3bbf8ffa4af2f, type: 3}
   lifetimeRange: {x: 10, y: 20}
   fallSpeed: 11
-  warning: 5
+  warningDuration: 6
+  disappearDuration: 2
   shakiness: {x: 0.1, y: 0.1, z: 0.1}
   descendTilt: {x: 0, y: 0, z: -15}
   descendTiltTime: 0.75
@@ -1576,6 +1577,9 @@ MonoBehaviour:
   isMoving: 1
   canFall: 1
   currentPosition: -1
+  platformMaterials:
+  - {fileID: 2100000, guid: 62e6a551a586cda48b04877edff18757, type: 2}
+  - {fileID: 2100000, guid: 44805307aa042f54fbc52b864521881a, type: 2}
 --- !u!82 &82963950025261164
 AudioSource:
   m_ObjectHideFlags: 0
