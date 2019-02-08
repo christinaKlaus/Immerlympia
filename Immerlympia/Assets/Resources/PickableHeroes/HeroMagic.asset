@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HeroMagic
   m_EditorClassIdentifier: 
   isPicked: 1
-  currentPlayer: 0
+  currentPlayer: 1
   heroName: URDIS
   heroColor: {r: 0.4950266, g: 0, b: 1, a: 1}
   heroSprite: {fileID: 21300000, guid: 7669ab304ae671a4e94a646bb2250428, type: 3}

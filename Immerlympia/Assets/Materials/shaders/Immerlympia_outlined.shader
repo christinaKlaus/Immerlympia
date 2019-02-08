@@ -1,12 +1,14 @@
 ﻿Shader "Immerlympia/outlined" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
+		[Header(xRay)]
 		_EdgeColor("XRay Edge Color", Color) = (0,0,0,0)
 		[Range(0,1)] _EdgeOffset("XRay Edge Offset", Vector) = (0,1,0,0)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_EmissionTex("Emission (RGB)", 2D) = "black" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {}
 		_RampOffset("Toon Ramp Offset", Range(-1, 1)) = 0
+		[Header(Outline)]
 		_OutlineWidth ("Outline Width", Range(0, 0.25)) = 0.1
 		_OutlineColor ("Outline Color", Color) = (0,0,0,0)
 	}
@@ -16,13 +18,13 @@
 		Pass // XRay pass
 		{
 			Tags {
-				"Queue" = "Transparent"
-				"RenderType" = "Transparent"
+				"Queue" = "Opaque"
+				"RenderType" = "Opaque"
 			}
 
 			ZTest GEqual
 			ZWrite Off
-			Blend One One
+			Blend One Zero
 
 			CGPROGRAM
 
@@ -61,8 +63,12 @@
 
 			float4 frag (v2f i) : SV_Target
 			{
+				//step(y,x) -> (x >= y) ? 1 : 0
 				float NdotV = 1 - dot(i.normal, i.viewDir) * 0.7;
-				fixed4 color = _EdgeColor * smoothstep(_EdgeOffset.x, _EdgeOffset.y, NdotV);
+				float smoothEdge = smoothstep(_EdgeOffset.x, _EdgeOffset.y, NdotV);
+				fixed4 color = _EdgeColor * step(smoothEdge, _EdgeOffset.z); 
+				// fixed4 color = _EdgeColor * smoothstep(_EdgeOffset.x, _EdgeOffset.y, NdotV);
+
 				return color;
 			}
 
@@ -75,18 +81,6 @@
 				"Queue" = "Transparent"
 				"RenderType" = "Transparent"
 			}
-			// ZWrite Off
-			// CGPROGRAM
-			// 	#pragma vertex vert
-			// 	#pragma fragment frag
-
-			// 	float4 _OutlineColor;
-
-			// 	half4 frag(v2f i) : COLOR 
-			// 	{
-			// 		return _OutlineColor;
-			// 	}
-			// ENDCG
 
 			Zwrite Off
 

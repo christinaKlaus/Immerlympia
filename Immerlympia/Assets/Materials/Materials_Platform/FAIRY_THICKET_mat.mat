@@ -97,7 +97,7 @@ Material:
     - _Transparency: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _addOriginal: 0
+    - _addOriginal: 0.2
     - _stencilComp: 8
     - _stencilReadMask: 1
     - _stencilRef: 1
@@ -106,6 +106,7 @@ Material:
     - _Color: {r: 0.8490566, g: 0.72519165, b: 0.62077254, a: 1}
     - _EdgeColor: {r: 0, g: 0, b: 0, a: 0}
     - _EdgeOffset: {r: 0, g: 1, b: 0, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlitchControl: {r: 0.1, g: 25, b: 0, a: 0}
     - _HoloDir: {r: 0, g: -0.5, b: 0, a: 0}

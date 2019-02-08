@@ -36,7 +36,6 @@ public class StandoffWarningPylons : MonoBehaviour
     }
 
     public void OnWinCamStarted(){
-        Debug.Log("attempt to tween pylons");
         Tween.Position(transform, originalPosition, 4f, 0f, Tween.EaseIn, Tween.LoopType.None, () => ToggleParticleSystems(false), null, false);
     }
 

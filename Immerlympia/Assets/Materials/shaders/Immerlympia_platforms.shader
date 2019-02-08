@@ -4,6 +4,7 @@
 Shader "Immerlympia/platforms" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5, 0.5, 0.5, 1)
+		[HDR] _Emission("Emission Color", Color) = (0, 0, 0)
 		_Saturation("Saturation", Range(0,1)) = 1
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
@@ -74,6 +75,7 @@ Shader "Immerlympia/platforms" {
 				float3 worldNormal;
 				float3 viewDir;
 				float4 screenPos;
+				INTERNAL_DATA
 			};
 
 			float4 _GlitchControl;
@@ -94,6 +96,7 @@ Shader "Immerlympia/platforms" {
 			float _Posterization;
 			float _addOriginal;
 			float _Saturation;
+			fixed4 _Emission;
 
 			float _AlphaStep;
 			float4 _Alpha_ST;
@@ -151,9 +154,9 @@ Shader "Immerlympia/platforms" {
 				fixed3 lum = saturate(Luminance(c.rgb) + 0.01);
 				c.rgb = lerp(lum, c.rgb, _Saturation);
 
+				o.Emission = lerp(_Emission, rimColor + (step(ac + 0.3, _AlphaStep) * rimColor), _HoloMaster);
 				o.Albedo = c.rgb;
 				o.Alpha = lerp(c.a, c.a * step(1 - _AlphaStep, ac) * (1 - (h.r + _HoloOffset)), _HoloMaster) * step(1 - _AlphaStep, clamp(ac, 0.001, 0.999)); //step(y,x) -> (x >= y) ? 1 : 0
-				o.Emission = lerp(0, rimColor + (step(ac + 0.3, _AlphaStep) * rimColor), _HoloMaster);
 			}
 
 		ENDCG

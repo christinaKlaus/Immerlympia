@@ -15,6 +15,7 @@ public class GameTimer : MonoBehaviour {
     public float playTime;
     private float currentTime;
     private PlayerManager playerManager;
+    private CoinSpawnManager coinSpawnManager;
     private WaitForSeconds oneSecond;
     private Coroutine currentGameTimerRoutine;
 
@@ -43,6 +44,8 @@ public class GameTimer : MonoBehaviour {
             }
         }
 
+        coinSpawnManager = GetComponent<CoinSpawnManager>();
+
         oneSecond = new WaitForSeconds(1f);
         halfTimeReached = false;
         gameMusic = FindObjectOfType<GameMusicScript>();
@@ -58,6 +61,10 @@ public class GameTimer : MonoBehaviour {
     IEnumerator GameTimeRoutine(float maxPlayTime){
         currentTime = maxPlayTime;
         yield return new WaitForSeconds(gameTimerDelay);
+
+        List<string> args = new List<string>(System.Environment.GetCommandLineArgs());
+        coinSpawnManager.CoinSpawnActive = args.Contains("-noCoins") ? false : true;
+
         // gameMusic.TransitionTo(GameMusicScript.GameMusicState.Main, gameTimerDelay);
         //Debug.Log("started game time routine", this);
         while (currentTime > maxPlayTime * 0.5f) {

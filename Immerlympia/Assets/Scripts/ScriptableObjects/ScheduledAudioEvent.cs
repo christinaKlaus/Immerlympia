@@ -82,7 +82,7 @@ public class ScheduledAudioEvent : ScriptableObject
     // }
 
     IEnumerator ScheduleJanitor(AudioEnd[] audioEnds, double lastStartTime){
-        Debug.Log("janitor coroutine started: " + AudioSettings.dspTime + "->" + lastStartTime, this);
+        // Debug.Log("janitor coroutine started: " + AudioSettings.dspTime + "->" + lastStartTime + "(TimeScale = " + Time.timeScale + ")", this);
         while(AudioSettings.dspTime < lastStartTime + 10f){
             // Debug.Log("Coroutine running");
             for(int i = 0; i < audioEnds.Length; i++){

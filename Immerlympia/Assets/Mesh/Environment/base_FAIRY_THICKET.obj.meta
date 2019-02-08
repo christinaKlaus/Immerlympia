@@ -10,6 +10,7 @@ ModelImporter:
     100008: Sphere040
     100010: fairy_shine_geo_02
     100012: shrub00
+    100014: shrub_solo
     400000: //RootNode
     400002: fairy_shine_geo
     400004: FAIRY_THICKET_BASE
@@ -17,6 +18,7 @@ ModelImporter:
     400008: Sphere040
     400010: fairy_shine_geo_02
     400012: shrub00
+    400014: shrub_solo
     2100000: fairy_shine_geoMat
     2100002: FAIRY_THICKET_BASEMat
     2100004: fairy_treeMat
@@ -27,18 +29,21 @@ ModelImporter:
     2300006: Sphere040
     2300008: fairy_shine_geo_02
     2300010: shrub00
+    2300012: shrub_solo
     3300000: fairy_shine_geo
     3300002: FAIRY_THICKET_BASE
     3300004: fairy_tree
     3300006: Sphere040
     3300008: fairy_shine_geo_02
     3300010: shrub00
+    3300012: shrub_solo
     4300000: fairy_shine_geo
     4300002: FAIRY_THICKET_BASE
     4300004: fairy_tree
     4300006: Sphere040
     4300008: fairy_shine_geo_02
     4300010: shrub00
+    4300012: shrub_solo
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:

@@ -5,6 +5,8 @@ namespace UnityEngine.EventSystems
     [AddComponentMenu("Event/Standalone Input Module")]
     public class ControllerOnlyInputModule : PointerInputModule
     {
+        private bool zeroed = true;
+        private float lastVerticalMovement = float.MinValue;
         private float m_NextAction;
 
         private Vector2 m_LastMousePosition;
@@ -25,6 +27,9 @@ namespace UnityEngine.EventSystems
         {
             get { return InputMode.Mouse; }
         }
+
+        [SerializeField]
+        private float timeBetweenVertInput = 0.8f, axisZeroThreshold = 0.2f;
 
         [SerializeField]
         private string m_HorizontalAxis = "Horizontal";
@@ -95,6 +100,8 @@ namespace UnityEngine.EventSystems
             set { m_CancelButton = value; }
         }
 
+
+
         protected override void Start(){
             base.Start();
             #if UNITY_EDITOR
@@ -157,6 +164,11 @@ namespace UnityEngine.EventSystems
 
         public override void Process()
         {
+            if(!zeroed && (Mathf.Abs(Input.GetAxis(verticalAxis)) <= axisZeroThreshold || Time.unscaledTime - lastVerticalMovement > timeBetweenVertInput)){
+                zeroed = true;
+                // Debug.Log("zeroed time = " + Time.unscaledTime);
+            }
+
             bool usedEvent = SendUpdateEventToSelectedObject();
 
             if (eventSystem.sendNavigationEvents)
@@ -166,6 +178,12 @@ namespace UnityEngine.EventSystems
 
                 if (!usedEvent)
                     SendSubmitEventToSelectedObject();
+            }
+
+            if(zeroed && Mathf.Abs(Input.GetAxis(verticalAxis)) > axisZeroThreshold){
+                zeroed = false;
+                lastVerticalMovement = Time.unscaledTime;
+                // Debug.Log("move time = " + lastVerticalMovement);
             }
 
             //ProcessMouseEvent();
@@ -188,13 +206,15 @@ namespace UnityEngine.EventSystems
             return data.used;
         }
 
-        private bool AllowMoveEventProcessing(float time)
-        {
-            bool allow = Input.GetButtonDown(m_HorizontalAxis);
-            allow |= Input.GetButtonDown(m_VerticalAxis);
-            allow |= (time > m_NextAction);
-            return allow;
-        }
+        // private bool AllowMoveEventProcessing(float time)
+        // {
+        //     bool allow = Input.GetButtonDown(m_HorizontalAxis);
+        //     allow |= Input.GetButtonDown(m_VerticalAxis);
+        //     allow |= (time > m_NextAction);
+        //     return allow;
+        // }
+
+
 
         private Vector2 GetRawMoveVector()
         {
@@ -226,7 +246,7 @@ namespace UnityEngine.EventSystems
         {
             float time = Time.unscaledTime;
 
-            if (!AllowMoveEventProcessing(time))
+            if (!zeroed)
                 return false;
 
             Vector2 movement = GetRawMoveVector();
@@ -237,7 +257,7 @@ namespace UnityEngine.EventSystems
             {
                 ExecuteEvents.Execute(eventSystem.currentSelectedGameObject, axisEventData, ExecuteEvents.moveHandler);
             }
-            m_NextAction = time + 1f / m_InputActionsPerSecond;
+            // m_NextAction = time + 1f / m_InputActionsPerSecond;
             return axisEventData.used;
         }
 

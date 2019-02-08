@@ -172,6 +172,21 @@ MonoBehaviour:
   platformMaterials:
   - {fileID: 2100000, guid: 591c173cec4f5a442b69abc222fa0f9a, type: 2}
   - {fileID: 2100000, guid: 3cfd4a126a710c648b941474dbe05832, type: 2}
+  holoScanParticles: {fileID: 0}
+  platformStyleParticles:
+  - {fileID: 1252174843807093119}
+  - {fileID: 4666319277869336007}
+  - {fileID: 7794121826620708954}
+  - {fileID: 20792448786859391}
+  - {fileID: 1053417850142134961}
+  - {fileID: 248340333479582196}
+  - {fileID: 1866555913740200656}
+  - {fileID: 2200269974685138202}
+  - {fileID: 875083719917383713}
+  - {fileID: 373595560484969695}
+  - {fileID: 8297908273759786138}
+  - {fileID: 9206576424302413875}
+  - {fileID: 1077022744687472504}
 --- !u!82 &82520841507848792
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1111,7 +1126,7 @@ GameObject:
   - component: {fileID: 1477080418450877722}
   - component: {fileID: 6544743310657675897}
   m_Layer: 14
-  m_Name: Particle System (9)
+  m_Name: lavaParticles_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5877,7 +5892,7 @@ GameObject:
   - component: {fileID: 3960810025713757140}
   - component: {fileID: 546999743543491702}
   m_Layer: 14
-  m_Name: Particle System (6)
+  m_Name: lavaParticles_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10674,7 +10689,7 @@ GameObject:
   - component: {fileID: 6590065221181043423}
   - component: {fileID: 3290978169391689466}
   m_Layer: 14
-  m_Name: Particle System (8)
+  m_Name: lavaParticles_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15440,7 +15455,7 @@ GameObject:
   - component: {fileID: 2848337278637953243}
   - component: {fileID: 8890512689494412187}
   m_Layer: 14
-  m_Name: Particle System (5)
+  m_Name: lavaParticles_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20206,7 +20221,7 @@ GameObject:
   - component: {fileID: 6520317731483981451}
   - component: {fileID: 1493287807197351526}
   m_Layer: 14
-  m_Name: Particle System (4)
+  m_Name: lavaParticles_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24972,7 +24987,7 @@ GameObject:
   - component: {fileID: 5890178928948323463}
   - component: {fileID: 7151062242791592027}
   m_Layer: 14
-  m_Name: Particle System (10)
+  m_Name: lavaParticles_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29738,7 +29753,7 @@ GameObject:
   - component: {fileID: 3343327549714927384}
   - component: {fileID: 4869425148343012654}
   m_Layer: 14
-  m_Name: Particle System (13)
+  m_Name: lavaParticles_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34504,7 +34519,7 @@ GameObject:
   - component: {fileID: 3238580035091459949}
   - component: {fileID: 674653573020116046}
   m_Layer: 14
-  m_Name: Particle System (3)
+  m_Name: lavaParticles_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39270,7 +39285,7 @@ GameObject:
   - component: {fileID: 6997998436361321765}
   - component: {fileID: 725750237547074671}
   m_Layer: 14
-  m_Name: Particle System (11)
+  m_Name: lavaParticles_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44155,7 +44170,7 @@ GameObject:
   - component: {fileID: 883976136800942869}
   - component: {fileID: 3324586261144632795}
   m_Layer: 14
-  m_Name: Particle System (7)
+  m_Name: lavaParticles_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48921,7 +48936,7 @@ GameObject:
   - component: {fileID: 1702357639969550023}
   - component: {fileID: 9150244817091373922}
   m_Layer: 14
-  m_Name: Particle System (12)
+  m_Name: lavaParticles_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53687,7 +53702,7 @@ GameObject:
   - component: {fileID: 1715175630196892092}
   - component: {fileID: 1773971696628430714}
   m_Layer: 14
-  m_Name: Particle System
+  m_Name: lavaParticles_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58453,7 +58468,7 @@ GameObject:
   - component: {fileID: 5243158768400004922}
   - component: {fileID: 3805057890964304044}
   m_Layer: 14
-  m_Name: Particle System (1)
+  m_Name: lavaParticles_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

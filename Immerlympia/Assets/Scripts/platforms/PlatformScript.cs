@@ -33,6 +33,7 @@ public class PlatformScript : MonoBehaviour {
     private static string platformShaderName = "Immerlympia/platforms";
     [SerializeField] Material[] platformMaterials;
     [SerializeField] ParticleSystem holoScanParticles;
+    [SerializeField] ParticleSystem[] platformStyleParticles;
 
     private Vector3[] basePos;
     private AudioSource platformAudio;
@@ -42,7 +43,6 @@ public class PlatformScript : MonoBehaviour {
     private Coroutine shakeRoutine, deactivationRoutine;
     private TweenBase rotateTween, shakeTween;
     private WaitForSeconds warningDelay, disappearDelay;
-    private ParticleSystem[] allParticleSystems;
 
     void Awake(){
         gameEnded = false;
@@ -50,8 +50,6 @@ public class PlatformScript : MonoBehaviour {
 
         warningDelay = new WaitForSeconds(warningDuration + 0.5f);
         disappearDelay = new WaitForSeconds(disappearDuration + 0.5f);
-
-        allParticleSystems = GetComponentsInChildren<ParticleSystem>();
 
         if(platformMaterials == null || platformMaterials.Length == 0){
             Debug.LogError("platform materials not set on " + gameObject.name, this);
@@ -88,7 +86,7 @@ public class PlatformScript : MonoBehaviour {
 
         platformAudio.volume = 1;
 
-        foreach(ParticleSystem ps in allParticleSystems){
+        foreach(ParticleSystem ps in platformStyleParticles){
             ps.Play(true);
         }
 
@@ -96,6 +94,7 @@ public class PlatformScript : MonoBehaviour {
     }
 
     void Update () {
+        // Debug.Log("Platform " + gameObject.name + " update");
         if(!isMoving && !coinSpawnsActive){
             foreach(CoinSpawnPoint s in spawns){
                 // Debug.Log("Spawn true gesetzt");
@@ -163,7 +162,7 @@ public class PlatformScript : MonoBehaviour {
 
         if(gameEnded) yield break;
 
-        SetEdgeDirtPlaying(true);
+        // SetEdgeDirtPlaying(true);
         if (!playedDescendSound) {
             platformAudio.PlayOneShot(descendClips[(int)transform.rotation.y / 120]);
             playedDescendSound = true;
@@ -185,7 +184,7 @@ public class PlatformScript : MonoBehaviour {
     }
 
     IEnumerator PlatformDeactivation(){
-        foreach(ParticleSystem ps in allParticleSystems){
+        foreach(ParticleSystem ps in platformStyleParticles){
             ps.Pause(true);
         }
 
@@ -209,11 +208,12 @@ public class PlatformScript : MonoBehaviour {
         yield return warningDelay;
         Debug.Log("warning finished for " + gameObject.name, this);
         fifth = disappearDuration * 0.2f;
-        foreach(ParticleSystem ps in allParticleSystems){
+        foreach(ParticleSystem ps in platformStyleParticles){
             ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
-        holoScanParticles.Pause(true);
+        // holoScanParticles.Pause(true);
+        holoScanParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
         foreach(Material m in platformMaterials){
             if(m.shader.name != platformShaderName) continue;
@@ -225,8 +225,6 @@ public class PlatformScript : MonoBehaviour {
                 Tween.ShaderVector(m, "_GlitchControl", glitchControlSrc , glitchControlDst, fifth, 0f, Tween.EaseLinear, Tween.LoopType.None, null, null, true);
             }
         }
-
-        holoScanParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
         yield return disappearDelay;
         DeactivatePlatform();
@@ -248,7 +246,7 @@ public class PlatformScript : MonoBehaviour {
         transform.position = new Vector3(0, -1000, 0);
         playedDescendSound = false;
         coinSpawnsActive = false;
-        SetEdgeDirtPlaying(false);
+        // SetEdgeDirtPlaying(false);
         gameObject.SetActive(false);
     }
 
@@ -262,7 +260,7 @@ public class PlatformScript : MonoBehaviour {
         gameEnded = true;
         if(shakeTween != null) shakeTween.Cancel();
         if(rotateTween != null) rotateTween.Stop();
-        SetEdgeDirtPlaying(false);
+        // SetEdgeDirtPlaying(false);
         canFall = false;
         platformAudio.Stop();
         platformAudio.volume = 0;

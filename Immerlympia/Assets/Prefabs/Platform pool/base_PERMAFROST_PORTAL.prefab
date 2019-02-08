@@ -80,6 +80,17 @@ MonoBehaviour:
   - {fileID: 2100000, guid: bb22fabbf9c5cfa488a11cadb2ebbe18, type: 2}
   - {fileID: 2100000, guid: e9d09d779b8b3214bb1de5f31ba2f952, type: 2}
   - {fileID: 2100000, guid: 10a847812c708fc45a31fc541e18da22, type: 2}
+  holoScanParticles: {fileID: 0}
+  platformStyleParticles:
+  - {fileID: 8310498237118005112}
+  - {fileID: 5974172637231690169}
+  - {fileID: 5093355418574801173}
+  - {fileID: 3728921252762678186}
+  - {fileID: 3511744924989797522}
+  - {fileID: 6872256697179055442}
+  - {fileID: 1582474783568847065}
+  - {fileID: 4610202202235740735}
+  - {fileID: 7886987426512627652}
 --- !u!82 &82705117211123918
 AudioSource:
   m_ObjectHideFlags: 0
@@ -233,7 +244,7 @@ GameObject:
   - component: {fileID: 3511744924989797522}
   - component: {fileID: 1382215650419254123}
   m_Layer: 0
-  m_Name: sparks (4)
+  m_Name: sparks_4
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5060,7 +5071,7 @@ GameObject:
   - component: {fileID: 6872256697179055442}
   - component: {fileID: 1133755937554384726}
   m_Layer: 0
-  m_Name: sparks (5)
+  m_Name: sparks_5
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9843,7 +9854,7 @@ GameObject:
   - component: {fileID: 7886987426512627652}
   - component: {fileID: 3686758751893128923}
   m_Layer: 0
-  m_Name: sparks (8)
+  m_Name: sparks_8
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -14626,7 +14637,7 @@ GameObject:
   - component: {fileID: 1582474783568847065}
   - component: {fileID: 6892390949131370319}
   m_Layer: 0
-  m_Name: sparks (6)
+  m_Name: sparks_6
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -19556,7 +19567,7 @@ GameObject:
   - component: {fileID: 5093355418574801173}
   - component: {fileID: 1363558436609909019}
   m_Layer: 0
-  m_Name: sparks (2)
+  m_Name: sparks_2
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -24339,7 +24350,7 @@ GameObject:
   - component: {fileID: 8310498237118005112}
   - component: {fileID: 2049545581871731293}
   m_Layer: 0
-  m_Name: sparks (0)
+  m_Name: sparks_0
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -29194,7 +29205,7 @@ GameObject:
   - component: {fileID: 3728921252762678186}
   - component: {fileID: 7520706603690973186}
   m_Layer: 0
-  m_Name: sparks (3)
+  m_Name: sparks_3
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -33977,7 +33988,7 @@ GameObject:
   - component: {fileID: 5974172637231690169}
   - component: {fileID: 5186426383663758372}
   m_Layer: 0
-  m_Name: sparks (1)
+  m_Name: sparks_1
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -39481,7 +39492,7 @@ GameObject:
   - component: {fileID: 4610202202235740735}
   - component: {fileID: 45344804641832811}
   m_Layer: 0
-  m_Name: sparks (7)
+  m_Name: sparks_7
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

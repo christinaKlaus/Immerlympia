@@ -11,6 +11,7 @@ public class CoinPickup : MonoBehaviour {
     [SerializeField] ParticleSystem coinParticles;
 
     int scoreIncrease = 1;
+    bool registered = false;
     CoinSpawnManager coinSpawnManager;
     PlatformScript currentPlatform;
     CoinSpawnPoint currentSpawnPoint;
@@ -24,18 +25,24 @@ public class CoinPickup : MonoBehaviour {
         coinSpawnManager = GetComponentInParent<CoinSpawnManager>();
 
         screenTargetArrow = FindObjectOfType<ScreenTargetArrow>();
+
         cullingGroup = new CullingGroup();
         cullingGroup.SetBoundingSpheres(new BoundingSphere[1]{new BoundingSphere()});
         cullingGroup.SetBoundingSphereCount(1);
-        screenTargetArrow.RegisterRenderer(this);
-        coinParticles.Play(true);
+        if(!coinParticles.isPlaying) coinParticles.Play(true);
     }
 
     public void Start(){
-        coinParticles.Play(true);
+        if(!coinParticles.isPlaying) coinParticles.Play(true);
+    }
+
+    public void OnEnable(){
+        if(!coinParticles.isPlaying) coinParticles.Play(true);
     }
 
     public void Setup(PlatformScript platformScript, CoinSpawnPoint spawnPoint){
+        if(!registered) registered = screenTargetArrow.RegisterRenderer(this);
+
         Debug.Log("Setup called on coin", this);
         cullingGroup.enabled = true;
         cullingGroup.SetBoundingSpheres(new BoundingSphere[1]{new BoundingSphere(coinRenderer.transform.position, cullingSphereRadius)});
@@ -45,10 +52,17 @@ public class CoinPickup : MonoBehaviour {
 
         screenTargetArrow.CoinSpawned();
 
-        coinParticles.Play(true);
+        if(!coinParticles.isPlaying) coinParticles.Play(true);
+
+        Invoke("PlayParticles", 0.5f);
 
         // if(coinSpawnEvent != null) coinSpawnEvent(this);
         //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), boundingSphere.position, Quaternion.identity);
+    }
+
+    public void PlayParticles(){
+        coinParticles.Stop(true);
+        coinParticles.Play(true);
     }
 
     void OnTriggerEnter(Collider collision) {

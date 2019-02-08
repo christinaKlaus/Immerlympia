@@ -17,13 +17,18 @@ public class ScreenTargetArrow : MonoBehaviour
     
 
     bool markerVisible = false;
-    Vector2 screenSize;
+    Vector2 screenSize = Vector2.zero;
     Vector2 currentScreenPosition;
     Vector3 arrowRotation = Vector3.zero;
 
     void Awake(){
         // CoinPickup.coinSpawnEvent += RegisterRenderer;
-        screenSize = new Vector2(Screen.width, Screen.height);
+        GetScreenSize();
+    }
+    
+    void GetScreenSize(){
+        screenSize.x = Screen.width;
+        screenSize.y = Screen.height;
     }
 
     void Update() {
@@ -41,8 +46,8 @@ public class ScreenTargetArrow : MonoBehaviour
     void Reposition(){
         currentScreenPosition = gameCam.WorldToScreenPoint(currentCoinRenderer.transform.position);
 
-        currentScreenPosition.x = Mathf.Clamp(currentScreenPosition.x, 0f, screenSize.x);
-        currentScreenPosition.y = Mathf.Clamp(currentScreenPosition.y, 0f, screenSize.y);
+        currentScreenPosition.x = Mathf.Clamp(currentScreenPosition.x, 0f, Screen.width);
+        currentScreenPosition.y = Mathf.Clamp(currentScreenPosition.y, 0f, Screen.height);
 
         transform.position = currentScreenPosition;
 
@@ -57,14 +62,16 @@ public class ScreenTargetArrow : MonoBehaviour
         // Debug.Log("bounding sphere pos: " + currentCoin.boundingSphere.position, this);
         //Debug.Break();
         SwitchSprite(cullEvent.isVisible);
+        GetScreenSize();
     }
 
-    public void RegisterRenderer(CoinPickup coin){
+    public bool RegisterRenderer(CoinPickup coin){
         // Debug.Log("Renderer registered to target arrow for " + coin.name, this);
         currentCoin = coin;
         currentCoinRenderer = currentCoin.coinRenderer;
         currentCoin.cullingGroup.targetCamera = gameCam;
         currentCoin.cullingGroup.onStateChanged = OnCoinCullingStateChanged;
+        return true;
     }
 
     public void CoinSpawned(){

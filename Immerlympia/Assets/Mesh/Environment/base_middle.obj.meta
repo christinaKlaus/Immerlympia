@@ -6,16 +6,22 @@ ModelImporter:
     100000: //RootNode
     100002: Cylinder005
     100004: MIDDLE_PLATFORM
+    100006: middleJets
     400000: //RootNode
     400002: Cylinder005
     400004: MIDDLE_PLATFORM
+    400006: middleJets
     2300000: Cylinder005
     2300002: MIDDLE_PLATFORM
+    2300004: middleJets
     3300000: Cylinder005
     3300002: MIDDLE_PLATFORM
+    3300004: middleJets
     4300000: Cylinder005
     4300002: MIDDLE_PLATFORM
+    4300004: middleJets
     6400000: MIDDLE_PLATFORM
+    6400002: middleJets
     2186277476908879412: ImportLogs
   externalObjects:
   - first:

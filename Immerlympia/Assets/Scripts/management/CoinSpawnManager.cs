@@ -9,6 +9,13 @@ public class CoinSpawnManager : MonoBehaviour {
 	public float spawnDelay;
 	public List<CoinSpawnPoint> possibleCoinSpawns;
 	[ReadOnly(false)] public bool coinActive = false;
+	
+	public bool CoinSpawnActive {
+		get { return coinSpawnActive;}
+		set {
+			coinSpawnActive = value;
+		}
+	}
 
     private int index;
     private float timer; 
@@ -17,15 +24,13 @@ public class CoinSpawnManager : MonoBehaviour {
 	private CoinPickup gameCoin;
 
 	void Awake(){
+		coinSpawnActive = false;
 		possibleCoinSpawns = new List<CoinSpawnPoint>();
 	}
 
 	void Start () {
-		List<string> args = new List<string>(System.Environment.GetCommandLineArgs());
-        if(args.Contains("-noCoins")) {
-			coinSpawnActive = false;
-		}
-
+		coinSpawnActive = false;
+		
 		GameObject[] spawns = GameObject.FindGameObjectsWithTag("spawnPoint");
 		foreach(GameObject g in spawns){
 			if(!possibleCoinSpawns.Contains(g.GetComponent<CoinSpawnPoint>()) && !(g.transform.parent.GetComponent<PlatformScript>().isMoving)){

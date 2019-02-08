@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HeroFire
   m_EditorClassIdentifier: 
   isPicked: 1
-  currentPlayer: 1
+  currentPlayer: 0
   heroName: INCERIO
   heroColor: {r: 1, g: 0.17789969, b: 0, a: 1}
   heroSprite: {fileID: 21300000, guid: 49986eb04228bc942bc7d5ee96df40d1, type: 3}
