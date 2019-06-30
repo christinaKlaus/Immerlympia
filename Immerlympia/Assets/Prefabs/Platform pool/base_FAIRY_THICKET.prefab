@@ -5003,6 +5003,7 @@ GameObject:
   - component: {fileID: 4096598829814488186}
   - component: {fileID: 4096598829813391034}
   - component: {fileID: 8139192812978078300}
+  - component: {fileID: 6208685737492891551}
   m_Layer: 15
   m_Name: fairy_tree
   m_TagString: Untagged
@@ -5083,6 +5084,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300004, guid: 8caf8847c3bd0724a8d8ff24a0343e24, type: 3}
+--- !u!208 &6208685737492891551
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4096598829815316600}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 3.8660002, y: 4.9810004, z: 3.8660002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 13.393001, y: 3.2350001, z: 1.723}
+  m_TimeToStationary: 0.5
 --- !u!1 &4096598829815316602
 GameObject:
   m_ObjectHideFlags: 0
@@ -5100,7 +5117,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4096598829815290970
 Transform:

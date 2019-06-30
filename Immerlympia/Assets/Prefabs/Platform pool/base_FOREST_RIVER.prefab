@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4884292950307944
 Transform:
@@ -525,7 +525,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4766683381270164
 Transform:
@@ -5339,15 +5339,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4756471430091030, guid: a80753f7453de39488495dcb62a5c4ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.72
+      value: 12.778
       objectReference: {fileID: 0}
     - target: {fileID: 4756471430091030, guid: a80753f7453de39488495dcb62a5c4ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 0.6674
       objectReference: {fileID: 0}
     - target: {fileID: 4756471430091030, guid: a80753f7453de39488495dcb62a5c4ff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.29
+      value: 16.655
       objectReference: {fileID: 0}
     - target: {fileID: 4756471430091030, guid: a80753f7453de39488495dcb62a5c4ff, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5576,6 +5576,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: fishSpawn (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1.2569395
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].properties
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[1].properties
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 247915192569714933, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5630,31 +5655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 1.2569395
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 0.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: VelocityModule.inWorldSpace
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: SubModule.subEmitters.Array.data[0].properties
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: SubModule.subEmitters.Array.data[1].properties
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff7e8f56d2731346a51c0916f6d2cbb, type: 3}
@@ -5745,6 +5745,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: fishSpawn (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1.2569395
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 2.91
+      objectReference: {fileID: 0}
     - target: {fileID: 247915192569714933, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5809,21 +5824,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 1.2569395
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 0.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368117003897215932, guid: 8ff7e8f56d2731346a51c0916f6d2cbb,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 2.91
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ff7e8f56d2731346a51c0916f6d2cbb, type: 3}

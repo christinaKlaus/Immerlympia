@@ -106,8 +106,8 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Posterization: 0
-    - _PosterizeLevels: 6
+    - _Posterization: 0.627
+    - _PosterizeLevels: 12
     - _RampOffset: 0.1
     - _RefValue: 1
     - _RimPower: 3
@@ -135,6 +135,7 @@ Material:
     - _Alpha_ST: {r: 10, g: 10, b: 0.25, a: 0}
     - _Color: {r: 0.495283, g: 0.6715334, b: 1, a: 1}
     - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Emission: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlitchControl: {r: 0.1, g: 25, b: 0, a: 0}
     - _GlowDirection: {r: 0, g: 1, b: 0, a: 0}

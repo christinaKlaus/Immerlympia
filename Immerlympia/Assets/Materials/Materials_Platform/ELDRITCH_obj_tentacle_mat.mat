@@ -81,7 +81,9 @@ Material:
     - _GlossyReflections: 1
     - _HoloMaster: 0
     - _HoloOffset: 0
+    - _MaxMoveHeight: 5
     - _Metallic: 0
+    - _MinMoveHeight: 0.6
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -101,8 +103,11 @@ Material:
     - _StencilPassOp: 2
     - _StencilZFail: 0
     - _StencilZFailOp: 0
+    - _TentacleMoveDebug: 0
     - _Transparency: 1
     - _UVSec: 0
+    - _XMoveStrength: 0.3
+    - _ZMoveStrength: 0.45
     - _ZWrite: 1
     - _addOriginal: 1
     - _muliplyWithOriginal: 0

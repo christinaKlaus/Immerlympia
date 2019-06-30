@@ -28,6 +28,13 @@ Shader "Immerlympia/platformsTentacles" {
 		_GlitchRotation("Glitch rotation", Range(0, 360)) = 0
 		_RimColor ("Rim Color", Color) = (1, 1, 1, 1)
 		_RimPower ("Rim Power", Range(-10, 10)) = 0
+		[Header(Tentacle Control)]
+		[IntRange] _TentacleMoveDebug("Tentacle movement debug", Range(0, 1)) = 0
+		_XMoveStrength("X movement strength", Range(0, 3)) = 0.3
+		_ZMoveStrength("Z movement strength", Range(0, 3)) = 0.3
+		_MinMoveHeight("Min movement height", Float) = 0.5
+		_MaxMoveHeight("Max movement height", Float) = 1
+		
 	}
 
 	SubShader {
@@ -79,14 +86,22 @@ Shader "Immerlympia/platformsTentacles" {
 			};
 
 			float4 _GlitchControl;
+			float _MaxMoveHeight;
+			float _MinMoveHeight;
+			float _XMoveStrength;
+			float _ZMoveStrength;
+
+			float Remap(float orig, float Mi, float Ma){
+				return (abs(orig) - Mi ) / (Ma - Mi);
+			}
 
 			void vert (inout appdata_full v, out Input o) {
 				float glitch = _GlitchControl.x * (step(0.2, sin(_Time.y * 2.0 + mul(unity_WorldToObject, v.vertex.x) * 1.0)) * step(0.2, sin(frac(_Time.y)*_GlitchControl.y * 0.5)));
 				v.vertex.x += glitch * _GlitchControl.z * (-1 + (2 * step(0, frac(_Time.y))));
 				v.vertex.y += glitch * _GlitchControl.w * (-1 + (2 * step(0, frac(_Time.y))));
 
-				v.vertex.x += sin(v.vertex.z) * sin(_Time.z) * 0.3;
-				v.vertex.z += cos(v.vertex.x) * cos(_Time.z) * 0.3;
+				v.vertex.x += saturate(Remap(v.vertex.y, _MinMoveHeight, _MaxMoveHeight)) * (sin(v.vertex.z) * sin(_Time.z) * _XMoveStrength);
+				v.vertex.z += saturate(Remap(v.vertex.y, _MinMoveHeight, _MaxMoveHeight)) * (cos(v.vertex.x) * cos(_Time.z) * _ZMoveStrength);
 
 				// v.vertex.x -= clamp(v.normal.x * glitch * _GlitchControl.z * (-1 + (2 * step(0, frac(_Time.y)))), 0, 100);
 				// v.vertex.z -= clamp(v.normal.z * glitch * _GlitchControl.w * (-1 + (2 * step(0, frac(_Time.y)))), 0, 100);
@@ -112,6 +127,8 @@ Shader "Immerlympia/platformsTentacles" {
 
 			float4 _RimColor;
 			float _RimPower;
+
+			float _TentacleMoveDebug;
 
 			// float4 _GlitchControl;
 			float _GlitchRotation;
@@ -158,7 +175,7 @@ Shader "Immerlympia/platformsTentacles" {
 				c.rgb = lerp(lum, c.rgb, _Saturation);
 
 				o.Emission = lerp(_Emission, rimColor + (step(ac + 0.3, _AlphaStep) * rimColor), _HoloMaster);
-				o.Albedo = c.rgb;
+				o.Albedo = lerp(c.rgb, float4(1,1,1,0) * Remap(IN.worldPos.y, _MinMoveHeight, _MaxMoveHeight), _TentacleMoveDebug);
 				o.Alpha = lerp(c.a, c.a * step(1 - _AlphaStep, ac) * (1 - (h.r + _HoloOffset)), _HoloMaster) * step(1 - _AlphaStep, clamp(ac, 0.001, 0.999)); //step(y,x) -> (x >= y) ? 1 : 0
 			}
 
