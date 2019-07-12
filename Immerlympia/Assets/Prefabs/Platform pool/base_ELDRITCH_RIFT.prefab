@@ -481,6 +481,7 @@ GameObject:
   - component: {fileID: 33449768681068392}
   - component: {fileID: 23125352747820792}
   - component: {fileID: 64021835762157854}
+  - component: {fileID: 1967007369}
   m_Layer: 15
   m_Name: tentacle_00
   m_TagString: Untagged
@@ -561,6 +562,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300014, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007369
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165063593501876}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.15, y: 3.5140002, z: 1.15}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 13.8, y: 1.8, z: 12.6}
+  m_TimeToStationary: 0.5
 --- !u!1 &1226184767622054
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +682,7 @@ GameObject:
   - component: {fileID: 33872408162212544}
   - component: {fileID: 23794407872657840}
   - component: {fileID: 64144624105062980}
+  - component: {fileID: 1967007363}
   m_Layer: 15
   m_Name: tentacle_08
   m_TagString: Untagged
@@ -745,6 +763,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300030, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007363
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236266869707236}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.69, y: 3.5140002, z: 1.69}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 7.35, y: 2.582, z: -9.68}
+  m_TimeToStationary: 0.5
 --- !u!1 &1237336625152576
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +883,7 @@ GameObject:
   - component: {fileID: 33288092419660910}
   - component: {fileID: 23119875037972278}
   - component: {fileID: 64781018255706088}
+  - component: {fileID: 1967007367}
   m_Layer: 15
   m_Name: tentacle_02
   m_TagString: Untagged
@@ -929,6 +964,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300018, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007367
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423909889922022}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 2, y: 2.749, z: 2}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 18.2, y: 2.098, z: 12.9}
+  m_TimeToStationary: 0.5
 --- !u!1 &1427470356704494
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +992,7 @@ GameObject:
   - component: {fileID: 33092493496823594}
   - component: {fileID: 23631620893465658}
   - component: {fileID: 64952096290106614}
+  - component: {fileID: 1967007362}
   m_Layer: 15
   m_Name: tentacle_09
   m_TagString: Untagged
@@ -1021,6 +1073,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300032, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007362
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427470356704494}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.37, y: 1.616, z: 1.37}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 10.700001, y: 1.029, z: -8.35}
+  m_TimeToStationary: 0.5
 --- !u!1 &1481977591458134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1101,7 @@ GameObject:
   - component: {fileID: 33229040659118824}
   - component: {fileID: 23330660836856288}
   - component: {fileID: 64951864769468676}
+  - component: {fileID: 1967007368}
   m_Layer: 15
   m_Name: tentacle_01
   m_TagString: Untagged
@@ -1113,6 +1182,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300016, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007368
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481977591458134}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1, y: 1.7490001, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 9.87, y: 1.213, z: 10.699}
+  m_TimeToStationary: 0.5
 --- !u!1 &1490305541226992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1210,7 @@ GameObject:
   - component: {fileID: 33427594988610400}
   - component: {fileID: 23089333265130996}
   - component: {fileID: 64695776618809428}
+  - component: {fileID: 1967007361}
   m_Layer: 15
   m_Name: tentacle_10
   m_TagString: Untagged
@@ -1205,6 +1291,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300034, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007361
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490305541226992}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.04, y: 1.73, z: 1.04}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 15.97, y: 1.7, z: -9.28}
+  m_TimeToStationary: 0.5
 --- !u!1 &1551240079747486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,6 +1411,7 @@ GameObject:
   - component: {fileID: 33396162882293224}
   - component: {fileID: 23333075125902762}
   - component: {fileID: 64336395182577526}
+  - component: {fileID: 1967007365}
   m_Layer: 15
   m_Name: tentacle_06
   m_TagString: Untagged
@@ -1389,6 +1492,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300026, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007365
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642063152995192}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.12, y: 1.1880001, z: 1.12}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 6.72, y: 1.1340001, z: 7.0940003}
+  m_TimeToStationary: 0.5
 --- !u!1 &1645503204928146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,6 +1520,7 @@ GameObject:
   - component: {fileID: 33142734207934254}
   - component: {fileID: 23476092620748062}
   - component: {fileID: 64653518510511304}
+  - component: {fileID: 1967007364}
   m_Layer: 15
   m_Name: tentacle_07
   m_TagString: Untagged
@@ -1481,6 +1601,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300028, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007364
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645503204928146}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.62, y: 3.4240003, z: 1.62}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 7.16, y: 2.831, z: -6.18}
+  m_TimeToStationary: 0.5
 --- !u!1 &1678265787490644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,7 +1726,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4607091153206210
 Transform:
@@ -1861,6 +1997,7 @@ GameObject:
   - component: {fileID: 33237902628104438}
   - component: {fileID: 23752181749565864}
   - component: {fileID: 64372245913200522}
+  - component: {fileID: 1967007366}
   m_Layer: 15
   m_Name: tentacle_03
   m_TagString: Untagged
@@ -1875,13 +2012,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991540306882420}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.13384947, y: -0.038993254, z: 0.31920698, w: 0.9373744}
+  m_LocalPosition: {x: 3.8065414, y: -17.789085, z: -1.2266312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4088470015744914}
   m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -13.064001, y: -9.368, z: 38.686}
 --- !u!33 &33237902628104438
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1941,6 +2078,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300020, guid: 802786c59de6323418b66c8b08158aa9, type: 3}
+--- !u!208 &1967007366
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991540306882420}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.2, y: 2.95, z: 1.2}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 24.86, y: -1.4, z: 9.52}
+  m_TimeToStationary: 0.5
 --- !u!1 &1346620777715572523
 GameObject:
   m_ObjectHideFlags: 0
@@ -7465,11 +7618,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3622453008693885371, guid: f7c2361596a8aa64a8c455a791a0eaff,
         type: 3}
-      propertyPath: VelocityModule.z.minScalar
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622453008693885371, guid: f7c2361596a8aa64a8c455a791a0eaff,
-        type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.062077258
       objectReference: {fileID: 0}
@@ -7482,6 +7630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.17207102
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622453008693885371, guid: f7c2361596a8aa64a8c455a791a0eaff,
+        type: 3}
+      propertyPath: VelocityModule.z.minScalar
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7c2361596a8aa64a8c455a791a0eaff, type: 3}

@@ -13,7 +13,7 @@ public class ScreenTargetArrow : MonoBehaviour
     [SerializeField] Camera gameCam;
     [SerializeField, ReadOnly(false)] MeshRenderer currentCoinRenderer;
     [SerializeField, ReadOnly(false)] CoinPickup currentCoin;
-    [SerializeField] Image arrowImage, iconImage;
+    [SerializeField] Image arrowImage = null, iconImage = null;
     
 
     bool markerVisible = false;

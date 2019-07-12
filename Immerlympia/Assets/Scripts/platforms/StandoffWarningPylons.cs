@@ -7,7 +7,8 @@ using Pixelplacement.TweenSystem;
 public class StandoffWarningPylons : MonoBehaviour
 {
 
-    [SerializeField] private float riseValue = 2.15f;
+    [Tooltip("The height by which the pylons will be moved."), SerializeField] private float riseValue = 2.15f;
+    [SerializeField] float timeToAscend = 1f, timeToDescend = 4f;
     private ParticleSystem[] particleSystems;
     private Vector3 originalPosition;
     private TweenBase riseTween;
@@ -20,7 +21,7 @@ public class StandoffWarningPylons : MonoBehaviour
     }
 
     public void OnStandoffStarted(){
-        riseTween = Tween.Position(transform, transform.position + (Vector3.up * riseValue), 1f, 0f, Tween.EaseOutStrong, Tween.LoopType.None, null, () => ToggleParticleSystems(true), false);
+        riseTween = Tween.Position(transform, transform.position + (Vector3.up * riseValue), timeToAscend, 0f, Tween.EaseOutStrong, Tween.LoopType.None, null, () => ToggleParticleSystems(true), false);
     }
 
     void ToggleParticleSystems(bool onOff){
@@ -36,7 +37,7 @@ public class StandoffWarningPylons : MonoBehaviour
     }
 
     public void OnWinCamStarted(){
-        Tween.Position(transform, originalPosition, 4f, 0f, Tween.EaseIn, Tween.LoopType.None, () => ToggleParticleSystems(false), null, false);
+        riseTween = Tween.Position(transform, originalPosition, timeToDescend, 0f, Tween.EaseIn, Tween.LoopType.None, () => ToggleParticleSystems(false), null, false);
     }
 
     void OnDestroy(){

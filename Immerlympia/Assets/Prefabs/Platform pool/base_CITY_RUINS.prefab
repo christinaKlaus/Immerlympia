@@ -94,7 +94,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4952271211482230
 Transform:
@@ -1766,7 +1766,7 @@ GameObject:
   - component: {fileID: 9092492050898617116}
   - component: {fileID: 459276848685593016}
   - component: {fileID: 5617387638084139530}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21083,7 +21083,7 @@ GameObject:
   m_Layer: 0
   m_Name: NavMeshObstacle (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -21094,13 +21094,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7124363685969834935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.3960586, z: -0, w: 0.9182253}
+  m_LocalPosition: {x: 15.1, y: 0.53, z: 17.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6921083274608707269}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -46.664, z: 0}
 --- !u!208 &2324041768864596738
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -21111,9 +21111,9 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.775, y: 0.5, z: 3.83}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -21134,7 +21134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2167615862972420526
 Transform:
   m_ObjectHideFlags: 0
@@ -21143,8 +21143,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8407435634820950899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.2, y: 0, z: 0}
-  m_LocalScale: {x: 0.8498, y: 0.8498, z: 0.8498}
+  m_LocalPosition: {x: 14.2, y: 0, z: 0.00000054072}
+  m_LocalScale: {x: 10.684422, y: 10.684422, z: 10.684422}
   m_Children: []
   m_Father: {fileID: 4690546977344860}
   m_RootOrder: 2
@@ -21253,7 +21253,7 @@ GameObject:
   - component: {fileID: 2763543087353294711}
   - component: {fileID: 8178361447387754031}
   - component: {fileID: 2484152074867801673}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

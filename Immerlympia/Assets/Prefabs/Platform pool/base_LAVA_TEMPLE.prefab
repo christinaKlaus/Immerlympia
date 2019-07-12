@@ -853,7 +853,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4586780926332828
 Transform:
@@ -63280,16 +63280,6 @@ PrefabInstance:
         type: 3}
       propertyPath: simulationSpeed
       value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2310052923043516680, guid: 961d736df3c05394b8b225b6b383f341,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7939166573295761725, guid: 961d736df3c05394b8b225b6b383f341,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 961d736df3c05394b8b225b6b383f341, type: 3}

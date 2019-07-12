@@ -12,4 +12,7 @@ public static class Extensions {
 		animator.SetBool(s, false);
 	}
 
+	public static Vector3 GetLastPosition(this LineRenderer lineRenderer){
+		return lineRenderer.GetPosition(lineRenderer.positionCount - 1);
+	}
 }

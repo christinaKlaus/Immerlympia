@@ -12,6 +12,8 @@ public class CoinSpawnPoint : MonoBehaviour {
 	public bool hasCoin;
 	public bool canSpawnCoin = false;
 
+	private bool isOnSceneEditPlatform = false;
+
 	CoinSpawnManager coinSpawnManager;
 	PlatformScript thisPlatform;
 	AudioSource audioSource;
@@ -41,11 +43,16 @@ public class CoinSpawnPoint : MonoBehaviour {
 	}
 
 	void OnEnable(){
+		if(GetComponentInParent<DeactivateInPlayMode>() != null) {
+			isOnSceneEditPlatform = true;
+			return;
+		}
 		if(coinSpawnManager.possibleCoinSpawns != null)
 			coinSpawnManager.possibleCoinSpawns.Add(this);
 	}
 
 	void OnDisable(){
+		if(isOnSceneEditPlatform) return;
 		coinSpawnManager.possibleCoinSpawns.Remove(this);
 	}
 
