@@ -122,7 +122,7 @@ Shader "Immerlympia/platforms" {
 				float2 alphaTil = float2(_Alpha_ST.x, _Alpha_ST.y);
 				float2 alphaOffs = float2(_Alpha_ST.z, _Alpha_ST.w);
 
-				half4 c = tex2D(_MainTex, frac(IN.uv_MainTex + _ScrollDir * _Time.y)) * _Color;
+				half4 c = tex2D(_MainTex, IN.uv_MainTex + frac(_ScrollDir * _Time.y)) * _Color;
 				
 				float2 screenUV = IN.screenPos.xy / IN.screenPos.w;
 

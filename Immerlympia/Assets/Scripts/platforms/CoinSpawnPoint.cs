@@ -38,6 +38,7 @@ public class CoinSpawnPoint : MonoBehaviour {
 		audioSource.PlayOneShot(spawnSound);
 	}
 
+	/// <summary>Plays the coin collect sound.</summary>
 	public void CoinCollected(){
 		audioSource.PlayOneShot(collectSound);
 	}

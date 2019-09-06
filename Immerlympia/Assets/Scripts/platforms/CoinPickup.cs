@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class CoinPickup : MonoBehaviour {
 
@@ -56,8 +60,7 @@ public class CoinPickup : MonoBehaviour {
 
         Invoke("PlayParticles", 0.5f);
 
-        // if(coinSpawnEvent != null) coinSpawnEvent(this);
-        //Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), boundingSphere.position, Quaternion.identity);
+        AgentTesting.SetDestination(transform.position);
     }
 
     public void PlayParticles(){
@@ -66,6 +69,7 @@ public class CoinPickup : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider collision) {
+        Debug.Log("Something collided with coin");
         GameObject obj = collision.gameObject;
         PlayerControlling pc = obj.GetComponent<PlayerControlling>();
 
@@ -73,6 +77,12 @@ public class CoinPickup : MonoBehaviour {
             pc.ChangeScore(scoreIncrease);
             currentSpawnPoint.CoinCollected();
             Collect();
+        } else {
+            NavMeshAgent agent = obj.transform.parent.GetComponent<NavMeshAgent>();
+            if(agent != null){
+                currentSpawnPoint.CoinCollected();
+                Collect();
+            }
         }
     }
 
@@ -98,4 +108,19 @@ public class CoinPickup : MonoBehaviour {
         Gizmos.DrawSphere(boundingSphere.position, cullingSphereRadius * 10f);
         // Gizmos.DrawSphere(coinRenderer.transform.position, cullingSphereRadius);
     }
+
+#if UNITY_EDITOR
+
+    [MenuItem("Tools/Collect current coin")]
+    public static void CollectCurrentCoin(){
+        CoinPickup coinPickup = FindObjectOfType(typeof(CoinPickup)) as CoinPickup;
+        if(coinPickup != null){
+            coinPickup.currentSpawnPoint.CoinCollected();
+            coinPickup.Collect();
+        }
+    }
+
+#endif
 }
+
+

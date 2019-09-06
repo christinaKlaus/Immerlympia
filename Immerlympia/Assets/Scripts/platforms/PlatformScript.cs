@@ -44,6 +44,8 @@ public class PlatformScript : MonoBehaviour {
     private TweenBase rotateTween, shakeTween;
     private WaitForSeconds warningDelay, disappearDelay;
 
+    private NavMeshBakeControl navmeshControl;
+
     void Awake(){
         gameEnded = false;
         PlayerManager.startWinCamEvent += OnWinCamActivated;
@@ -55,6 +57,7 @@ public class PlatformScript : MonoBehaviour {
             Debug.LogError("platform materials not set on " + gameObject.name, this);
         }
         //Debug.Log(platformMaterials[0].shader.name);
+        navmeshControl = FindObjectOfType<NavMeshBakeControl>() as NavMeshBakeControl;
     }
 
     void OnEnable () {
@@ -99,8 +102,8 @@ public class PlatformScript : MonoBehaviour {
             foreach(CoinSpawnPoint s in spawns){
                 // Debug.Log("Spawn true gesetzt");
                 s.canSpawnCoin = true;
-                coinSpawnsActive = true;
             }
+            coinSpawnsActive = true;
         }
 
         if(canFall)
@@ -132,6 +135,7 @@ public class PlatformScript : MonoBehaviour {
                 coinSpawnsActive = true;
             }
             this.enabled = false;
+            navmeshControl.UpdateNavmeshControl();
         }
         
     }

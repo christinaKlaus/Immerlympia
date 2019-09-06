@@ -7,22 +7,18 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LAVA_mat
-  m_Shader: {fileID: 4800000, guid: dd5254c3e4a03ea499321d551fe78220, type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_Name: player_yellow
+  m_Shader: {fileID: 4800000, guid: 356af294bb7472e4c8f9d53542df05a0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2001
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 2800000, guid: 38d3daa4da2736042abb75c758d1512f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -43,12 +39,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _HoloTex:
-        m_Texture: {fileID: 2800000, guid: 902bf359fcd8c3b46a286ee7fec7a492, type: 3}
+    - _EmissionTex:
+        m_Texture: {fileID: 2800000, guid: 5852f470f10bb9844a5a1d92ce36ef60, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmmissionTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: adbfd5bbd07d1b24a8eec8642230584b, type: 3}
+        m_Texture: {fileID: 2800000, guid: f79336023bbd6b74795cbdb93fca3265, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -64,54 +64,35 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 2800000, guid: e0a7558432db8674d89429351fd74aaa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4593b4477eb09c94781b130c6c874679, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 1
-    - _AlphaStep: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionToggle: 0
-    - _Gamma: 0.6
-    - _GlitchRotation: 0
+    - _EdgeOffset: 0
+    - _EmissionIntensity: 10
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HoloMaster: 0
-    - _HoloOffset: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.105
     - _Parallax: 0.02
-    - _Posterization: 0.5
-    - _PosterizeLevels: 6
-    - _RampOffset: 0.15
-    - _RimPower: 3
-    - _Saturation: 0.8
+    - _RampOffset: 0.25
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Transparency: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _addOriginal: 0
-    - _stencilComp: 8
-    - _stencilReadMask: 1
-    - _stencilRef: 1
     m_Colors:
-    - _Alpha_ST: {r: 0.5, g: 0.5, b: 0.25, a: 0}
-    - _Color: {r: 0.9528302, g: 0.821544, b: 0.78653437, a: 1}
-    - _EdgeColor: {r: 0, g: 0, b: 0, a: 0}
-    - _EdgeOffset: {r: 0, g: 1, b: 0, a: 0}
-    - _Emission: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GlitchControl: {r: 0.1, g: 25, b: 0, a: 0}
-    - _HoloDir: {r: 0, g: -0.5, b: 0, a: 0}
-    - _Holo_ST: {r: 1, g: 25, b: 0, a: 0}
-    - _OverrideColor: {r: 0, g: 0, b: 0, a: 0}
-    - _RimColor: {r: 0.8679245, g: 0.22247048, b: 0.10234957, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EdgeColor: {r: 1, g: 0.9369999, b: 0, a: 1}
+    - _EdgeOffset: {r: 1, g: 0, b: 1, a: 0}
+    - _EmissionColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _EmissionTint: {r: 1, g: 0.9039999, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 0.937, b: 0, a: 1}
     - _ScrollDir: {r: 0, g: 0, b: 0, a: 0}

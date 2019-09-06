@@ -94,6 +94,14 @@ public class CoinSpawnManager : MonoBehaviour {
     {
         timer = spawnDelay;
     }
+
+	public void SetAgentDestionationToCurrentCoin(){
+		if(gameCoin.gameObject.activeSelf){
+			AgentTesting.SetDestination(gameCoin.transform.position);
+		}
+	}
+
+	
 }
 
 #if UNITY_EDITOR
@@ -103,8 +111,10 @@ public class CoinSpawnManagerEditor : Editor {
 		CoinSpawnManager coinSpawnManager = serializedObject.targetObject as CoinSpawnManager;
 		DrawDefaultInspector();
 		if(GUILayout.Button("Spawn Coin")){
-			//Debug.Log("Spawn new coin button clicked");
 			coinSpawnManager.SpawnNewCoinFromInspector();
+		}
+		if(GUILayout.Button("Set coin as destination")){
+			coinSpawnManager.SetAgentDestionationToCurrentCoin();
 		}
 	}
 }

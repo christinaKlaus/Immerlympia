@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff66302d2b65cf04c98b997b0f3768dc, type: 3}
-  m_Name: PlatformPool
+  m_Name: PlatformPool_all
   m_EditorClassIdentifier: 
   platformPool:
   - {fileID: 1580457316693142, guid: 4ef792fdc33639243aea89cf8076d9ce, type: 3}

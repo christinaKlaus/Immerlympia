@@ -5,6 +5,8 @@
 		_EdgeColor("XRay Edge Color", Color) = (0,0,0,0)
 		[Range(0,1)] _EdgeOffset("XRay Edge Offset", Vector) = (0,1,0,0)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_EmissionTint ("Emission Tint", Color) = (1,1,1,1)
+		_EmissionIntensity("Emission intensity", Float) = 1
 		_EmissionTex("Emission (RGB)", 2D) = "black" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {}
 		_RampOffset("Toon Ramp Offset", Range(-1, 1)) = 0
@@ -150,9 +152,9 @@
 				return c;
 			}
 
-
+			float _EmissionIntensity;
 			sampler2D _MainTex;
-			float4 _Color;
+			float4 _EmissionTint, _Color;
 			sampler2D _EmissionTex;
 
 			struct Input {
@@ -164,7 +166,7 @@
 				half4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 				o.Albedo = c.rgb;
 				o.Alpha = c.a;
-				o.Emission = tex2D(_EmissionTex, IN.uv_MainTex) * _Color;
+				o.Emission = _EmissionTint * tex2D(_EmissionTex, IN.uv_MainTex) * _EmissionIntensity;
 			}
 
 		ENDCG
