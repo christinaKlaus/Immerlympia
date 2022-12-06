@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedb2f4c897ff8b47a0590489399c65f, type: 3}
   m_Name: HeroYellow
   m_EditorClassIdentifier: 
-  isPicked: 1
-  currentPlayer: 0
-  heroName: NORIN
+  isPicked: 0
+  currentPlayer: -1
+  heroName: NOREEN
   heroColor: {r: 1, g: 0.937, b: 0, a: 1}
   heroSprite: {fileID: 21300000, guid: 5f51bd105ba02484e991421a45ea581c, type: 3}
   heroMaterial: {fileID: 2100000, guid: b0dfa592da4925846a5cec340eb576ea, type: 2}

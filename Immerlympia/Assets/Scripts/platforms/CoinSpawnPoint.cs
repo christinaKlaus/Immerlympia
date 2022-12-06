@@ -14,13 +14,15 @@ public class CoinSpawnPoint : MonoBehaviour {
 
 	private bool isOnSceneEditPlatform = false;
 
-	CoinSpawnManager coinSpawnManager;
+	static CoinSpawnManager coinSpawnManager;
 	PlatformScript thisPlatform;
 	AudioSource audioSource;
 	[SerializeField] AudioClip spawnSound, collectSound;
 
 	void Awake(){
-		coinSpawnManager = GetComponentInParent<CoinSpawnManager>();
+		if(coinSpawnManager == null){
+			coinSpawnManager = FindObjectOfType<CoinSpawnManager>();
+		}
 		thisPlatform = GetComponentInParent<PlatformScript>();
 		audioSource = GetComponent<AudioSource>();
 	}

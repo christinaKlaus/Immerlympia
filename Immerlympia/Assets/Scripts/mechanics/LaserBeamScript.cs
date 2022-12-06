@@ -16,7 +16,7 @@ public class LaserBeamScript : MonoBehaviour {
 
     public float hitDistance = 0f;
     [Space, SerializeField] int numLinePositions = 12;
-    [SerializeField] float laserMaxDistance = 12f, laserBeamHeight = 2.15f, turnDuration = 20f/* , cameraTargetMoveSpeed = 20f */;
+    [SerializeField] float laserMaxDistance = 12f, laserBeamHeight = 2.15f, turnDuration = 20f, hitTurnSpeedMultiplier = 0.25f /* , cameraTargetMoveSpeed = 20f */;
 
     [SerializeField] Transform laserRotationTransform = null, laserBeamOrigin = null, cameraTargetTransform = null;
     [SerializeField] ParticleSystem hitParticles;
@@ -90,7 +90,7 @@ public class LaserBeamScript : MonoBehaviour {
 
         while(beamActive && rotationTime < turnDuration){
             if(Physics.Raycast(laserBeamOrigin.position, laserBeamOrigin.forward, out hit, 1000f)){
-                laserRotationTransform.Rotate(0f, yRotationDelta * (Time.deltaTime / 4f), 0f, Space.Self);
+                laserRotationTransform.Rotate(0f, yRotationDelta * (Time.deltaTime * hitTurnSpeedMultiplier), 0f, Space.Self);
 
                 if(hit.transform != lastHitTransform){
                     lastHitTransform = hit.transform;
@@ -112,7 +112,7 @@ public class LaserBeamScript : MonoBehaviour {
                     hitParticles.Play(true);
                 }
 
-                rotationTime += (Time.deltaTime / 4f);
+                rotationTime += (Time.deltaTime * hitTurnSpeedMultiplier);
             } else {
                 laserRotationTransform.Rotate(0f, yRotationDelta * Time.deltaTime, 0f, Space.Self);
 

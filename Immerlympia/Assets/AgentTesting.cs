@@ -26,6 +26,8 @@ public class AgentTesting : MonoBehaviour
     }
 
     public static void SetDestination(Vector3 point){
-        agent.SetDestination(point);
+        if(agent){
+            agent.SetDestination(point);
+        }
     }
 }
