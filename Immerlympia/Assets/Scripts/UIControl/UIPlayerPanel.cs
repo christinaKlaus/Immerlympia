@@ -14,6 +14,7 @@ public class UIPlayerPanel : MonoBehaviour {
 	[SerializeField] public TMPro.TextMeshProUGUI characterText = null, playerText = null;
 	[SerializeField] private ParticleSystem heroLockedPS = null;
 	[SerializeField] private Image heroLockedBorder = null;
+	ParticleSystem.MainModule heroLockedPSMainModule;
 
 	public void OnEnable(){
 		if(activeHeroImage == null)
@@ -24,6 +25,10 @@ public class UIPlayerPanel : MonoBehaviour {
 		// 	playerName = "Player" + playerNumber;
 		// }
 		// playerText.SetText(playerName);
+		if(!heroLockedPS){
+			heroLockedPS = GetComponentInChildren<ParticleSystem>();
+		}
+		heroLockedPSMainModule = heroLockedPS.main;
 	}
 
 	public void SetHeroPick(HeroPick newHero){
@@ -55,8 +60,9 @@ public class UIPlayerPanel : MonoBehaviour {
 		heroLocked = lockHero;
 		heroLockedBorder.enabled = lockHero;
 		if(lockHero){
-			ParticleSystem.MainModule mainModule = heroLockedPS.main;
-			mainModule.startColor = currentPick.heroColor;
+			// ParticleSystem.MainModule mainModule = heroLockedPS.main;
+			// mainModule.startColor = currentPick.heroColor;
+			heroLockedPSMainModule.startColor = currentPick.heroColor;
 			heroLockedPS.Play();
 		}
 		else {

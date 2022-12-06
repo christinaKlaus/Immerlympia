@@ -33,6 +33,14 @@ public class SimpleAudioEvent : AudioEvent
 		source.PlayOneShot(oneshotClip, Random.Range(volume.minValue, volume.maxValue));
 	}
 
+	public void PlayOneShot(AudioSource source, int clip){
+		if(clips.Length == 0 || clip > clips.Length - 1) return;
+
+		oneshotClip = clips[clip];
+		source.pitch = Random.Range(pitch.minValue, pitch.maxValue);
+		source.PlayOneShot(oneshotClip, Random.Range(volume.minValue, volume.maxValue));
+	}
+
 	[ContextMenu("Usable Default")]
 	void UsableDefault(){
 		volume.maxValue = 1f;

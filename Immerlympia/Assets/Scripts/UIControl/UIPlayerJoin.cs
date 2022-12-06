@@ -19,7 +19,7 @@ public class UIPlayerJoin : MonoBehaviour {
 	private string[] joinButtonNames = new string[]{ "Jump0", "Jump1", "Jump2", "Jump3"};
 	private string[] horizontalAxisNames = new string[]{ "Horizontal0", "Horizontal1", "Horizontal2", "Horizontal3"};
 	[SerializeField] private UIPlayerPanel[] playerPanels = null;
-	[SerializeField] private HeroPick[] pickableHeroes = null;
+	[SerializeField, ReadOnly(false)] private HeroPick[] pickableHeroes = null;
 	[SerializeField] private GameObject[] playerJoinButtonPrompts = null;
 	[Space, SerializeField] private Selectable selectOnNoJoinedCancel = null, selectOnAllLockedIn = null;
 	[SerializeField] UnityEvent OnNoJoinedCancel = null;
@@ -47,6 +47,8 @@ public class UIPlayerJoin : MonoBehaviour {
 		}
 		
 		selectOnAllLockedIn.gameObject.SetActive(false);
+
+		pickableHeroes = Resources.FindObjectsOfTypeAll<HeroPick>();
 
 		if(resetHeropicksOnStart){
 			foreach(HeroPick hp in pickableHeroes){

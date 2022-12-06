@@ -9,7 +9,7 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(Animator))]
 public class MainMenuInput : MonoBehaviour {
 
-	[SerializeField] SimpleAudioEvent rotateAudio, snapAudio, riseAudio;
+	[SerializeField] SimpleAudioEvent beginRotateAudio, rotateAudio, endRotateAudio, snapAudio, riseAudio;
 	private bool inTransition = false;
 	private Animator animator;
 	private AudioSource audioSource;
@@ -57,7 +57,7 @@ public class MainMenuInput : MonoBehaviour {
 					Tween.EaseOutBack,
 					Tween.LoopType.None,
 					null,
-					null,//() => snapAudio.PlayOneShot(audioSource),
+					() => snapAudio.PlayOneShot(audioSource),
 					false);
 			}
 			Transform last = platformTransforms[platformTransforms.Length-1];
@@ -70,7 +70,7 @@ public class MainMenuInput : MonoBehaviour {
 					Tween.EaseOutBack,
 					Tween.LoopType.None,
 					null,
-					() => ToggleTransition(false),//() => snapAudio.PlayOneShot(audioSource),
+					() => { ToggleTransition(false); snapAudio.PlayOneShot(audioSource);},
 					false);
 		}
 		Invoke("FadeInMenus", musicDelay - 0.5f);
@@ -104,8 +104,17 @@ public class MainMenuInput : MonoBehaviour {
 
 	public void RotateMenu(float toAngle){
 		if(inTransition || currentTargetAngle == toAngle) return;
+		Debug.Log("Rotating menu to angle " + toAngle + " at " + Time.time);
+		inTransition = true;
 		currentTargetAngle = toAngle;
-		Tween.Rotation(cameraOriginTransform, new Vector3(0f, currentTargetAngle, 0f), 1f, 0f, Tween.EaseInOutBack, Tween.LoopType.None, () => ToggleTransition(true), () => ToggleTransition(false));
+		EventSystem.current.sendNavigationEvents = false;
+
+		Tween.Rotation(
+			cameraOriginTransform, new Vector3(0f, currentTargetAngle, 0f), 1.025f, 0f, Tween.EaseInOutBack, Tween.LoopType.None, 
+			() => {ToggleTransition(true); beginRotateAudio.PlayOneShot(audioSource); }, 
+			() => {ToggleTransition(false); endRotateAudio.PlayOneShot(audioSource); }
+		);
+		
 		rotateAudio.PlayOneShot(audioSource);
 	}
 

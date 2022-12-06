@@ -14,6 +14,12 @@ public class UICameraPosition : MonoBehaviour, ISelectHandler {
 	public float WorldAngle {
 		get {
 			return Vector3.SignedAngle(-Vector3.forward, new Vector3(transform.position.x, 0f, transform.position.z), Vector3.up);
+			// switch(menuPosition){
+			// 	case 0: return 0;
+			// 	case 1: return 120;
+			// 	case 2: return -120;
+			// 	default: return 0;
+			// }
 		}
 	}
 
@@ -24,6 +30,7 @@ public class UICameraPosition : MonoBehaviour, ISelectHandler {
 
     public void OnSelect(BaseEventData eventData)
     {
+		Debug.Log("Selected " + this.name);
 		mainMenuInput.RotateMenu(WorldAngle);
     }
 
